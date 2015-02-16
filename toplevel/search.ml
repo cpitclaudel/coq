@@ -21,6 +21,25 @@ open Matching
 open Printer
 open Libnames
 open Nametab
+open Goptions
+
+(* This option restricts the output of [SearchPattern ...],
+[SearchAbout ...], etc. to the names of the symbols matching the
+query, separated by a newline. This type of output is useful for
+editors (like emacs), to generate a list of completion candidates
+without having to parse thorugh the types of all symbols. *)
+
+let search_output_name_only = ref false
+
+let _ =
+  declare_bool_option
+    { optsync  = true;
+      optdepr  = false;
+      optname  = "output-name-only search";
+      optkey   = ["Search";"Output";"Name";"Only"];
+      optread  = (fun () -> !search_output_name_only);
+      optwrite = (:=) search_output_name_only }
+
 
 module SearchBlacklist =
   Goptions.MakeStringTable
@@ -106,9 +125,13 @@ let rec head c =
 let xor a b = (a or b) & (not (a & b))
 
 let plain_display ref a c =
-  let pc = pr_lconstr_env a c in
   let pr = pr_global ref in
-  msg (hov 2 (pr ++ str":" ++ spc () ++ pc) ++ fnl ())
+  if !search_output_name_only then
+    msg (pr ++ fnl ())
+  else
+    let pc = pr_lconstr_env a c in
+    msg (hov 2 (pr ++ str":" ++ spc () ++ pc) ++ fnl ())
+
 
 let filter_by_module (module_list:dir_path list) (accept:bool)
   (ref:global_reference) _ _ =
