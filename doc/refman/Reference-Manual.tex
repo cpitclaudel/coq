@@ -25,6 +25,7 @@
 
 \floatstyle{boxed} 
 \restylefloat{figure}
+%HEVEA\usepackage{deepcut}
 
 % for coqide
 \ifpdf   % si on est pas en pdflatex
@@ -87,6 +88,7 @@ Options A and B of the licence are {\em not} elected.}
 %END LATEX
 \include{RefMan-gal.v}% Gallina
 \include{RefMan-ext.v}% Gallina extensions
+\include{RefMan-mod.v}% Moved here so as to not confuse the auto extractor
 \include{RefMan-lib.v}% The coq library
 \include{RefMan-cic.v}% The Calculus of Constructions
 \include{RefMan-modr}% The module system
@@ -132,15 +134,27 @@ Options A and B of the licence are {\em not} elected.}
 %BEGIN LATEX
 \RefManCutCommand{ENDADDENDUM=\thepage}
 %END LATEX
+
+\cuthere{\cuttingunit}{Bibliography}
+
 \nocite{*}
 \bibliographystyle{plain}
 \bibliography{biblio}
 \cutname{biblio.html}
 
+\cuthere{\cuttingunit}{General Index}
 \printrefmanindex{default}{Global Index}{general-index.html}
+
+\cuthere{\cuttingunit}{Tactics index}
 \printrefmanindex{tactic}{Tactics Index}{tactic-index.html}
+
+\cuthere{\cuttingunit}{Commands Index}
 \printrefmanindex{command}{Vernacular Commands Index}{command-index.html}
+
+\cuthere{\cuttingunit}{Options Index}
 \printrefmanindex{option}{Vernacular Options Index}{option-index.html}
+
+\cuthere{\cuttingunit}{Errors index}
 \printrefmanindex{error}{Index of Error Messages}{error-index.html}
 
 %BEGIN LATEX

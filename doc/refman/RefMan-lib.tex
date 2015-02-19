@@ -987,7 +987,7 @@ Check 2 + 3.
 In addition to the \verb|ring|, \verb|field| and \verb|fourier|
 tactics (see Chapter~\ref{Tactics}) there are:
 \begin{itemize}
-\item {\tt discrR} \tacindex{discrR}
+\item {\tacticdef{discrR}} \tacindex{discrR}
   
   Proves that a real integer constant $c_1$ is different from another
   real integer constant $c_2$.  
@@ -1005,7 +1005,7 @@ discrR.
 Abort.
 \end{coq_eval}
 
-\item {\tt split\_Rabs} allows unfolding the {\tt Rabs} constant and splits 
+\item {\tacticdef{split\_Rabs}} allows unfolding the {\tt Rabs} constant and splits
 corresponding conjunctions.
 \tacindex{split\_Rabs}
 
@@ -1022,7 +1022,7 @@ intro; split_Rabs.
 Abort.
 \end{coq_eval}
 
-\item {\tt split\_Rmult} splits a condition that a product is
+\item {\tacticdef{split\_Rmult}} splits a condition that a product is
   non null into subgoals corresponding to the condition on each
   operand of the product. 
 \tacindex{split\_Rmult}

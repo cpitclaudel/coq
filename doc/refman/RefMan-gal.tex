@@ -760,7 +760,7 @@ a correct type in the environment preexisting the declaration and if
 is considered to be the type (or specification, or statement) assumed
 by {\ident} and we say that {\ident} has type {\type}.
 
-\subsubsection{{\tt Axiom {\ident} :{\term} .}
+\subsubsection{\vernacdef{Axiom {\ident} :{\term} .}
 \comindex{Axiom}
 \label{Axiom}}
 
@@ -774,10 +774,10 @@ a postulate.
 
 \begin{Variants} 
 \item \comindex{Parameter}\comindex{Parameters}
-  {\tt Parameter {\ident} :{\term}.} \\
+  {\vernacdef{Parameter {\ident} :{\term}.}} \\
   Is equivalent to {\tt Axiom {\ident} : {\term}}
 
-\item {\tt Parameter {\ident$_1$} {\ldots} {\ident$_n$} {\tt :}{\term}.}\\
+\item {\vernacdef{Parameter {\ident$_1$} {\ldots} {\ident$_n$} {\tt :}{\term}.}}\\
   Adds $n$ parameters with specification {\term}
 
 \item
@@ -787,14 +787,14 @@ a postulate.
 {\term$_n$} {\tt )}.}\\ 
   Adds $n$ blocks of parameters with different specifications.
 
-\item {\tt Local Axiom {\ident} : {\term}.}\\
+\item {\vernacdef{Local Axiom {\ident} : {\term}.}}\\
 \comindex{Local Axiom}
   Such axioms are never made accessible through their unqualified name by
   {\tt Import} and its variants (see \ref{Import}). You have to explicitly
   give their fully qualified name to refer to them.
 
 \item \comindex{Conjecture}
-  {\tt Conjecture {\ident} :{\term}.}\\
+  {\vernacdef{Conjecture {\ident} :{\term}.}}\\
   Is equivalent to {\tt Axiom {\ident} : {\term}}.
 \end{Variants}
 
@@ -802,7 +802,7 @@ a postulate.
 {\tt Parameters}.
 
 
-\subsubsection{{\tt Variable {\ident} :{\term}}.
+\subsubsection{\vernacdef{Variable {\ident} :{\term}}.
 \comindex{Variable}
 \comindex{Variables}
 \label{Variable}}
@@ -820,7 +820,7 @@ Local Parameter}.
 \end{ErrMsgs}
 
 \begin{Variants}
-\item {\tt Variable {\ident$_1$} {\ldots} {\ident$_n$} {\tt :}{\term}.}\\
+\item {\vernacdef{Variable {\ident$_1$} {\ldots} {\ident$_n$} {\tt :}{\term}.}}\\
   Links {\term} to names {\ident$_1$} {\ldots} {\ident$_n$}.
 \item
  {\tt Variable\,%
@@ -867,9 +867,9 @@ type of its body.
 A formal presentation of constants and environments is given in
 Section~\ref{Typed-terms}.
 
-\subsubsection{\tt Definition {\ident} := {\term}.
+\subsubsection{\vernacdef{Definition {\ident} := {\term}.
 \label{Definition}
-\comindex{Definition}}
+\comindex{Definition}}}
 
 This command binds {\term} to the name {\ident} in the
 environment, provided that {\term} is well-typed.
@@ -879,11 +879,11 @@ environment, provided that {\term} is well-typed.
 \end{ErrMsgs}
 
 \begin{Variants}
-\item {\tt Definition} {\ident} {\tt :} {\term$_1$} {\tt :=} {\term$_2$}{\tt .}\\
+\item {\vernacdef {\tt Definition} {\ident} {\tt :} {\term$_1$} {\tt :=} {\term$_2$}{\tt .}}\\
   It checks that the type of {\term$_2$} is definitionally equal to
   {\term$_1$}, and registers {\ident} as being of type {\term$_1$},
   and bound to value {\term$_2$}.
-\item {\tt Definition} {\ident} {\binder$_1$} {\ldots} {\binder$_n$}
+\item {\vernacdef {\tt Definition} {\ident} {\binder$_1$} {\ldots} {\binder$_n$}}
        {\tt :} \term$_1$ {\tt :=} {\term$_2$}{\tt .}\\
   This is equivalent to \\
    {\tt Definition} {\ident} {\tt : forall}%
@@ -910,8 +910,8 @@ These are synonyms of the {\tt Definition} forms.
 
 \SeeAlso Sections \ref{Opaque}, \ref{Transparent}, \ref{unfold}.
 
-\subsubsection{\tt Let {\ident} := {\term}.
-\comindex{Let}}
+\subsubsection{\vernacdef{Let {\ident} := {\term}.
+\comindex{Let}}}
 
 This command binds the value {\term} to the name {\ident} in the
 environment of the current section. The name {\ident} disappears
@@ -927,9 +927,9 @@ Local Definition}.
 \end{ErrMsgs}
 
 \begin{Variants}
-\item {\tt Let {\ident} : {\term$_1$} := {\term$_2$}.}
-\item {\tt Let Fixpoint {\ident} \nelist{\fixpointbody}{with} {\tt .}.}
-\item {\tt Let CoFixpoint {\ident} \nelist{\cofixpointbody}{with} {\tt .}.}
+\item {\vernacdef{Let {\ident} : {\term$_1$} := {\term$_2$}.}}
+\item {\vernacdef{Let Fixpoint {\ident} \nelist{\fixpointbody}{with} {\tt .}.}}
+\item {\vernacdef{Let CoFixpoint {\ident} \nelist{\cofixpointbody}{with} {\tt .}.}}
 \end{Variants}
 
 \SeeAlso Sections \ref{Section} (section mechanism), \ref{Opaque},
@@ -1580,8 +1580,8 @@ interactive proof mode is described in
 Chapter~\ref{Proof-handling} and the tactics in Chapter~\ref{Tactics}.
 The basic assertion command is:
 
-\subsubsection{\tt Theorem {\ident} \zeroone{\binders} : {\type}.
-\comindex{Theorem}}
+\subsubsection{\vernacdef{Theorem {\ident} \zeroone{\binders} : {\type}.
+\comindex{Theorem}}}
 
 After the statement is asserted, {\Coq} needs a proof. Once a proof of
 {\type} under the assumptions represented by {\binders} is given and
@@ -1602,11 +1602,11 @@ validated, the proof is generalized into a proof of {\tt forall
 \end{ErrMsgs}
 
 \begin{Variants} 
-\item {\tt Lemma {\ident} \zeroone{\binders} : {\type}.}\comindex{Lemma}\\
-  {\tt Remark {\ident} \zeroone{\binders} : {\type}.}\comindex{Remark}\\
-  {\tt Fact {\ident} \zeroone{\binders} : {\type}.}\comindex{Fact}\\
-  {\tt Corollary {\ident} \zeroone{\binders} : {\type}.}\comindex{Corollary}\\
-  {\tt Proposition {\ident} \zeroone{\binders} : {\type}.}\comindex{Proposition}
+\item {\vernacdef{Lemma {\ident} \zeroone{\binders} : {\type}.}}\comindex{Lemma}\\
+  {\vernacdef{Remark {\ident} \zeroone{\binders} : {\type}.}}\comindex{Remark}\\
+  {\vernacdef{Fact {\ident} \zeroone{\binders} : {\type}.}}\comindex{Fact}\\
+  {\vernacdef{Corollary {\ident} \zeroone{\binders} : {\type}.}}\comindex{Corollary}\\
+  {\vernacdef{Proposition {\ident} \zeroone{\binders} : {\type}.}}\comindex{Proposition}
 
 These commands are synonyms of \texttt{Theorem {\ident} \zeroone{\binders} : {\type}}.
 
@@ -1634,7 +1634,7 @@ some time of the interactive development of a proof, use the command
 The command can be used also with {\tt Lemma},
 {\tt Remark}, etc. instead of {\tt Theorem}.
 
-\item {\tt Definition {\ident} \zeroone{\binders} : {\type}.}
+\item {\vernacdef{Definition {\ident} \zeroone{\binders} : {\type}.}}
 
 This allows defining a term of type {\type} using the proof editing mode. It
 behaves as {\tt Theorem} but is intended to be used in conjunction with
@@ -1647,7 +1647,7 @@ of {\tt Definition}.
 \SeeAlso Sections~\ref{Opaque} and~\ref{Transparent} ({\tt Opaque}
 and {\tt Transparent}) and~\ref{unfold} (tactic {\tt unfold}).
 
-\item {\tt Let {\ident} \zeroone{\binders} : {\type}.}
+\item {\vernacdef{Let {\ident} \zeroone{\binders} : {\type}.}}
 
 Like {\tt Definition {\ident} \zeroone{\binders} : {\type}.} except
 that the definition is turned into a let-in definition generalized over

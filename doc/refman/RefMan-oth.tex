@@ -3,7 +3,7 @@
 
 \section{Displaying}
 
-\subsection[\tt Print {\qualid}.]{\tt Print {\qualid}.\comindex{Print}}
+\subsection[\tt Print {\qualid}.]{\vernacdef{Print {\qualid}.\comindex{Print}}}
 This command displays on the screen information about the declared or
 defined object referred by {\qualid}.
 
@@ -12,12 +12,12 @@ defined object referred by {\qualid}.
 \end{ErrMsgs}
 
 \begin{Variants}
-\item {\tt Print Term {\qualid}.}
+\item {\vernacdef{Print Term {\qualid}.}}
 \comindex{Print Term}\\ 
 This is a synonym to {\tt Print {\qualid}} when {\qualid} denotes a
 global constant. 
 
-\item {\tt About {\qualid}.}
+\item {\vernacdef{About {\qualid}.}}
 \label{About}
 \comindex{About}\\ 
 This displays various information about the object denoted by {\qualid}:
@@ -33,19 +33,19 @@ definitions or proofs.
 %to be computed and displays it.
 \end{Variants}
 
-\subsection[\tt Print All.]{\tt Print All.\comindex{Print All}}
+\subsection[\tt Print All.]{\vernacdef{Print All.\comindex{Print All}}}
 This command displays information about the current state of the
 environment, including sections and modules.
 
 \begin{Variants}
-\item {\tt Inspect \num.}\comindex{Inspect}\\
+\item {\vernacdef{Inspect \num.}}\comindex{Inspect}\\
 This command displays the {\num} last objects of the current
 environment, including sections and modules.
-\item {\tt Print Section {\ident}.}\comindex{Print Section}\\
+\item {\vernacdef{Print Section {\ident}.}}\comindex{Print Section}\\
 should correspond to a currently open section, this command
 displays the objects defined since the beginning of this section.
 % Discontinued
-%% \item {\tt Print.}\comindex{Print}\\
+%% \item {\vernacdef{Print.}}\comindex{Print}\\
 %% This command displays the axioms and variables declarations in the
 %% environment as well as the constants defined since the last variable
 %% was introduced.
@@ -61,69 +61,69 @@ names of flags, options and tables are made of non-empty sequences of
 identifiers (conventionally with capital initial letter). The general
 commands handling flags, options and tables are given below.
 
-\subsection[\tt Set {\rm\sl flag}.]{\tt Set {\rm\sl flag}.\comindex{Set}}
+\subsection[\tt Set {\rm\sl flag}.]{\vernacdef{Set {\rm\sl flag}.\comindex{Set}}}
 This command switches {\rm\sl flag} on. The original state of
 {\rm\sl flag} is restored when the current module ends.
 
 \begin{Variants}
-\item {\tt Local Set {\rm\sl flag}.}\\
+\item {\vernacdef{Local Set {\rm\sl flag}.}}\\
 This command switches {\rm\sl flag} on. The original state of
 {\rm\sl flag} is restored when the current \emph{section} ends.
-\item {\tt Global Set {\rm\sl flag}.}\\
+\item {\vernacdef{Global Set {\rm\sl flag}.}}\\
 This command switches {\rm\sl flag} on. The original state of
 {\rm\sl flag} is \emph{not} restored at the end of the module. Additionally,
 if set in a file, {\rm\sl flag} is switched on when the file is
 {\tt Require}-d.
 \end{Variants}
 
-\subsection[\tt Unset {\rm\sl flag}.]{\tt Unset {\rm\sl flag}.\comindex{Unset}}
+\subsection[\tt Unset {\rm\sl flag}.]{\vernacdef{Unset {\rm\sl flag}.\comindex{Unset}}}
 This command switches {\rm\sl flag} off. The original state of {\rm\sl flag}
 is restored when the current module ends.
 
 \begin{Variants}
-\item {\tt Local Unset {\rm\sl flag}.\comindex{Local Unset}}\\
+\item {\vernacdef{Local Unset {\rm\sl flag}.\comindex{Local Unset}}}\\
 This command switches {\rm\sl flag} off. The original state of {\rm\sl flag}
 is restored when the current \emph{section} ends.
-\item {\tt Global Unset {\rm\sl flag}.\comindex{Global Unset}}\\
+\item {\vernacdef{Global Unset {\rm\sl flag}.\comindex{Global Unset}}}\\
 This command switches {\rm\sl flag} off.  The original state of
 {\rm\sl flag} is \emph{not} restored at the end of the module. Additionally,
 if set in a file, {\rm\sl flag} is switched on when the file is
 {\tt Require}-d.
 \end{Variants}
 
-\subsection[\tt Test {\rm\sl flag}.]{\tt Test {\rm\sl flag}.\comindex{Test}}
+\subsection[\tt Test {\rm\sl flag}.]{\vernacdef{Test {\rm\sl flag}.\comindex{Test}}}
 This command prints whether {\rm\sl flag} is on or off.
 
-\subsection[\tt Set {\rm\sl option} {\rm\sl value}.]{\tt Set {\rm\sl option} {\rm\sl value}.\comindex{Set}}
+\subsection[\tt Set {\rm\sl option} {\rm\sl value}.]{\vernacdef{Set {\rm\sl option} {\rm\sl value}.\comindex{Set}}}
 This command sets {\rm\sl option} to {\rm\sl value}. The original value of
 {\rm\sl option} is restored when the current module ends.
 
 \begin{Variants}
-\item {\tt Local Set {\rm\sl option} {\rm\sl value}.\comindex{Local Set}}
+\item {\vernacdef{Local Set {\rm\sl option} {\rm\sl value}.\comindex{Local Set}}}
 This command sets {\rm\sl option} to {\rm\sl value}. The original value of
 {\rm\sl option} is restored at the end of the module.
-\item {\tt Global Set {\rm\sl option} {\rm\sl value}.\comindex{Global Set}}
+\item {\vernacdef{Global Set {\rm\sl option} {\rm\sl value}.\comindex{Global Set}}}
 This command sets {\rm\sl option} to {\rm\sl value}. The original value of
 {\rm\sl option} is \emph{not} restored at the end of the module. Additionally,
 if set in a file, {\rm\sl option} is set to {\rm\sl value} when the file is
 {\tt Require}-d.
 \end{Variants}
 
-\subsection[\tt Unset {\rm\sl option}.]{\tt Unset {\rm\sl option}.\comindex{Unset}}
+\subsection[\tt Unset {\rm\sl option}.]{\vernacdef{Unset {\rm\sl option}.\comindex{Unset}}}
 This command resets {\rm\sl option} to its default value.
 
 \begin{Variants}
-\item {\tt Local Unset {\rm\sl option}.\comindex{Local Unset}}\\
+\item {\vernacdef{Local Unset {\rm\sl option}.\comindex{Local Unset}}}\\
 This command resets {\rm\sl option} to its default value. The original state of {\rm\sl option}
 is restored when the current \emph{section} ends.
-\item {\tt Global Unset {\rm\sl option}.\comindex{Global Unset}}\\
+\item {\vernacdef{Global Unset {\rm\sl option}.\comindex{Global Unset}}}\\
 This command resets {\rm\sl option} to its default value.  The original state of
 {\rm\sl option} is \emph{not} restored at the end of the module. Additionally,
 if unset in a file, {\rm\sl option} is reset to its default value when the file is
 {\tt Require}-d.
 \end{Variants}
 
-\subsection[\tt Test {\rm\sl option}.]{\tt Test {\rm\sl option}.\comindex{Test}}
+\subsection[\tt Test {\rm\sl option}.]{\vernacdef{Test {\rm\sl option}.\comindex{Test}}}
 This command prints the current value of {\rm\sl option}.
 
 \subsection{Tables}
@@ -132,29 +132,29 @@ The general commands for tables are {\tt Add {\rm\sf table} {\rm\sl
     {\rm\sf table}}, {\tt Test {\rm\sf table} for {\rm\sl value}} and
   {\tt Print Table {\rm\sf table}}.
 
-\subsection[\tt Print Options.]{\tt Print Options.\comindex{Print Options}}
+\subsection[\tt Print Options.]{\vernacdef{Print Options.\comindex{Print Options}}}
 This command lists all available flags, options and tables.
 
 \begin{Variants}
-\item {\tt Print Tables}.\comindex{Print Tables}\\
+\item {\vernacdef{Print Tables}}.\comindex{Print Tables}\\
 This is a synonymous of {\tt Print Options.}
 \end{Variants}
 
 \section{Requests to the environment}
 
-\subsection[\tt Check {\term}.]{\tt Check {\term}.\label{Check}
-\comindex{Check}}
+\subsection[\tt Check {\term}.]{\vernacdef{Check {\term}.\label{Check}
+\comindex{Check}}}
 This command displays the type of {\term}. When called in proof mode, 
 the term is checked in the local context of the current subgoal.
 
 \begin{Variants}
-\item {\tt selector: Check {\term}}.\\
+\item {\vernacdef{\selector: Check {\term}}}.\\ %TODO
 specifies on which subgoal to perform typing (see
   Section~\ref{tactic-syntax}).
 \end{Variants}
 
 
-\subsection[\tt Eval {\rm\sl convtactic} in {\term}.]{\tt Eval {\rm\sl convtactic} in {\term}.\comindex{Eval}}
+\subsection[\tt Eval {\rm\sl convtactic} in {\term}.]{\vernacdef{Eval {\rm\sl convtactic} in {\term}.\comindex{Eval}}}
 
 This command performs the specified reduction on {\term}, and displays
 the resulting term with its type. The term to be reduced may depend on
@@ -163,7 +163,7 @@ progress).
 
 \SeeAlso Section~\ref{Conversion-tactics}.
 
-\subsection[\tt Compute {\term}.]{\tt Compute {\term}.\comindex{Compute}}
+\subsection[\tt Compute {\term}.]{\vernacdef{Compute {\term}.\comindex{Compute}}}
 
 This command performs a call-by-value evaluation of {\term} by using
 the bytecode-based virtual machine. It is a shortcut for
@@ -171,8 +171,8 @@ the bytecode-based virtual machine. It is a shortcut for
 
 \SeeAlso Section~\ref{Conversion-tactics}.
 
-\subsection[\tt Extraction \term.]{\tt Extraction \term.\label{ExtractionTerm}
-\comindex{Extraction}} 
+\subsection[\tt Extraction \term.]{\vernacdef{Extraction \term.\label{ExtractionTerm}
+\comindex{Extraction}}}
 This command displays the extracted term from
 {\term}. The extraction is processed according to the distinction
 between {\Set} and {\Prop}; that is to say, between logical and
@@ -181,14 +181,14 @@ displayed in {\ocaml} syntax, where global identifiers are still
 displayed as in \Coq\ terms.
 
 \begin{Variants}
-\item \texttt{Recursive Extraction} {\qualid$_1$} \ldots{} {\qualid$_n$}{\tt .}\\
+\item {\vernacdef{Recursive Extraction {\qualid$_1$} \ldots{} {\qualid$_n$}{\tt .}}}\\
   Recursively extracts all the material needed for the extraction of 
   global {\qualid$_1$}, \ldots, {\qualid$_n$}.
 \end{Variants}
 
 \SeeAlso Chapter~\ref{Extraction}.
 
-\subsection[\tt Print Assumptions {\qualid}.]{\tt Print Assumptions {\qualid}.\comindex{Print Assumptions}}
+\subsection[\tt Print Assumptions {\qualid}.]{\vernacdef{Print Assumptions {\qualid}.\comindex{Print Assumptions}}}
 \label{PrintAssumptions}
 
 This commands display all the assumptions (axioms, parameters and
@@ -197,20 +197,20 @@ on the assumptions with respect to which the validity of a theorem
 relies.
 
 \begin{Variants}
-\item \texttt{\tt Print Opaque Dependencies {\qualid}.
+\item \vernacdef{Print Opaque Dependencies {\qualid}.
   \comindex{Print Opaque Dependencies}}\\
   Displays the set of opaque constants {\qualid} relies on in addition
   to the assumptions.
-\item \texttt{\tt Print Transparent Dependencies {\qualid}.
+\item \vernacdef{Print Transparent Dependencies {\qualid}.
   \comindex{Print Transparent Dependencies}}\\
   Displays the set of transparent constants {\qualid} relies on in addition
   to the assumptions.
-\item \texttt{\tt Print All Dependencies {\qualid}.
+\item \vernacdef{Print All Dependencies {\qualid}.
   \comindex{Print All Dependencies}}\\
   Displays all assumptions and constants {\qualid} relies on.
 \end{Variants}
 
-\subsection[\tt Search {\qualid}.]{\tt Search {\qualid}.\comindex{Search}}
+\subsection[\tt Search {\qualid}.]{\vernacdef{Search {\qualid}.\comindex{Search}}}
 This command displays the name and type of all objects (hypothesis of
 the current goal, theorems, axioms, etc) of the current context whose
 statement contains \qualid. This command is useful to remind the user
@@ -222,10 +222,10 @@ environment}\\
     There is no constant in the environment named \qualid.
 \end{ErrMsgs}
 
-\newcommand{\termpatternorstr}{{\termpattern}\textrm{\textsl{-}}{\str}}
+\newcommand{\termpatternorstr}{\nterm{search\_term}}
 
 \begin{Variants}
-\item {\tt Search {\str}.}
+\item {\vernacdef{Search {\str}.}}
 
 If {\str} is a valid identifier, this command displays the name and type
 of all objects (theorems, axioms, etc) of the current context whose
@@ -235,20 +235,20 @@ or by its notation's string as in \verb="_ + _"= or \verb="_ 'U' _"=, see
 Section~\ref{Notation}), the command works like {\tt Search
 {\qualid}}.
 
-\item {\tt Search {\str}\%{\delimkey}.}
+\item {\vernacdef{Search {\str}\%{\delimkey}.}}
 
 The string {\str} must be a notation or the main symbol of a notation
 which is then interpreted in the scope bound to the delimiting key
 {\delimkey} (see Section~\ref{scopechange}).
 
-\item {\tt Search {\termpattern}.}
+\item {\vernacdef{Search {\termpattern}.}}
 
 This searches for all statements or types of definition that contains
 a subterm that matches the pattern {\termpattern} (holes of the
 pattern are either denoted by ``{\texttt \_}'' or
 by ``{\texttt ?{\ident}}'' when non linear patterns are expected).
 
-\item {\tt Search \nelist{\zeroone{-}{\termpatternorstr}}{}.}\\
+\item {\vernacdef{Search \nelist{\zeroone{-}{\termpatternorstr}}{}.}}\\
 
 \noindent where {\termpatternorstr} is a
 {\termpattern} or a {\str}, or a {\str} followed by a scope
@@ -263,20 +263,20 @@ search excludes the objects that mention that {\termpattern} or that
 {\str}.
 
 \item
-  {\tt Search} \nelist{{\termpatternorstr}}{}
-    {\tt inside} {\module$_1$} \ldots{} {\module$_n$}{\tt .}
+  {\vernacdef{Search \nelist{{\termpatternorstr}}{}
+    {\tt inside} {\module$_1$} \ldots{} {\module$_n$}{\tt .}}}
 
 This restricts the search to constructions defined in modules
 {\module$_1$} \ldots{} {\module$_n$}.
 
 \item
-  {\tt Search \nelist{{\termpatternorstr}}{}
-     outside {\module$_1$}...{\module$_n$}.}
+  {\vernacdef{Search \nelist{{\termpatternorstr}}{}
+     outside {\module$_1$}...{\module$_n$}.}}
 
 This restricts the search to constructions not defined in modules
 {\module$_1$} \ldots{} {\module$_n$}.
 
-\item {\tt selector: Search \nelist{\zeroone{-}{\termpatternorstr}}{}.}
+\item {\vernacdef{\selector: Search \nelist{\zeroone{-}{\termpatternorstr}}{}.}} %TODO
 
   This specifies the goal on which to search hypothesis (see
   Section~\ref{tactic-syntax}). By default the 1st goal is searched.
@@ -296,13 +296,13 @@ Search (?x * _ + ?x * _)%Z outside OmegaLemmas.
 
 \Warning \comindex{SearchAbout} Up to {\Coq} version 8.4, {\tt Search}
 had the behavior of current {\tt SearchHead} and the behavior of
-current {\tt Search} was obtained with command {\tt SearchAbout}. For
+current {\tt Search} was obtained with command {\vernacdef{SearchAbout \qualid}}. For
 compatibility, the deprecated name {\tt SearchAbout} can still be used
 as a synonym of {\tt Search}. For compatibility, the list of objects to
 search when using {\tt SearchAbout} may also be enclosed by optional
 {\tt [ ]} delimiters.
 
-\subsection[\tt SearchHead {\term}.]{\tt SearchHead {\term}.\comindex{SearchHead}}
+\subsection[\tt SearchHead {\term}.]{\vernacdef{SearchHead {\term}.\comindex{SearchHead}}}
 This command displays the name and type of all hypothesis of the
 current goal (if any) and theorems of the current context whose
 statement's conclusion has the form {\tt ({\term} t1 ..
@@ -320,12 +320,12 @@ SearchHead (@eq bool).
 
 \begin{Variants}
 \item
-{\tt SearchHead} {\term} {\tt inside} {\module$_1$} \ldots{} {\module$_n$}{\tt .}
+{\vernacdef{SearchHead {\term} {\tt inside} {\module$_1$} \ldots{} {\module$_n$}{\tt .}}}
 
 This restricts the search to constructions defined in modules
 {\module$_1$} \ldots{} {\module$_n$}.
 
-\item {\tt SearchHead} {\term} {\tt outside} {\module$_1$} \ldots{} {\module$_n$}{\tt .}
+\item {\vernacdef{SearchHead {\term} {\tt outside} {\module$_1$} \ldots{} {\module$_n$}{\tt .}}}
 
 This restricts the search to constructions not defined in modules
 {\module$_1$} \ldots{} {\module$_n$}.
@@ -335,7 +335,7 @@ This restricts the search to constructions not defined in modules
 No module \module{} has been required (see Section~\ref{Require}).
 \end{ErrMsgs}
 
-\item {\tt selector: SearchHead {\term}.}
+\item {\vernacdef{\selector: SearchHead {\term}.}}
 
   This specifies the goal on which to search hypothesis (see
   Section~\ref{tactic-syntax}). By default the 1st goal is searched.
@@ -345,7 +345,7 @@ No module \module{} has been required (see Section~\ref{Require}).
 
 \Warning Up to {\Coq} version 8.4, {\tt SearchHead} was named {\tt Search}.
 
-\subsection[\tt SearchPattern {\termpattern}.]{\tt SearchPattern {\term}.\comindex{SearchPattern}}
+\subsection[\tt SearchPattern {\termpattern}.]{\vernacdef{SearchPattern {\term}.\comindex{SearchPattern}}}
 
 This command displays the name and type of all hypothesis of the
 current goal (if any) and theorems of the current context whose statement's
@@ -374,18 +374,18 @@ SearchPattern (?X1 + _ = _ + ?X1).
 \end{coq_example}
 
 \begin{Variants}
-\item {\tt SearchPattern {\term} inside
-{\module$_1$} \ldots{} {\module$_n$}.}
+\item {\vernacdef{SearchPattern {\term} inside
+{\module$_1$} \ldots{} {\module$_n$}.}}
 
 This restricts the search to constructions defined in modules
 {\module$_1$} \ldots{} {\module$_n$}.
 
-\item {\tt SearchPattern {\term} outside {\module$_1$} \ldots{} {\module$_n$}.}
+\item {\vernacdef{SearchPattern {\term} outside {\module$_1$} \ldots{} {\module$_n$}.}}
 
 This restricts the search to constructions not defined in modules
 {\module$_1$} \ldots{} {\module$_n$}.
 
-\item {\tt selector: SearchPattern {\term}.}
+\item {\vernacdef{\selector: SearchPattern {\term}.}} %TODO
 
   This specifies the goal on which to search hypothesis (see
   Section~\ref{tactic-syntax}). By default the 1st goal is searched.
@@ -393,7 +393,7 @@ This restricts the search to constructions not defined in modules
 
 \end{Variants}
 
-\subsection[\tt SearchRewrite {\term}.]{\tt SearchRewrite {\term}.\comindex{SearchRewrite}}
+\subsection[\tt SearchRewrite {\term}.]{\vernacdef{SearchRewrite {\term}.\comindex{SearchRewrite}}}
 
 This command displays the name and type of all hypothesis of the
 current goal (if any) and theorems of the current context whose
@@ -406,18 +406,18 @@ SearchRewrite (_ + _ + _).
 \end{coq_example}
 
 \begin{Variants}
-\item {\tt SearchRewrite {\term} inside
-{\module$_1$} \ldots{} {\module$_n$}.}
+\item {\vernacdef{SearchRewrite {\term} inside
+{\module$_1$} \ldots{} {\module$_n$}.}}
 
 This restricts the search to constructions defined in modules
 {\module$_1$} \ldots{} {\module$_n$}.
 
-\item {\tt SearchRewrite {\term} outside {\module$_1$} \ldots{} {\module$_n$}.}
+\item {\vernacdef{SearchRewrite {\term} outside {\module$_1$} \ldots{} {\module$_n$}.}}
 
 This restricts the search to constructions not defined in modules
 {\module$_1$} \ldots{} {\module$_n$}.
 
-\item {\tt selector: SearchRewrite {\term}.}
+\item {\vernacdef{\selector: SearchRewrite {\term}.}}
 
   This specifies the goal on which to search hypothesis (see
   Section~\ref{tactic-syntax}). By default the 1st goal is searched.
@@ -429,12 +429,12 @@ This restricts the search to constructions not defined in modules
 For the {\tt Search}, {\tt SearchHead}, {\tt SearchPattern} and
 {\tt SearchRewrite} queries, it is possible to globally filter
 the search results via the command
-{\tt Add Search Blacklist "substring1"}.
+{\vernacdef{Add Search Blacklist {\str}}}.
 A lemma whose fully-qualified name contains any of the declared substrings
 will be removed from the search results.
 The default blacklisted substrings are {\tt 
-  "\_subproof" "Private\_"}. The command {\tt Remove Search Blacklist
-  ...} allows expunging this blacklist.
+  "\_subproof" "Private\_"}. The command {\vernacdef{Remove Search Blacklist
+  {\str}}} allows expunging this blacklist.
 
 % \begin{tabbing}
 % \ \ \ \ \=11.\ \=\kill
@@ -454,8 +454,8 @@ The default blacklisted substrings are {\tt
 % For more informations about the exact working of this command, see
 % \cite{Del97}.
 
-\subsection[\tt Locate {\qualid}.]{\tt Locate {\qualid}.\comindex{Locate}
-\label{Locate}}
+\subsection[\tt Locate {\qualid}.]{\vernacdef{Locate {\qualid}.\comindex{Locate}
+\label{Locate}}}
 This command displays the full name of objects whose name is a prefix of the
 qualified identifier {\qualid}, and consequently the \Coq\ module in which they
 are defined. It searches for objects from the different qualified name spaces of
@@ -477,13 +477,13 @@ Locate I.Dont.Exist.
 \end{coq_example}
 
 \begin{Variants}
-\item {\tt Locate Term {\qualid}.}\comindex{Locate Term}\\
+\item {\vernacdef{Locate Term {\qualid}.}}\comindex{Locate Term}\\
   As {\tt Locate} but restricted to terms.
 
-\item {\tt Locate Module {\qualid}.}
+\item {\vernacdef{Locate Module {\qualid}.}}
   As {\tt Locate} but restricted to modules.
 
-\item {\tt Locate Ltac {\qualid}.}\comindex{Locate Ltac}\\
+\item {\vernacdef{Locate Ltac {\qualid}.}}\comindex{Locate Ltac}\\
   As {\tt Locate} but restricted to tactics.
 \end{Variants}
 
@@ -500,20 +500,20 @@ for \Coq's toplevel. This kind of file is called a {\em script} for
 \Coq\index{Script file}. The standard (and default) extension of
 \Coq's script files is {\tt .v}.
 
-\subsection[\tt Load {\ident}.]{\tt Load {\ident}.\comindex{Load}\label{Load}}
+\subsection[\tt Load {\ident}.]{\vernacdef{Load {\ident}.\comindex{Load}\label{Load}}}
 This command loads the file named {\ident}{\tt .v}, searching
 successively in each of the directories specified in the {\em
   loadpath}. (see Section~\ref{loadpath})
 
 \begin{Variants}
-\item {\tt Load {\str}.}\label{Load-str}\\
+\item {\vernacdef{Load {\str}.}}\label{Load-str}\\
   Loads the file denoted by the string {\str}, where {\str} is any
   complete filename. Then the \verb.~. and {\tt ..}
   abbreviations are allowed as well as shell variables. If no
   extension is specified, \Coq\ will use the default extension {\tt
     .v}
-\item {\tt Load Verbose {\ident}.}, 
-  {\tt Load Verbose {\str}}\\
+\item {\vernacdef{Load Verbose {\ident}.}},
+  {\vernacdef{Load Verbose {\str}}}\\
   \comindex{Load Verbose}
   Display, while loading, the answers of \Coq\ to each command
   (including tactics) contained in the loaded file
@@ -535,8 +535,8 @@ A compiled file is a particular case of module called {\em library file}.
 % the minor difference (to avoid multiple Exporting of libraries) in
 % the treatment of normal modules and libraries by Export omitted
 
-\subsection[\tt Require {\qualid}.]{\tt Require {\qualid}.\label{Require}
-\comindex{Require}}
+\subsection[\tt Require {\qualid}.]{\vernacdef{Require {\qualid}.\label{Require}
+\comindex{Require}}}
 
 This command looks in the loadpath for a file containing
 module {\qualid} and adds the corresponding module to the environment
@@ -557,7 +557,7 @@ with the mapping used to compile the file. If several files match, one of them
 is picked in an unspecified fashion.
 
 \begin{Variants}
-\item {\tt Require Import {\qualid}.} \comindex{Require Import}
+\item {\vernacdef{Require Import {\qualid}.}} \comindex{Require Import}
 
   This loads and declares the module {\qualid} and its dependencies
   then imports the contents of {\qualid} as described in
@@ -571,7 +571,7 @@ is picked in an unspecified fashion.
   If the module required has already been loaded, {\tt Require Import
   {\qualid}} simply imports it, as {\tt Import {\qualid}} would.
 
-\item {\tt Require Export {\qualid}.}
+\item {\vernacdef{Require Export {\qualid}.}}
   \comindex{Require Export}
 
   This command acts as {\tt Require Import} {\qualid}, but if a
@@ -579,7 +579,7 @@ is picked in an unspecified fashion.
   Export} {\it B}, then the command {\tt Require Import} {\it A}
   also imports the module {\it B}.
 
-\item {\tt Require \zeroone{Import {\sl |} Export}} {\qualid}$_1$ {\ldots} {\qualid}$_n${\tt .}
+\item {\vernacdef{Require \zeroone{\argchoice{Import,Export}} {\qualid}$_1$ {\ldots} {\qualid}$_n${\tt .}}}
 
   This loads the modules {\qualid}$_1$, \ldots, {\qualid}$_n$ and
   their recursive dependencies. If {\tt Import} or {\tt Export} is
@@ -587,7 +587,7 @@ is picked in an unspecified fashion.
   the recursive dependencies that were marked or transitively marked
   as {\tt Export}.
 
-\item {\tt From {\dirpath} Require {\qualid}.}
+\item {\vernacdef{From {\dirpath} Require {\qualid}.}}
   \comindex{From Require}
 
   This command acts as {\tt Require}, but picks any library whose absolute name
@@ -641,13 +641,13 @@ is picked in an unspecified fashion.
 
 \SeeAlso Chapter~\ref{Addoc-coqc}
 
-\subsection[\tt Print Libraries.]{\tt Print Libraries.\comindex{Print Libraries}}
+\subsection[\tt Print Libraries.]{\vernacdef{Print Libraries.\comindex{Print Libraries}}}
 
 This command displays the list of library files loaded in the current
 {\Coq} session. For each of these libraries, it also tells if it is
 imported.
 
-\subsection[\tt Declare ML Module {\str$_1$} .. {\str$_n$}.]{\tt Declare ML Module {\str$_1$} .. {\str$_n$}.\comindex{Declare ML Module}}
+\subsection[\tt Declare ML Module {\str$_1$} .. {\str$_n$}.]{\vernacdef{Declare ML Module {\str$_1$} .. {\str$_n$}.\comindex{Declare ML Module}}}
 This commands loads the {\ocaml} compiled files {\str$_1$} {\ldots}
 {\str$_n$} (dynamic link). It is mainly used to load tactics
 dynamically.
@@ -661,7 +661,7 @@ files is only possible under the bytecode version of {\tt coqtop}
 {\ocaml} that supports native {\tt Dynlink} ($\ge$ 3.11).
 
 \begin{Variants}
-\item {\tt Local Declare ML Module {\str$_1$} .. {\str$_n$}.}\\
+\item {\vernacdef{Local Declare ML Module {\str$_1$} .. {\str$_n$}.}}\\
   This variant is not exported to the modules that import the module
   where they occur, even if outside a section.
 \end{Variants}
@@ -671,7 +671,7 @@ files is only possible under the bytecode version of {\tt coqtop}
 \item \errindex{Loading of ML object file forbidden in a native {\Coq}}
 \end{ErrMsgs}
 
-\subsection[\tt Print ML Modules.]{\tt Print ML Modules.\comindex{Print ML Modules}}
+\subsection[\tt Print ML Modules.]{\vernacdef{Print ML Modules.\comindex{Print ML Modules}}}
 This print the name of all \ocaml{} modules loaded with \texttt{Declare
   ML Module}. To know from where these module were loaded, the user
 should use the command \texttt{Locate File} (see Section~\ref{Locate File})
@@ -683,72 +683,72 @@ Loadpaths are preferably managed using {\Coq} command line options
 manage them for practical purposes. Such commands are only meant to be issued in
 the toplevel, and using them in source files is discouraged.
 
-\subsection[\tt Pwd.]{\tt Pwd.\comindex{Pwd}\label{Pwd}}
+\subsection[\tt Pwd.]{\vernacdef{Pwd.\comindex{Pwd}\label{Pwd}}}
 This command displays the current working directory.
 
-\subsection[\tt Cd {\str}.]{\tt Cd {\str}.\comindex{Cd}}
+\subsection[\tt Cd {\str}.]{\vernacdef{Cd {\str}.\comindex{Cd}}}
 This command changes the current directory according to {\str} 
 which can be any valid path.
 
 \begin{Variants}
-\item {\tt Cd.}\\
+\item {\vernacdef{Cd.}}\\
   Is equivalent to {\tt Pwd.}
 \end{Variants}
 
-\subsection[\tt Add LoadPath {\str} as {\dirpath}.]{\tt Add LoadPath {\str} as {\dirpath}.\comindex{Add LoadPath}\label{AddLoadPath}}
+\subsection[\tt Add LoadPath {\str} as {\dirpath}.]{\vernacdef{Add LoadPath {\str} as {\dirpath}.\comindex{Add LoadPath}\label{AddLoadPath}}}
 
 This command is equivalent to the command line option {\tt -Q {\dirpath}
   {\str}}. It adds the physical directory {\str} to the current {\Coq}
 loadpath and maps it to the logical directory {\dirpath}.
 
 \begin{Variants}
-\item {\tt Add LoadPath {\str}.}\\
+\item {\vernacdef{Add LoadPath {\str}.}}\\
 Performs as {\tt Add LoadPath {\str} as {\dirpath}} but for the empty directory path.
 \end{Variants}
 
-\subsection[\tt Add Rec LoadPath {\str} as {\dirpath}.]{\tt Add Rec LoadPath {\str} as {\dirpath}.\comindex{Add Rec LoadPath}\label{AddRecLoadPath}}
+\subsection[\tt Add Rec LoadPath {\str} as {\dirpath}.]{\vernacdef{Add Rec LoadPath {\str} as {\dirpath}.\comindex{Add Rec LoadPath}\label{AddRecLoadPath}}}
 This command is equivalent to the command line option {\tt -R {\dirpath}
   {\str}}. It adds the physical directory {\str} and all its
 subdirectories to the current {\Coq} loadpath.
 
 \begin{Variants}
-\item {\tt Add Rec LoadPath {\str}.}\\
+\item {\vernacdef{Add Rec LoadPath {\str}.}}\\
 Works as {\tt Add Rec LoadPath {\str} as {\dirpath}} but for the empty logical directory path.
 \end{Variants}
 
-\subsection[\tt Remove LoadPath {\str}.]{\tt Remove LoadPath {\str}.\comindex{Remove LoadPath}}
+\subsection[\tt Remove LoadPath {\str}.]{\vernacdef{Remove LoadPath {\str}.\comindex{Remove LoadPath}}}
 This command removes the path {\str} from the current \Coq\ loadpath.
 
-\subsection[\tt Print LoadPath.]{\tt Print LoadPath.\comindex{Print LoadPath}}
+\subsection[\tt Print LoadPath.]{\vernacdef{Print LoadPath.\comindex{Print LoadPath}}}
 This command displays the current \Coq\ loadpath.
 
 \begin{Variants}
-\item {\tt Print LoadPath {\dirpath}.}\\
+\item {\vernacdef{Print LoadPath {\dirpath}.}}\\
 Works as {\tt Print LoadPath} but displays only the paths that extend the {\dirpath} prefix.
 \end{Variants}
 
-\subsection[\tt Add ML Path {\str}.]{\tt Add ML Path {\str}.\comindex{Add ML Path}}
+\subsection[\tt Add ML Path {\str}.]{\vernacdef{Add ML Path {\str}.\comindex{Add ML Path}}}
 This command adds the path {\str} to the current {\ocaml} loadpath (see
 the command {\tt Declare ML Module} in the Section~\ref{compiled}).
 
-\subsection[\tt Add Rec ML Path {\str}.]{\tt Add Rec ML Path {\str}.\comindex{Add Rec ML Path}}
+\subsection[\tt Add Rec ML Path {\str}.]{\vernacdef{Add Rec ML Path {\str}.\comindex{Add Rec ML Path}}}
 This command adds the directory {\str} and all its subdirectories 
 to the current {\ocaml} loadpath (see
 the command {\tt Declare ML Module} in the Section~\ref{compiled}).
 
-\subsection[\tt Print ML Path {\str}.]{\tt Print ML Path {\str}.\comindex{Print ML Path}}
+\subsection[\tt Print ML Path {\str}.]{\vernacdef{Print ML Path {\str}.\comindex{Print ML Path}}}
 This command displays the current {\ocaml} loadpath.
 This command makes sense only under the bytecode version of {\tt
 coqtop}, i.e. using option {\tt -byte} (see the
 command {\tt Declare ML Module} in the section
 \ref{compiled}).
 
-\subsection[\tt Locate File {\str}.]{\tt Locate File {\str}.\comindex{Locate
-  File}\label{Locate File}}
+\subsection[\tt Locate File {\str}.]{\vernacdef{Locate File {\str}.\comindex{Locate
+  File}\label{Locate File}}}
 This command displays the location of file {\str} in the current loadpath.
 Typically, {\str} is a \texttt{.cmo} or \texttt{.vo} or \texttt{.v} file.
 
-\subsection[\tt Locate Library {\dirpath}.]{\tt Locate Library {\dirpath}.\comindex{Locate Library}\label{Locate Library}}
+\subsection[\tt Locate Library {\dirpath}.]{\vernacdef{Locate Library {\dirpath}.\comindex{Locate Library}\label{Locate Library}}}
 This command gives the status of the \Coq\ module {\dirpath}. It tells if the
 module is loaded and if not searches in the load path for a module
 of logical name {\dirpath}.
@@ -759,7 +759,7 @@ The backtracking commands described in this section can only be used
 interactively, they cannot be part of a vernacular file loaded via
 {\tt Load} or compiled by {\tt coqc}.
 
-\subsection[\tt Reset \ident.]{\tt Reset \ident.\comindex{Reset}}
+\subsection[\tt Reset \ident.]{\vernacdef{Reset \ident.\comindex{Reset}}}
 This command removes all the objects in the environment since \ident\ 
 was introduced, including \ident. \ident\ may be the name of a defined
 or declared object as well as the name of a section. One cannot reset
@@ -775,7 +775,7 @@ over the name of a module or of an object inside a module.
    interactive session.
 \end{Variants}
 
-\subsection[\tt Back.]{\tt Back.\comindex{Back}}
+\subsection[\tt Back.]{\vernacdef{Back.\comindex{Back}}}
 
 This commands undoes all the effects of the last vernacular
 command. Commands read from a vernacular file via a {\tt Load} are
@@ -789,7 +789,7 @@ information about the closed proof has been discarded. In this case,
 this proof.
 
 \begin{Variants}
-\item {\tt Back $n$} \\
+\item {\vernacdef{Back $n$.}} \\
   Undoes $n$ vernacular commands. As for {\tt Back}, some extra
   commands may be undone in order to reach an adequate state.
   For instance {\tt Back n} will not re-enter a closed proof,
@@ -801,7 +801,7 @@ this proof.
   The user wants to undo more commands than available in the history.
 \end{ErrMsgs}
 
-\subsection[\tt BackTo $\num$.]{\tt BackTo $\num$.\comindex{BackTo}}
+\subsection[\tt BackTo $\num$.]{\vernacdef{BackTo $\num$.\comindex{BackTo}}}
 \label{sec:statenums}
 
 This command brings back the system to the state labeled $\num$,
@@ -813,7 +813,7 @@ proof states. For that, it may have to undo some
 extra commands and end on a state $\num' \leq \num$ if necessary.
 
 \begin{Variants}
-\item {\tt Backtrack $\num_1$ $\num_2$ $\num_3$}.\comindex{Backtrack}\\
+\item {\vernacdef{Backtrack $\num_1$ $\num_2$ $\num_3$.}}\comindex{Backtrack}\\
   {\tt Backtrack} is a \emph{deprecated} form of {\tt BackTo} which
   allows explicitly manipulating the proof environment. The three
   numbers $\num_1$, $\num_2$ and $\num_3$ represent the following:
@@ -835,10 +835,10 @@ extra commands and end on a state $\num' \leq \num$ if necessary.
 
 \section{Quitting and debugging}
 
-\subsection[\tt Quit.]{\tt Quit.\comindex{Quit}}
+\subsection[\tt Quit.]{\vernacdef{Quit.\comindex{Quit}}}
 This command permits to quit \Coq.
 
-\subsection[\tt Drop.]{\tt Drop.\comindex{Drop}\label{Drop}}
+\subsection[\tt Drop.]{\vernacdef{Drop.\comindex{Drop}\label{Drop}}}
 
 This is used mostly as a debug facility by \Coq's implementors
 and does not concern the casual user.
@@ -872,8 +872,8 @@ go();;
   environment variable \texttt{COQTOP} to the root of your copy of the sources (see Section~\ref{EnvVariables}).
 \end{Warnings}
 
-\subsection[\tt Time \textrm{\textsl{command}}.]{\tt Time \textrm{\textsl{command}}.\comindex{Time}
-\label{time}}
+\subsection[\tt Time \textrm{\textsl{command}}.]{\vernacdef{Time \textrm{\textsl{command}}.\comindex{Time}
+\label{time}}}
 This command executes the vernacular command \textrm{\textsl{command}}
 and display the time needed to execute it.
 
@@ -881,70 +881,70 @@ and display the time needed to execute it.
 \label{redirect}}
 This command executes the vernacular command \textrm{\textsl{command}}, redirecting its output to ``\textrm{\textsl{file}}.out''.
 
-\subsection[\tt Timeout \textrm{\textsl{int}} \textrm{\textsl{command}}.]{\tt Timeout \textrm{\textsl{int}} \textrm{\textsl{command}}.\comindex{Timeout}
-\label{timeout}}
+\subsection[\tt Timeout \textrm{\textsl{int}} \textrm{\textsl{command}}.]{\vernacdef{Timeout \textrm{\textsl{int}} \textrm{\textsl{command}}.\comindex{Timeout}
+\label{timeout}}}
 
 This command executes the vernacular command \textrm{\textsl{command}}. If
 the command has not terminated after the time specified by the integer
 (time expressed in seconds), then it is interrupted and an error message
 is displayed.
 
-\subsection[\tt Set Default Timeout \textrm{\textsl{int}}.]{\tt Set
-  Default Timeout \textrm{\textsl{int}}.\optindex{Default Timeout}}
+\subsection[\tt Set Default Timeout \textrm{\textsl{int}}.]{\vernacdef{Set
+  Default Timeout \textrm{\textsl{int}}.\optindex{Default Timeout}}}
 
 After using this command, all subsequent commands behave as if they
 were passed to a {\tt Timeout} command. Commands already starting by
 a {\tt Timeout} are unaffected.
 
-\subsection[\tt Unset Default Timeout.]{\tt Unset Default Timeout.\optindex{Default Timeout}}
+\subsection[\tt Unset Default Timeout.]{\vernacdef{Unset Default Timeout.\optindex{Default Timeout}}}
 
 This command turns off the use of a default timeout.
 
-\subsection[\tt Test Default Timeout.]{\tt Test Default Timeout.\optindex{Default Timeout}}
+\subsection[\tt Test Default Timeout.]{\vernacdef{Test Default Timeout.\optindex{Default Timeout}}}
 
 This command displays whether some default timeout has be set or not.
 
 \section{Controlling display}
 
-\subsection[\tt Set Silent.]{\tt Set Silent.\optindex{Silent}
+\subsection[\tt Set Silent.]{\vernacdef{Set Silent.\optindex{Silent}
 \label{Begin-Silent}
-\index{Silent mode}}
+\index{Silent mode}}}
 This command turns off the normal displaying.
 
-\subsection[\tt Unset Silent.]{\tt Unset Silent.\optindex{Silent}}
+\subsection[\tt Unset Silent.]{\vernacdef{Unset Silent.\optindex{Silent}}}
 This command turns the normal display on.
 
-\subsection[\tt Set Search Output Name Only.]{\tt Set Search Output Name Only.\optindex{Search Output Name Only}
+\subsection[\tt Set Search Output Name Only.]{\vernacdef{Set Search Output Name Only.}\optindex{Search Output Name Only}
 \label{Search-Output-Name-Only}
 \index{Search Output Name Only mode}}
 This command restricts the output of search commands to identifier names; turning it on causes invocations of {\tt Search}, {\tt SearchHead}, {\tt SearchPattern}, {\tt SearchRewrite} etc. to omit types from their output, printing only identifiers.
 
-\subsection[\tt Unset Search Output Name Only.]{\tt Unset Search Output Name Only.\optindex{Search Output Name Only}}
+\subsection[\tt Unset Search Output Name Only.]{\vernacdef{Unset Search Output Name Only.}\optindex{Search Output Name Only}}
 This command turns type display in search results back on.
 
-\subsection[\tt Set Printing Width {\integer}.]{\tt Set Printing Width {\integer}.\optindex{Printing Width}}
+\subsection[\tt Set Printing Width {\integer}.]{\vernacdef{Set Printing Width {\integer}.\optindex{Printing Width}}}
 \label{SetPrintingWidth}
 This command sets which left-aligned part of the width of the screen
 is used for display. 
 
-\subsection[\tt Unset Printing Width.]{\tt Unset Printing Width.\optindex{Printing Width}}
+\subsection[\tt Unset Printing Width.]{\vernacdef{Unset Printing Width.\optindex{Printing Width}}}
 This command resets the width of the screen used for display to its
 default value (which is 78 at the time of writing this documentation).
 
-\subsection[\tt Test Printing Width.]{\tt Test Printing Width.\optindex{Printing Width}}
+\subsection[\tt Test Printing Width.]{\vernacdef{Test Printing Width.\optindex{Printing Width}}}
 This command displays the current screen width used for display.
 
-\subsection[\tt Set Printing Depth {\integer}.]{\tt Set Printing Depth {\integer}.\optindex{Printing Depth}}
+\subsection[\tt Set Printing Depth {\integer}.]{\vernacdef{Set Printing Depth {\integer}.\optindex{Printing Depth}}}
 This command sets the nesting depth of the formatter used for
 pretty-printing. Beyond this depth, display of subterms is replaced by
 dots. 
 
-\subsection[\tt Unset Printing Depth.]{\tt Unset Printing Depth.\optindex{Printing Depth}}
+\subsection[\tt Unset Printing Depth.]{\vernacdef{Unset Printing Depth.\optindex{Printing Depth}}}
 This command resets the nesting depth of the formatter used for
 pretty-printing to its default value (at the
 time of writing this documentation, the default value is 50).
 
-\subsection[\tt Test Printing Depth.]{\tt Test Printing Depth.\optindex{Printing Depth}}
+\subsection[\tt Test Printing Depth.]{\vernacdef{Test Printing Depth.\optindex{Printing Depth}}}
 This command displays the current nesting depth used for display.
 
 %\subsection{\tt Abstraction ...}
@@ -965,7 +965,7 @@ computation of algebraic values, such as numbers, and for reflection-based
 tactics. The commands to fine-tune the reduction strategies and the
 lazy conversion algorithm are described first.
 
-\subsection[{\tt Opaque} \qualid$_1$ {\ldots} \qualid$_n${\tt .}]{{\tt Opaque} \qualid$_1$ {\ldots} \qualid$_n${\tt .}\comindex{Opaque}\label{Opaque}}
+\subsection[{\tt Opaque} \qualid$_1$ {\ldots} \qualid$_n${\tt .}]{{\vernacdef{Opaque \qualid$_1$ {\ldots} \qualid$_n${\tt .}}}\comindex{Opaque}\label{Opaque}}
 This command has an effect on unfoldable constants, i.e. 
 on constants defined by {\tt Definition} or {\tt Let} (with an explicit
 body), or by a command assimilated to a definition such as {\tt
@@ -981,8 +981,8 @@ telling it to delay the unfolding of a constant as much as possible when
 of two distinct applied constants.
 
 The scope of {\tt Opaque} is limited to the current section, or
-current file, unless the variant {\tt Global Opaque \qualid$_1$ {\ldots}
-\qualid$_n$} is used.
+current file, unless the variant {\vernacdef{Global Opaque \qualid$_1$ {\ldots}
+\qualid$_n$}} is used.
 
 \SeeAlso sections \ref{Conversion-tactics}, \ref{Automatizing},
 \ref{Theorem}
@@ -995,7 +995,7 @@ environment}\\
     and if \texttt{bar} does not exist, \texttt{foo} is set opaque.
 \end{ErrMsgs}
 
-\subsection[{\tt Transparent} \qualid$_1$ {\ldots} \qualid$_n${\tt .}]{{\tt Transparent} \qualid$_1$ {\ldots} \qualid$_n${\tt .}\comindex{Transparent}\label{Transparent}}
+\subsection[{\tt Transparent} \qualid$_1$ {\ldots} \qualid$_n${\tt .}]{{\vernacdef{Transparent \qualid$_1$ {\ldots} \qualid$_n${\tt .}}}\comindex{Transparent}\label{Transparent}}
 This command is the converse of {\tt Opaque} and it applies on
 unfoldable constants to restore their unfoldability after an {\tt
 Opaque} command.
@@ -1023,8 +1023,8 @@ environment}\\
 \SeeAlso sections \ref{Conversion-tactics}, \ref{Automatizing},
 \ref{Theorem}
 
-\subsection{{\tt Strategy} {\it level} {\tt [} \qualid$_1$ {\ldots} \qualid$_n$
-  {\tt ].}\comindex{Strategy}\comindex{Local Strategy}\label{Strategy}}
+\subsection{{\vernacdef{Strategy {\it level} {\tt [} \qualid$_1$ {\ldots} \qualid$_n$
+  {\tt ].}}}\comindex{Strategy}\comindex{Local Strategy}\label{Strategy}}
 This command generalizes the behavior of {\tt Opaque} and {\tt
   Transparent} commands. It is used to fine-tune the strategy for
 unfolding constants, both at the tactic level and at the kernel
@@ -1053,7 +1053,7 @@ command is prefixed by {\tt Local}. In the latter case, the behavior
 regarding sections and modules is the same as for the {\tt
   Transparent} and {\tt Opaque} commands.
 
-\subsection{{\tt Print Strategy} \qualid{\tt .}\comindex{Print Strategy}\label{PrintStrategy}}
+\subsection{{\vernacdef{Print Strategy \qualid{\tt .}}}\comindex{Print Strategy}\label{PrintStrategy}}
 
 This command prints the strategy currently associated to \qualid{}. It fails if
 \qualid{} is not an unfoldable reference, that is, neither a variable nor a
@@ -1064,11 +1064,11 @@ constant.
 \end{ErrMsgs}
 
 \begin{Variants}
-\item {\tt Print Strategies}\comindex{Print Strategies}\\
+\item {\vernacdef{Print Strategies}}\comindex{Print Strategies}\\
   Print all the currently non-transparent strategies.
 \end{Variants}
 
-\subsection{\tt Declare Reduction \ident\ := {\rm\sl convtactic}.}
+\subsection{\vernacdef{Declare Reduction \ident\ := {\rm\sl convtactic}.}}
 
 This command allows giving a short name to a reduction expression,
 for instance {\tt lazy beta delta [foo bar]}. This short name can
@@ -1085,7 +1085,7 @@ perform a {\tt Ltac \ident\ := {\rm\sl convtactic}}.
 
 \section{Controlling the locality of commands}
 
-\subsection{{\tt Local}, {\tt Global}
+\subsection{{\vernacdef{Local}}, {\vernacdef{Global}}
 \comindex{Local}
 \comindex{Global}
 }

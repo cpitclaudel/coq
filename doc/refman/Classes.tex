@@ -282,8 +282,8 @@ same effect.
 \section{Summary of the commands
 \label{TypeClassCommands}}
 
-\subsection{\tt Class {\ident} {\binder$_1$ \ldots~\binder$_n$} 
-  : \sort := \{ field$_1$ ; \ldots ; field$_k$ \}.}
+\subsection{\vernacdef{Class {\ident} {\binder$_1$ \ldots~\binder$_n$}
+  : \sort := \{ field$_1$ ; \ldots ; field$_k$ \}.}}
 \comindex{Class}
 \label{Class}
 
@@ -311,9 +311,9 @@ parameters {\binder$_1$} to {\binder$_n$} and fields {\tt field$_1$} to
   inductive definition. No methods or instances are defined.
 \end{Variants}
 
-\subsection{\tt Instance {\ident} {\binder$_1$ \ldots \binder$_n$} :
+\subsection{\vernacdef{Instance {\ident} {\binder$_1$ \ldots \binder$_n$} :
   {Class} {t$_1$ \ldots t$_n$} [| \textit{priority}]
-  := \{ field$_1$ := b$_1$ ; \ldots ; field$_i$ := b$_i$ \}}
+  := \{ field$_1$ := b$_1$ ; \ldots ; field$_i$ := b$_i$ \}}}
 \comindex{Instance}
 \label{Instance}
 
@@ -330,23 +330,23 @@ priority as for auto hints. If the priority is not specified, it defaults to
 $n$, the number of binders of the instance.
 
 \begin{Variants}
-\item {\tt Instance {\ident} {\binder$_1$ \ldots \binder$_n$} :
+\item {\vernacdef{Instance {\ident} {\binder$_1$ \ldots \binder$_n$} :
     forall {\binder$_{n+1}$ \ldots \binder$_m$},
-    {Class} {t$_1$ \ldots t$_n$} [| \textit{priority}] := \term} 
+    {Class} {t$_1$ \ldots t$_n$} [| \textit{priority}] := \term}}
   This syntax is used for declaration of singleton class instances or
   for directly giving an explicit term of type
   {\tt forall {\binder$_{n+1}$ \ldots \binder$_m$}, {Class} {t$_1$ \ldots t$_n$}}.
   One need not even mention the unique field name for singleton classes.
 
-\item {\tt Global Instance} One can use the \texttt{Global} modifier on
+\item {\vernacdef{Global Instance}} One can use the \texttt{Global} modifier on
   instances declared in a section so that their generalization is automatically
   redeclared after the section is closed.
 
-\item {\tt Program Instance} \comindex{Program Instance}
+\item {\vernacdef{Program Instance}} \comindex{Program Instance}
   Switches the type-checking to \Program~(chapter \ref{Program})
   and uses the obligation mechanism to manage missing fields.
 
-\item {\tt Declare Instance} \comindex{Declare Instance}
+\item {\vernacdef{Declare Instance}} \comindex{Declare Instance}
   In a {\tt Module Type}, this command states that a corresponding
   concrete instance should exist in any implementation of this
   {\tt Module Type}. This is similar to the distinction between
@@ -358,7 +358,7 @@ $n$, the number of binders of the instance.
 Besides the {\tt Class} and {\tt Instance} vernacular commands, there
 are a few other commands related to type classes.
 
-\subsection{\tt Existing Instance {\ident} [| \textit{priority}]}
+\subsection{\vernacdef{Existing Instance {\ident} [| \textit{priority}]}}
 \comindex{Existing Instance}
 \label{ExistingInstance}
 
@@ -369,20 +369,20 @@ projections as instances. This is almost equivalent to {\tt Hint Resolve
 {\ident} : typeclass\_instances}.
 
 \begin{Variants}
-\item {\tt Existing Instances {\ident}$_1$ \ldots {\ident}$_n$
-  [| \textit{priority}]}
+\item {\vernacdef{Existing Instances {\ident}$_1$ \ldots {\ident}$_n$
+  [| \textit{priority}]}}
   \comindex{Existing Instances}
   With this command, several existing instances can be declared at once.
 \end{Variants}
 
-\subsection{\tt Context {\binder$_1$ \ldots \binder$_n$}}
+\subsection{\vernacdef{Context {\binder$_1$ \ldots \binder$_n$}}}
 \comindex{Context}
 \label{Context}
 
 Declares variables according to the given binding context, which might
 use implicit generalization (see \ref{SectionContext}).
 
-\subsection{\tt Typeclasses Transparent, Opaque {\ident$_1$ \ldots \ident$_n$}}
+\subsection{\vernacdef{Typeclasses Transparent \ident$_1$ \ldots \ident$_n$}, \vernacdef{Typeclasses Opaque \ident$_1$ \ldots \ident$_n$}}
 \comindex{Typeclasses Transparent}
 \comindex{Typeclasses Opaque}
 \label{TypeclassesTransparency}
@@ -400,7 +400,7 @@ abbreviate a type, like {\tt relation A := A -> A -> Prop}.
 
 This is equivalent to {\tt Hint Transparent,Opaque} {\ident} {\tt: typeclass\_instances}.
 
-\subsection{\tt Typeclasses eauto := [debug] [dfs | bfs] [\emph{depth}]}
+\subsection{\vernacdef{Typeclasses eauto := \zeroone{debug} \zeroone{\argchoice{dfs,bfs} \emph{depth}}}}
 \comindex{Typeclasses eauto}
 \label{TypeclassesEauto}
 
@@ -414,7 +414,7 @@ based on a variant of eauto. The flags semantics are:
 \item {\emph{depth}} This sets the depth of the search (the default is 100).
 \end{itemize}
 
-\subsection{\tt Set Refine Instance Mode}
+\subsection{\vernacdef{Set Refine Instance Mode}}
 \optindex{Refine Instance Mode}
 
 The option {\tt Refine Instance Mode} allows to switch the behavior of instance

@@ -65,7 +65,7 @@ This includes integer constants written using the decimal notation \emph{i.e.,} 
 \asection{\emph{Positivstellensatz} refutations}
 \label{sec:psatz-back}
 
-The name {\tt psatz} is an abbreviation for \emph{positivstellensatz} -- literally positivity theorem -- which
+The name {\tacticdef{psatz}} is an abbreviation for \emph{positivstellensatz} -- literally positivity theorem -- which
 generalizes Hilbert's \emph{nullstellensatz}.
 %
 It relies on the notion of $\mathit{Cone}$. Given a (finite) set of
@@ -100,7 +100,7 @@ Upon success, the oracle returns a \emph{cone expression} that is normalized by 
 $-1$.
 
 
-\asection{{\tt lra}: a decision procedure for linear real and rational arithmetic}
+\asection{\tacticdef{lra}: a decision procedure for linear real and rational arithmetic}
 \label{sec:lra}
 The {\tt lra} tactic is searching for \emph{linear} refutations using
 Fourier elimination.\footnote{More efficient linear programming
@@ -145,7 +145,7 @@ Theorem~\ref{thm:psatz}, the goal is valid.
 %% This amounts to searching for $p$ in the cone without generators \emph{i.e.}, $Cone(\{\})$.
 %
 
-\asection{{\tt lia}: a tactic for linear integer arithmetic}
+\asection{\tacticdef{lia}: a tactic for linear integer arithmetic }
 \tacindex{lia}
 \label{sec:lia}
 
@@ -219,7 +219,7 @@ Our current oracle tries to find an expression $e$ with a small range $[c_1,c_2]
 We generate $c_2 - c_1$ subgoals which contexts are enriched with an equation $e = i$ for $i \in [c_1,c_2]$ and
 recursively search for a proof.
 
-\asection{{\tt nia}: a proof procedure for non-linear integer arithmetic}
+\asection{\tacticdef{nia}: a proof procedure for non-linear integer arithmetic}
 \tacindex{nia}
 \label{sec:nia}
 The {\tt nia} tactic is an {\emph experimental} proof procedure for non-linear  integer arithmetic.

@@ -225,16 +225,16 @@ Definition c := {| y := 3; x := 5 |}.
 
 This syntax can be disabled globally for printing by
 \begin{quote}
-{\tt Unset Printing Records.}
+\vernacdef{Unset Printing Records.}
 \optindex{Printing Records}
 \end{quote}
 For a given type, one can override this using either
 \begin{quote}
-{\tt Add Printing Record {\ident}.}
+{\vernacdef{Add Printing Record {\ident}.}}
 \end{quote}
 to get record syntax or
 \begin{quote}
-{\tt Add Printing Constructor {\ident}.}
+{\vernacdef{Add Printing Constructor {\ident}.}}
 \end{quote}
 to get constructor syntax.
 
@@ -256,7 +256,7 @@ Reset Initial.
 available. The command to activate it is
 \optindex{Printing Projections}
 \begin{quote}
-{\tt Set Printing Projections.}
+{\vernacdef{Set Printing Projections.}}
 \end{quote}
 
 \begin{figure}[t]
@@ -489,19 +489,19 @@ pattern-matching into a single pattern-matching over a nested pattern.
 {\Coq}'s printer try to do such limited re-factorization.
 
 \begin{quote}
-{\tt Set Printing Matching.}
+{\vernacdef{Set Printing Matching.}}
 \end{quote}
 This tells {\Coq} to try to use nested patterns. This is the default
 behavior.
 
 \begin{quote}
-{\tt Unset Printing Matching.}
+{\vernacdef{Unset Printing Matching.}}
 \end{quote}
 This tells {\Coq} to print only simple pattern-matching problems in
 the same way as the {\Coq} kernel handles them.
 
 \begin{quote}
-{\tt Test Printing Matching.}
+{\vernacdef{Test Printing Matching.}}
 \end{quote}
 This tells if the printing matching mode is on or off. The default is
 on.
@@ -514,21 +514,21 @@ the pattern-matching clause.  There are options to control the
 display of these variables.
 
 \begin{quote}
-{\tt Set Printing Wildcard.}
+{\vernacdef{Set Printing Wildcard.}}
 \end{quote}
 The variables having no occurrences in the right-hand side of the
 pattern-matching clause are just printed using the wildcard symbol
 ``{\tt \_}''.
 
 \begin{quote}
-{\tt Unset Printing Wildcard.}
+{\vernacdef{Unset Printing Wildcard.}}
 \end{quote}
 The variables, even useless, are printed using their usual name. But some
 non dependent variables have no name. These ones are still printed
 using a ``{\tt \_}''.
 
 \begin{quote}
-{\tt Test Printing Wildcard.}
+{\vernacdef{Test Printing Wildcard.}}
 \end{quote}
 This tells if the wildcard printing mode is on or off. The default is
 to print wildcard for useless variables.
@@ -541,18 +541,18 @@ mechanically synthesizable. Especially, if the result type does not
 depend of the matched term.
 
 \begin{quote}
-{\tt Set Printing Synth.}
+{\vernacdef{Set Printing Synth.}}
 \end{quote}
 The result type is not printed when {\Coq} knows that it can
 re-synthesize it.
 
 \begin{quote}
-{\tt Unset Printing Synth.}
+{\vernacdef{Unset Printing Synth.}}
 \end{quote}
 This forces the result type to be always printed.
 
 \begin{quote}
-{\tt Test Printing Synth.}
+{\vernacdef{Test Printing Synth.}}
 \end{quote}
 This tells if the non-printing of synthesizable types is on or off.
 The default is to not print synthesizable types.
@@ -568,13 +568,13 @@ If an inductive type has just one constructor,
 pattern-matching can be written using the first destructuring let syntax.
 
 \begin{quote}
-{\tt Add Printing Let {\ident}.}
+{\vernacdef{Add Printing Let {\ident}.}}
 \end{quote}
 This adds {\ident} to the list of inductive types for which
 pattern-matching is written using a {\tt let} expression.
 
 \begin{quote}
-{\tt Remove Printing Let {\ident}.}
+{\vernacdef{Remove Printing Let {\ident}.}}
 \end{quote}
 This removes {\ident} from this list. Note that removing an inductive
 type from this list has an impact only for pattern-matching written using
@@ -582,12 +582,12 @@ type from this list has an impact only for pattern-matching written using
 let are not impacted.
 
 \begin{quote}
-{\tt Test Printing Let for {\ident}.}
+{\vernacdef{Test Printing Let for {\ident}.}}
 \end{quote}
 This tells if {\ident} belongs to the list.
 
 \begin{quote}
-{\tt Print Table Printing Let.}
+{\vernacdef{Print Table Printing Let.}}
 \end{quote}
 This prints the list of inductive types for which pattern-matching is
 written using a {\tt let} expression.
@@ -607,23 +607,23 @@ pattern-matching can be written using {\tt if} ... {\tt then} ... {\tt
   else} ...
 
 \begin{quote}
-{\tt Add Printing If {\ident}.}
+{\vernacdef{Add Printing If {\ident}.}}
 \end{quote}
 This adds {\ident} to the list of inductive types for which
 pattern-matching is written using an {\tt if} expression.
 
 \begin{quote}
-{\tt Remove Printing If {\ident}.}
+{\vernacdef{Remove Printing If {\ident}.}}
 \end{quote}
 This removes {\ident} from this list.
 
 \begin{quote}
-{\tt Test Printing If for {\ident}.}
+{\vernacdef{Test Printing If for {\ident}.}}
 \end{quote}
 This tells if {\ident} belongs to the list.
 
 \begin{quote}
-{\tt Print Table Printing If.}
+{\vernacdef{Print Table Printing If.}}
 \end{quote}
 This prints the list of inductive types for which pattern-matching is
 written using an {\tt if} expression.
@@ -915,7 +915,7 @@ The sectioning mechanism can be used to to organize a proof in
 structured sections. Then local declarations become available (see
 Section~\ref{Basic-definitions}).
 
-\subsection{\tt Section {\ident}\comindex{Section}}
+\subsection{\vernacdef{Section {\ident}\comindex{Section}}}
 
 This command is used to open a section named {\ident}.
 
@@ -926,8 +926,8 @@ This command is used to open a section named {\ident}.
 %%         Same as {\tt Section {\ident}}
 %% \end{Variants}
 
-\subsection{\tt End {\ident}
-\comindex{End}}
+\subsection{\vernacdef{End {\ident}
+\comindex{End}}}
 
 This command closes the section named {\ident}. After closing of the
 section, the local declarations (variables and local definitions) get
@@ -969,8 +969,6 @@ section is closed.
 %\item A module implicitly open a section. Be careful not to name a
 %module with an identifier already used in the module (see \ref{compiled}).
 \end{Remarks}
-
-\input{RefMan-mod.v}
 
 \section{Libraries and qualified names}
 
@@ -1313,7 +1311,7 @@ usual implicit arguments disambiguation syntax.
 To set implicit arguments a posteriori, one can use the
 command:
 \begin{quote}
-\tt Arguments {\qualid} \nelist{\possiblybracketedident}{}
+{\vernacdef{Arguments {\qualid} \nelist{\possiblybracketedident}{}}}
 \end{quote}
 where the list of {\possiblybracketedident} is the list of all arguments of
 {\qualid} where the ones to be declared implicit are surrounded by
@@ -1327,20 +1325,20 @@ have to) be skipped in any expression involving an application of
 Implicit arguments can be cleared with the following syntax:
 
 \begin{quote}
-{\tt Arguments {\qualid} : clear implicits
-\comindex{Arguments}}
+{\vernacdef{Arguments {\qualid} : clear implicits
+\comindex{Arguments}}}
 \end{quote}
 
 \begin{Variants}
-\item {\tt Global Arguments {\qualid} \nelist{\possiblybracketedident}{}
-\comindex{Global Arguments}}
+\item {\vernacdef{Global Arguments {\qualid} \nelist{\possiblybracketedident}{}
+\comindex{Global Arguments}}}
 
 Tell to recompute the implicit arguments of {\qualid} after ending of
 the current section if any, enforcing the implicit arguments known
 from inside the section to be the ones declared by the command.
 
-\item {\tt Local Arguments {\qualid} \nelist{\possiblybracketedident}{}
-\comindex{Local Arguments}}
+\item {\vernacdef{Local Arguments {\qualid} \nelist{\possiblybracketedident}{}
+\comindex{Local Arguments}}}
 
 When in a module, tell not to activate the implicit arguments of
 {\qualid} declared by this command to contexts that require the
@@ -1394,8 +1392,8 @@ Check (fun l => map length l = map (list nat) nat length l).
 {\Coq} can also automatically detect what are the implicit arguments
 of a defined object. The command is just
 \begin{quote}
-{\tt Arguments {\qualid} : default implicits
-\comindex{Arguments}}
+{\vernacdef{Arguments {\qualid} : default implicits
+\comindex{Arguments}}}
 \end{quote}
 The auto-detection is governed by options telling if strict,
 contextual, or reversible-pattern implicit arguments must be
@@ -1471,7 +1469,7 @@ In case one wants to systematically declare implicit the arguments
 detectable as such, one may switch to the automatic declaration of
 implicit arguments mode by using the command
 \begin{quote}
-\tt Set Implicit Arguments.
+{\vernacdef{Set Implicit Arguments.}}
 \end{quote}
 Conversely, one may unset the mode by using {\tt Unset Implicit
 Arguments}.  The mode is off by default. Auto-detection of implicit
@@ -1488,7 +1486,7 @@ arguments plus, for historical reasons, a small subset of the non
 strict implicit arguments. To relax this constraint and to
 set implicit all non strict implicit arguments by default, use the command
 \begin{quote}
-\tt Unset Strict Implicit.
+{\vernacdef{Unset Strict Implicit.}}
 \end{quote}
 Conversely, use the command {\tt Set Strict Implicit} to
 restore the original mode that declares implicit only the strict implicit arguments plus a small subset of the non strict implicit arguments.
@@ -1496,7 +1494,7 @@ restore the original mode that declares implicit only the strict implicit argume
 In the other way round, to capture exactly the strict implicit arguments and no more than the strict implicit arguments, use the command:
 \optindex{Strongly Strict Implicit}
 \begin{quote}
-\tt Set Strongly Strict Implicit.
+{\vernacdef{Set Strongly Strict Implicit.}}
 \end{quote}
 Conversely, use the command {\tt Unset Strongly Strict Implicit} to
 let the option ``{\tt Strict Implicit}'' decide what to do.
@@ -1512,7 +1510,7 @@ By default, {\Coq} does not automatically set implicit the contextual
 implicit arguments. To tell {\Coq} to infer also contextual implicit
 argument, use command  
 \begin{quote}
-\tt Set Contextual Implicit. 
+{\vernacdef{Set Contextual Implicit.}}
 \end{quote}
 Conversely, use command {\tt Unset Contextual Implicit} to
 unset the contextual implicit mode.
@@ -1525,7 +1523,7 @@ By default, {\Coq} does not automatically set implicit the reversible-pattern
 implicit arguments. To tell {\Coq} to infer also reversible-pattern implicit
 argument, use command  
 \begin{quote}
-\tt Set Reversible Pattern Implicit. 
+{\vernacdef{Set Reversible Pattern Implicit.}}
 \end{quote}
 Conversely, use command {\tt Unset Reversible Pattern Implicit} to
 unset the reversible-pattern implicit mode.
@@ -1539,7 +1537,7 @@ function is partially applied and the next argument of the function is
 an implicit one. In case the implicit arguments are automatically
 declared (with the command {\tt Set Implicit Arguments}), the command
 \begin{quote}
-\tt Set Maximal Implicit Insertion. 
+{\vernacdef{Set Maximal Implicit Insertion.}}
 \end{quote}
 is used to tell to declare the implicit arguments with a maximal
 insertion status. By default, automatically declared implicit
@@ -1588,7 +1586,7 @@ Check (p (x:=a) (y:=b) r1 (z:=c) r2).
 
 Implicit arguments names can be redefined using the following syntax:
 \begin{quote}
-{\tt Arguments {\qualid} \nelist{\name}{}  : rename}
+{\vernacdef{Arguments {\qualid} \nelist{\name}{}  : rename}}
 \end{quote}
 
 Without the {\tt rename} flag, {\tt Arguments} can be used to assert
@@ -1611,7 +1609,7 @@ Fail Arguments p [s t] _ [w] _.
 To display the implicit arguments associated to an object, and to know
 if each of them is to be used maximally or not, use the command
 \begin{quote}
-\tt Print Implicit {\qualid}.
+{\vernacdef{Print Implicit {\qualid}.}}
 \end{quote}
 
 \subsection{Explicit displaying of implicit arguments for pretty-printing
@@ -1622,20 +1620,20 @@ By default the basic pretty-printing rules hide the inferable implicit
 arguments of an application. To force printing all implicit arguments,
 use command
 \begin{quote}
-{\tt Set Printing Implicit.}
+{\vernacdef{Set Printing Implicit.}}
 \end{quote}
 Conversely, to restore the hiding of implicit arguments, use command
 \begin{quote}
-{\tt Unset Printing Implicit.}
+{\vernacdef{Unset Printing Implicit.}}
 \end{quote}
 
 By default the basic pretty-printing rules display the implicit arguments that are not detected as strict implicit arguments. This ``defensive'' mode can quickly make the display cumbersome so this can be deactivated by using the command
 \begin{quote}
-{\tt Unset Printing Implicit Defensive.}
+{\vernacdef{Unset Printing Implicit Defensive.}}
 \end{quote}
 Conversely, to force the display of non strict arguments, use command
 \begin{quote}
-{\tt Set Printing Implicit Defensive.}
+{\vernacdef{Set Printing Implicit Defensive.}}
 \end{quote}
 
 \SeeAlso {\tt Set Printing All} in Section~\ref{SetPrintingAll}.
@@ -1661,7 +1659,7 @@ Check Prop = nat.
 
 Use of implicit arguments can be deactivated by issuing the command:
 \begin{quote}
-{\tt Set Parsing Explicit.}
+{\vernacdef{Set Parsing Explicit.}}
 \end{quote}
 
 In this case, all arguments of constants, inductive types,
@@ -1670,7 +1668,7 @@ to be given as if none arguments were implicit. By symmetry, this also
 affects printing. To restore parsing and normal printing of implicit
 arguments, use:
 \begin{quote}
-{\tt Set Parsing Explicit.}
+{\vernacdef{Set Parsing Explicit.}}
 \end{quote}
 
 \subsection{Canonical structures
@@ -1688,7 +1686,7 @@ structure {\em struct} of which the fields are $x_1$, ...,
 $x_n$. Assume that {\qualid} is declared as a canonical structure
 using the command
 \begin{quote}
-{\tt Canonical Structure {\qualid}.}
+{\vernacdef{Canonical Structure {\qualid}.}}
 \end{quote}
 Then, each time an equation of the form $(x_i~
 \_)=_{\beta\delta\iota\zeta}c_i$ has to be solved during the
@@ -1757,7 +1755,7 @@ development using arithmetic, it may be convenient to bind the names
 {\tt n} or {\tt m} to the type {\tt nat} of natural numbers). The
 command for that is
 \begin{quote}
-\tt Implicit Types \nelist{\ident}{} : {\type}
+{\vernacdef{Implicit Types \nelist{\ident}{} : {\type}}}
 \end{quote}
 The effect of the command is to automatically set the type of bound
 variables starting with {\ident} (either {\ident} itself or
@@ -1819,20 +1817,21 @@ the command:
 \end{quote}
 
 \begin{Variants}
-\item {\tt Generalizable All Variables.} All variables are candidate for 
+\item {\vernacdef{Generalizable All Variables.}} All variables are candidate for
   generalization if they appear free in the context under a
   generalization delimiter. This may result in confusing errors in
   case of typos. In such cases, the context will probably contain some
   unexpected generalized variable.
 
-\item {\tt Generalizable No Variables.} Disable implicit generalization 
+\item {\vernacdef{Generalizable No Variables.}} Disable implicit generalization
   entirely. This is the default behavior.
 
-\item {\tt Generalizable Variable(s)? {\ident$_1$ \ident$_n$}.} 
+\item {\vernacdef{Generalizable Variable {\ident}.}}
+\item {\vernacdef{Generalizable Variables {\ident$_1$ \ldots \ident$_n$}.}}
   Allow generalization of the given identifiers only. Calling this
   command multiple times adds to the allowed identifiers.
 
-\item {\tt Global Generalizable} Allows to export the choice of
+\item {\vernacdef{Global Generalizable All Variables.}} Allows to export the choice of
   generalizable variables.
 \end{Variants}
 
@@ -1868,7 +1867,7 @@ more generally to consider that a term of type A is of type B provided
 that there is a declared coercion between A and B. The main command is
 \comindex{Coercion}
 \begin{quote}
-\tt Coercion {\qualid} : {\class$_1$} >-> {\class$_2$}.
+{\vernacdef{Coercion {\qualid} : {\class$_1$} >-> {\class$_2$}.}}
 \end{quote}
 which declares the construction denoted by {\qualid} as a
 coercion between {\class$_1$} and {\class$_2$}.
@@ -1884,7 +1883,7 @@ notations (see Chapter~\ref{Addoc-syntax}) can obfuscate the behavior
 of some tactics (typically the tactics applying to occurrences of
 subterms are sensitive to the implicit arguments). The command
 \begin{quote}
-{\tt Set Printing All.}
+{\vernacdef{Set Printing All.}}
 \end{quote}
 deactivates all high-level printing features such as coercions,
 implicit arguments, returned type of pattern-matching, notations and
@@ -1895,7 +1894,7 @@ Coercions}, {\tt Set Printing Synth}, {\tt Unset Printing Projections}
 and {\tt Unset Printing Notations}.  To reactivate the high-level
 printing features, use the command
 \begin{quote}
-{\tt Unset Printing All.}
+{\vernacdef{Unset Printing All.}}
 \end{quote}
 
 \section[Printing universes]{Printing universes\label{PrintingUniverses}
@@ -1903,7 +1902,7 @@ printing features, use the command
 
 The following command:
 \begin{quote}
-{\tt Set Printing Universes}
+{\vernacdef{Set Printing Universes}}
 \end{quote}
 activates the display of the actual level of each occurrence of
 {\Type}. See Section~\ref{Sorts} for details.  This wizard option, in
@@ -1913,7 +1912,7 @@ terms apparently identical but internally different in the Calculus of
 Inductive Constructions. To reactivate the display of the actual level
 of the occurrences of {\Type}, use
 \begin{quote}
-{\tt Unset Printing Universes.}
+{\vernacdef{Unset Printing Universes.}}
 \end{quote}
 
 \comindex{Print Universes}
@@ -1922,7 +1921,7 @@ of the occurrences of {\Type}, use
 The constraints on the internal level of the occurrences of {\Type}
 (see Section~\ref{Sorts}) can be printed using the command
 \begin{quote}
-{\tt Print \zeroone{Sorted} Universes.}
+{\vernacdef{Print \zeroone{Sorted} Universes.}}
 \end{quote}
 If the optional {\tt Sorted} option is given, each universe will be
 made equivalent to a numbered label reflecting its level (with a
@@ -1930,7 +1929,7 @@ linear ordering) in the universe hierarchy.
 
 This command also accepts an optional output filename:
 \begin{quote}
-\tt Print \zeroone{Sorted} Universes {\str}.
+{\vernacdef{Print \zeroone{Sorted} Universes {\str}.}}
 \end{quote}
 If {\str} ends in \texttt{.dot} or \texttt{.gv}, the constraints are
 printed in the DOT language, and can be processed by Graphviz
@@ -1996,7 +1995,7 @@ Unset Printing Existential Instances.
 
 The command:
 \begin{quote}
-{\tt Set Printing Existential Instances}
+{\vernacdef{Set Printing Existential Instances}}
 \end{quote}
 activates the full display of how the context of an existential variable is
 instantiated at each of the occurrences of the existential variable.
@@ -2004,7 +2003,7 @@ instantiated at each of the occurrences of the existential variable.
 To deactivate the full display of the instances of existential
 variables, use
 \begin{quote}
-{\tt Unset Printing Existential Instances.}
+{\vernacdef{Unset Printing Existential Instances.}}
 \end{quote}
 
 \subsection{Solving existential variables using tactics}

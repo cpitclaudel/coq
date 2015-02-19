@@ -1,4 +1,4 @@
-\section{Module system
+\chapter{Module system
 \index{Modules}
 \label{section:Modules}}
 
@@ -32,31 +32,31 @@ In the syntax of module application, the $!$ prefix indicates that
 any {\tt Inline} directive in the type of the functor arguments
 will be ignored (see \ref{Inline} below).
 
-\subsection{\tt Module {\ident}
-\comindex{Module}}
+\subsection{\vernacdef{Module {\ident}
+\comindex{Module}}}
 
 This command is used to start an interactive module named {\ident}.
 
 \begin{Variants}
 
-\item{\tt Module {\ident} {\modbindings}}
+\item{\vernacdef{Module {\ident} {\modbindings}}}
 
   Starts an interactive functor with parameters given by {\modbindings}.
 
-\item{\tt Module {\ident} \verb.:. {\modtype}}
+\item{\vernacdef{Module {\ident} \verb.:. {\modtype}}}
 
   Starts an interactive module specifying its module type. 
 
-\item{\tt Module {\ident} {\modbindings} \verb.:. {\modtype}}
+\item{\vernacdef{Module {\ident} {\modbindings} \verb.:. {\modtype}}}
 
   Starts an interactive functor with parameters given by
   {\modbindings}, and output module type {\modtype}.
 
-\item{\tt Module {\ident} \verb.<:. {\modtype$_1$} \verb.<:. $\ldots$ \verb.<:.{ \modtype$_n$}}
+\item{\vernacdef{Module {\ident} \verb.<:. {\modtype$_1$} \verb.<:. $\ldots$ \verb.<:.{ \modtype$_n$}}}
 
   Starts an interactive module satisfying each {\modtype$_i$}. 
 
-\item{\tt Module {\ident} {\modbindings} \verb.<:. {\modtype$_1$} \verb.<:. $\ldots$ \verb.<:. {\modtype$_n$}}
+\item{\vernacdef{Module {\ident} {\modbindings} \verb.<:. {\modtype$_1$} \verb.<:. $\ldots$ \verb.<:. {\modtype$_n$}}}
 
   Starts an interactive functor with parameters given by
   {\modbindings}. The output module type is verified against each
@@ -71,7 +71,7 @@ This command is used to start an interactive module named {\ident}.
 \subsubsection{Reserved commands inside an interactive module:
 \comindex{Include}}
 \begin{enumerate}
-\item {\tt Include {\module}}
+\item {\vernacdef{Include {\module}}}
 
   Includes the content of {\module} in the current interactive
  module. Here {\module} can be a module expression or a module type
@@ -79,12 +79,12 @@ This command is used to start an interactive module named {\ident}.
  expression then the system tries to instantiate {\module}
  by the current interactive module.
 
-\item {\tt Include {\module$_1$} \verb.<+. $\ldots$ \verb.<+. {\module$_n$}} 
+\item {\vernacdef{Include {\module$_1$} \verb.<+. $\ldots$ \verb.<+. {\module$_n$}}}
 
-is a shortcut for {\tt Include {\module$_1$}}  $\ldots$ {\tt Include {\module$_n$}}
+is a shortcut for {\vernacdef{Include {\module$_1$}}}  $\ldots$ {\vernacdef{Include {\module$_n$}}}
 \end{enumerate}
-\subsection{\tt End {\ident}
-\comindex{End}}
+\subsection{\vernacdef{End {\ident}
+\comindex{End}}}
 
 This command closes the interactive module {\ident}. If the module type
 was given the content of the module is matched against it and an error
@@ -99,14 +99,14 @@ now available through the dot notation.
 \end{ErrMsgs}
 
 
-\subsection{\tt Module {\ident} := {\modexpr}
-\comindex{Module}}
+\subsection{\vernacdef{Module {\ident} := {\modexpr}
+\comindex{Module}}}
 
 This command defines the module identifier {\ident} to be equal to
 {\modexpr}. 
 
 \begin{Variants}
-\item{\tt Module {\ident} {\modbindings} := {\modexpr}}
+\item{\vernacdef{Module {\ident} {\modbindings} := {\modexpr}}}
 
  Defines a functor with parameters given by {\modbindings} and body {\modexpr}.
 
@@ -118,32 +118,32 @@ This command defines the module identifier {\ident} to be equal to
 %
 %  Defines a module with body {\modexpr}, satisfying {\modtype}.
 
-\item{\tt Module {\ident} {\modbindings} \verb.:. {\modtype} :=
-    {\modexpr}}
+\item{\vernacdef{Module {\ident} {\modbindings} \verb.:. {\modtype} :=
+    {\modexpr}}}
 
   Defines a functor with parameters given by {\modbindings} (possibly none),
   and output module type {\modtype}, with body {\modexpr}. 
 
-\item{\tt Module {\ident} {\modbindings} \verb.<:.  {\modtype$_1$} \verb.<:. $\ldots$ \verb.<:. {\modtype$_n$}:=
-    {\modexpr}}
+\item{\vernacdef{Module {\ident} {\modbindings} \verb.<:.  {\modtype$_1$} \verb.<:. $\ldots$ \verb.<:. {\modtype$_n$}:=
+    {\modexpr}}}
 
   Defines a functor with parameters given by {\modbindings} (possibly none) 
   with body {\modexpr}. The body is checked against each {\modtype$_i$}.
 
-\item{\tt Module {\ident} {\modbindings} := {\modexpr$_1$} \verb.<+. $\ldots$ \verb.<+. {\modexpr$_n$}}
+\item{\vernacdef{Module {\ident} {\modbindings} := {\modexpr$_1$} \verb.<+. $\ldots$ \verb.<+. {\modexpr$_n$}}}
 
   is equivalent to an interactive module where each {\modexpr$_i$} are included.
 
 \end{Variants}
 
-\subsection{\tt Module Type {\ident}
-\comindex{Module Type}}
+\subsection{\vernacdef{Module Type {\ident}
+\comindex{Module Type}}}
 
 This command is used to start an interactive module type {\ident}.
 
 \begin{Variants}
 
-\item{\tt Module Type {\ident} {\modbindings}}
+\item{\vernacdef{Module Type {\ident} {\modbindings}}}
 
   Starts an interactive functor type with parameters given by {\modbindings}.
 
@@ -152,21 +152,21 @@ This command is used to start an interactive module type {\ident}.
 \comindex{Include}\comindex{Inline}}
 \label{Inline}
 \begin{enumerate}
-\item {\tt Include {\module}}
+\item {\vernacdef{Include {\module}}}
 
  Same as {\tt Include} inside a module.
 
-\item {\tt Include {\module$_1$} \verb.<+. $\ldots$ \verb.<+. {\module$_n$}} 
+\item {\vernacdef{Include {\module$_1$} \verb.<+. $\ldots$ \verb.<+. {\module$_n$}}}
 
 is a shortcut for {\tt Include {\module$_1$}}  $\ldots$ {\tt Include {\module$_n$}}
 
-\item {\tt {\assumptionkeyword} Inline {\assums} }
+\item {\vernacdef{{\assumptionkeyword} Inline {\assums} }}
 
  The instance of this assumption will be automatically expanded at functor
  application, except when this functor application is prefixed by a $!$ annotation.
 \end{enumerate}
-\subsection{\tt End {\ident}
-\comindex{End}}
+\subsection{\vernacdef{End {\ident}
+\comindex{End}}}
 
 This command closes the interactive module type {\ident}.
 
@@ -174,30 +174,30 @@ This command closes the interactive module type {\ident}.
 \item \errindex{This is not the last opened module type}
 \end{ErrMsgs}
 
-\subsection{\tt Module Type {\ident} := {\modtype}}
+\subsection{\vernacdef{Module Type {\ident} := {\modtype}}}
 
 Defines a module type {\ident} equal to {\modtype}.
 
 \begin{Variants}
-\item {\tt Module Type {\ident} {\modbindings} := {\modtype}}
+\item {\vernacdef{Module Type {\ident} {\modbindings} := {\modtype}}}
 
   Defines a functor type {\ident} specifying functors taking arguments
   {\modbindings} and returning {\modtype}.
 
-\item{\tt Module Type {\ident} {\modbindings} := {\modtype$_1$} \verb.<+. $\ldots$ \verb.<+. {\modtype$_n$}}
+\item{\vernacdef{Module Type {\ident} {\modbindings} := {\modtype$_1$} \verb.<+. $\ldots$ \verb.<+. {\modtype$_n$}}}
 
   is equivalent to an interactive module type were each {\modtype$_i$} are included.
 
 \end{Variants}
 
-\subsection{\tt Declare Module {\ident} : {\modtype}
-\comindex{Declare Module}}
+\subsection{\vernacdef{Declare Module {\ident} : {\modtype}
+\comindex{Declare Module}}}
 
 Declares a module {\ident} of type {\modtype}.
 
 \begin{Variants}
 
-\item{\tt Declare Module {\ident} {\modbindings} \verb.:. {\modtype}}
+\item{\vernacdef{Declare Module {\ident} {\modbindings} \verb.:. {\modtype}}}
 
   Declares a functor with parameters {\modbindings} and output module
   type {\modtype}.
@@ -342,9 +342,9 @@ Reset Initial.
 
 \end{Remarks}
 
-\subsection{\tt Import {\qualid}
+\subsection{\vernacdef{Import {\qualid}
 \comindex{Import}
-\label{Import}}
+\label{Import}}}
 
 If {\qualid} denotes a valid basic module (i.e. its module type is a
 signature), makes its components available by their short names.
@@ -386,7 +386,7 @@ Fail Check B.T.
 \end{coq_example}
 
 \begin{Variants}
-\item{\tt Export {\qualid}}\comindex{Export}
+\item{\vernacdef{Export {\qualid}}}\comindex{Export}
 
   When the module containing the command {\tt Export {\qualid}} is
   imported, {\qualid} is imported as well.
@@ -402,18 +402,18 @@ Fail Check B.T.
   \item Trying to mask the absolute name {\qualid} !
 \end{Warnings}
 
-\subsection{\tt Print Module {\ident}
-\comindex{Print Module}}
+\subsection{\vernacdef{Print Module {\ident}
+\comindex{Print Module}}}
 
 Prints the module type and (optionally) the body of the module {\ident}.
 
-\subsection{\tt Print Module Type {\ident}
-\comindex{Print Module Type}}
+\subsection{\vernacdef{Print Module Type {\ident}
+\comindex{Print Module Type}}}
 
 Prints the module type corresponding to {\ident}.
 
-\subsection{\tt Locate Module {\qualid}
-\comindex{Locate Module}}
+\subsection{\vernacdef{Locate Module {\qualid}
+\comindex{Locate Module}}}
 
 Prints the full name of the module {\qualid}.
 

@@ -105,8 +105,8 @@ Definition (see Section~\ref{Basic-definitions}) and Fixpoint (see Section~\ref{
 they define constants. However, they may require the user to prove some
 goals to construct the final definitions.
 
-\subsection{\tt Program Definition {\ident} := {\term}.
-  \comindex{Program Definition}\label{ProgramDefinition}}
+\subsection{\vernacdef{Program Definition {\ident} := {\term}.
+  \comindex{Program Definition}\label{ProgramDefinition}}}
 
 This command types the value {\term} in \Russell\ and generates proof
 obligations. Once solved using the commands shown below, it binds the final
@@ -117,8 +117,8 @@ obligations. Once solved using the commands shown below, it binds the final
 \end{ErrMsgs}
 
 \begin{Variants}
-\item {\tt Program Definition {\ident} {\tt :}{\term$_1$} :=
-    {\term$_2$}.}\\
+\item {\vernacdef{Program Definition {\ident} {\tt :}{\term$_1$} :=
+    {\term$_2$}.}}\\
   It interprets the type {\term$_1$}, potentially generating proof
   obligations to be resolved. Once done with them, we have a \Coq\ type
   {\term$_1'$}. It then checks that the type of the interpretation of
@@ -126,8 +126,8 @@ obligations. Once solved using the commands shown below, it binds the final
   being of type {\term$_1'$} once the set of obligations generated
   during the interpretation of {\term$_2$} and the aforementioned
   coercion derivation are solved.
-\item {\tt Program Definition {\ident} {\binder$_1$}\ldots{\binder$_n$}
-       {\tt :}\term$_1$ {\tt :=} {\term$_2$}.}\\
+\item {\vernacdef{Program Definition {\ident} {\binder$_1$}\ldots{\binder$_n$}
+       {\tt :}\term$_1$ {\tt :=} {\term$_2$}.}}\\
   This is equivalent to \\
    {\tt Program Definition\,{\ident}\,{\tt :\,forall} %
        {\binder$_1$}\ldots{\binder$_n$}{\tt ,}\,\term$_1$\,{\tt :=}} \\
@@ -143,9 +143,9 @@ obligations. Once solved using the commands shown below, it binds the final
 
 \SeeAlso Sections \ref{Opaque}, \ref{Transparent}, \ref{unfold}
 
-\subsection{\tt Program Fixpoint {\ident} {\params} {\tt \{order\}} : type := \term
+\subsection{\vernacdef{Program Fixpoint {\ident} {\params} {\tt \{order\}} : type := \term
   \comindex{Program Fixpoint}
-  \label{ProgramFixpoint}}
+  \label{ProgramFixpoint}}}
 
 The structural fixpoint operator behaves just like the one of Coq
 (see Section~\ref{Fixpoint}), except it may also generate obligations.
@@ -207,9 +207,9 @@ context, the proof of the obligation is \emph{required} to be declared transpare
 
 No such problems arise when using measures or well-founded recursion.
 
-\subsection{\tt Program Lemma {\ident} : type.
+\subsection{\vernacdef{Program Lemma {\ident} : type.
   \comindex{Program Lemma}
-  \label{ProgramLemma}}
+  \label{ProgramLemma}}}
 
 The \Russell\ language can also be used to type statements of logical
 properties. It will generate obligations, try to solve them

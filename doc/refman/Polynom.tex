@@ -95,13 +95,13 @@ this paragraph and use the tactic according to your intuition.
 \tacindex{ring}
 \tacindex{ring\_simplify}}
 
-The {\tt ring} tactic solves equations upon polynomial expressions of
+The {\tacticdef{ring}} tactic solves equations upon polynomial expressions of
 a ring (or semi-ring) structure. It proceeds by normalizing both hand
 sides of the equation (w.r.t. associativity, commutativity and
 distributivity, constant propagation, rewriting of monomials) 
 and comparing syntactically the results.
 
-{\tt ring\_simplify} applies the normalization procedure described
+{\tacticdef{ring\_simplify}} applies the normalization procedure described
 above to the terms given. The tactic then replaces all occurrences of
 the terms given in the conclusion of the goal by their normal
 forms. If no term is given, then the conclusion should be an equation
@@ -149,15 +149,15 @@ Reset Initial.
 \end{coq_eval}
 
 \begin{Variants}
-  \item {\tt ring [\term$_1$ {\ldots} \term$_n$]} decides the equality of two
+  \item {\tacticdef{ring [\term$_1$ {\ldots} \term$_n$]}} decides the equality of two
     terms modulo ring operations and rewriting of the equalities
     defined by \term$_1$ {\ldots} \term$_n$. Each of \term$_1$
     {\ldots} \term$_n$ has to be a proof of some equality $m = p$,
     where $m$ is a monomial (after ``abstraction''),
     $p$ a polynomial and $=$ the corresponding equality of the ring structure.
 
-  \item {\tt ring\_simplify [\term$_1$ {\ldots} \term$_n$] $t_1 \ldots t_m$ in 
-{\ident}}
+  \item {\tacticdef{ring\_simplify [\term$_1$ {\ldots} \term$_n$] \nterm{t}$_1$ \ldots \nterm{t}$_m$ in
+{\ident}}}
      performs the simplification in the hypothesis named {\tt ident}.
 \end{Variants}
 
@@ -289,9 +289,9 @@ End POWER.
 \end{verbatim}
 
 
-The syntax for adding a new ring is {\tt Add Ring $name$ : $ring$
-($mod_1$,\dots,$mod_2$)}.  The name is not relevant. It is just used
-for error messages. The term $ring$ is a proof that the ring signature
+The syntax for adding a new ring is {\vernacdef{Add Ring \nterm{name} : \nterm{ring}
+(\nterm{mod}$_1$,\dots,\nterm{mod}$_2$)}}.  The name is not relevant. It is just used
+for error messages. The term \nterm{ring} is a proof that the ring signature
 satisfies the (semi-)ring axioms. The optional list of modifiers is
 used to tailor the behavior of the tactic. The following list
 describes their syntax and effects:
@@ -471,7 +471,7 @@ correctness theorem to well-chosen arguments.
 \tacindex{field\_simplify\_eq}}
 
 
-The {\tt field} tactic is  an extension of the {\tt ring} to deal with
+The {\tacticdef{field}} tactic is  an extension of the {\tt ring} to deal with
 rational expression. Given a rational expression $F=0$. It first reduces the
 expression $F$ to a common denominator $N/D= 0$ where $N$ and $D$ are two ring
 expressions.
@@ -528,7 +528,7 @@ Reset Initial.
 \end{coq_eval}
 
 \begin{Variants}
-  \item {\tt field [\term$_1$ {\ldots} \term$_n$]} decides the equality of two
+  \item {\tacticdef{field [\term$_1$ {\ldots} \term$_n$]}} decides the equality of two
     terms modulo field operations and rewriting of the equalities
     defined by \term$_1$ {\ldots} \term$_n$. Each of \term$_1$
     {\ldots} \term$_n$ has to be a proof of some equality $m = p$,
@@ -537,7 +537,7 @@ Reset Initial.
     Beware that rewriting works with the equality $m=p$ only if $p$ is a 
     polynomial since rewriting is handled by the underlying {\tt ring}
     tactic.
-  \item {\tt field\_simplify} 
+  \item {\tacticdef{field\_simplify}}
      performs the simplification in the conclusion of the goal, $F_1 = F_2$
      becomes $N_1/D_1 = N_2/D_2$. A normalization step (the same as the
      one for rings) is then applied to $N_1$, $D_1$, $N_2$ and
@@ -546,48 +546,48 @@ Reset Initial.
      reducing to the same denominator since common factors can be
      canceled.
 
-  \item {\tt field\_simplify   [\term$_1$ {\ldots} \term$_n$]}
+  \item {\tacticdef{field\_simplify   [\term$_1$ {\ldots} \term$_n$]}}
      performs the simplification in the conclusion of the goal using
     the equalities
     defined by \term$_1$ {\ldots} \term$_n$.
 
-  \item {\tt field\_simplify   [\term$_1$ {\ldots} \term$_n$] $t_1$ \ldots
-$t_m$}
-     performs the simplification in the terms $t_1$ \ldots $t_m$
+  \item {\tacticdef{field\_simplify   [\term$_{a_1}$ {\ldots} \term$_{a_n}$] \term$_{b_1}$ \ldots
+\term$_{b_m}$}}
+     performs the simplification in the terms \term$_{b_1}$ \ldots \term$_{b_m}$
     of the conclusion of the goal using
     the equalities
-    defined by \term$_1$ {\ldots} \term$_n$. 
+    defined by \term$_{a_1}$ {\ldots} \term$_{a_n}$.
 
-  \item {\tt field\_simplify in $H$}  
-     performs the simplification in the assumption $H$.
+  \item {\tacticdef{field\_simplify in \hyp}}
+     performs the simplification in the assumption \hyp.
 
-  \item {\tt field\_simplify   [\term$_1$ {\ldots} \term$_n$] in $H$}
-     performs the simplification in the assumption $H$ using
+  \item {\tacticdef{field\_simplify   [\term$_1$ {\ldots} \term$_n$] in \hyp}}
+     performs the simplification in the assumption \hyp using
     the equalities
     defined by \term$_1$ {\ldots} \term$_n$. 
 
-  \item {\tt field\_simplify   [\term$_1$ {\ldots} \term$_n$] $t_1$ \ldots
-$t_m$ in $H$}
-     performs the simplification in the terms $t_1$ \ldots $t_n$
-    of the assumption $H$ using
+  \item {\tacticdef{field\_simplify  [\term$_{a_1}$ {\ldots} \term$_{a_n}$] \term$_{b_1}$ \ldots
+\term$_{b_m}$ in \hyp}}
+     performs the simplification in the terms \term$_{b_1}$ \ldots \term$_{b_m}$
+    of the assumption \hyp using
     the equalities
-    defined by \term$_1$ {\ldots} \term$_m$. 
+    defined by \term$_{a_1}$ {\ldots} \term$_{a_n}$.
 
-  \item {\tt field\_simplify\_eq}
+  \item {\tacticdef{field\_simplify\_eq}}
      performs the simplification in the conclusion of the goal removing
      the denominator. $F_1 = F_2$
      becomes $N_1 D_2 = N_2  D_1$.
 
-  \item {\tt field\_simplify\_eq   [\term$_1$ {\ldots} \term$_n$]}
+  \item {\tacticdef{field\_simplify\_eq   [\term$_1$ {\ldots} \term$_n$]}}
      performs the simplification in the conclusion of the goal using
     the equalities
     defined by \term$_1$ {\ldots} \term$_n$. 
 
-  \item {\tt field\_simplify\_eq} in $H$
-     performs the simplification in the assumption $H$.
+  \item {\tacticdef{field\_simplify\_eq in \hyp}}
+     performs the simplification in the assumption $\hyp$.
 
-  \item {\tt field\_simplify\_eq   [\term$_1$ {\ldots} \term$_n$] in $H$}
-     performs the simplification in the assumption $H$ using
+  \item {\tacticdef{field\_simplify\_eq  [\term$_1$ {\ldots} \term$_n$] in \hyp}}
+     performs the simplification in the assumption \hyp using
     the equalities
     defined by \term$_1$ {\ldots} \term$_n$. 
 \end{Variants}
@@ -632,9 +632,9 @@ where {\tt num} and {\tt denum} are the numerator and denominator;
 denominator during the normalization process. These expressions must
 be proven different from zero for the correctness of the algorithm.
 
-The syntax for adding a new field is {\tt Add Field $name$ : $field$
-($mod_1$,\dots,$mod_2$)}.  The name is not relevant. It is just used
-for error messages. $field$ is a proof that the field signature
+The syntax for adding a new field is {\vernacdef{Add Field \nterm{name} : \nterm{field}
+(\nterm{mod}$_1$,\dots,\nterm{mod}$_2$)}}.  The name is not relevant. It is just used
+for error messages. \nterm{field} is a proof that the field signature
 satisfies the (semi-)field axioms. The optional list of modifiers is
 used to tailor the behavior of the tactic. Since field tactics are
 built upon ring tactics, all modifiers of the {\tt Add Ring}

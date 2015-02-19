@@ -221,7 +221,7 @@ The command to display the current state of the {\Coq} term parser is
 \variant
 
 \comindex{Print Grammar pattern}
-{\tt Print Grammar pattern.}\\
+{\vernacdef{Print Grammar pattern.}}\\
 
 This displays the state of the subparser of patterns (the parser
 used in the grammar of the {\tt match} {\tt with} constructions).
@@ -328,7 +328,7 @@ The \texttt{Infix} command is a shortening for declaring notations of
 infix symbols. Its syntax is 
 
 \begin{quote}
-\noindent\texttt{Infix "{\symbolentry}" :=} {\qualid} {\tt (} \nelist{\em modifier}{,} {\tt )}.
+\noindent\vernacdef{\texttt{Infix "{\symbolentry}" :=} {\qualid} {\tt (} \nelist{\em modifier}{,} {\tt )}.}
 \end{quote}
 
 and it is equivalent to
@@ -717,12 +717,12 @@ The command to add a scope to the interpretation scope stack is
 \comindex{Open Scope}
 \comindex{Close Scope}
 \begin{quote}
-{\tt Open Scope} {\scope}.
+{\vernacdef{Open Scope {\scope}.}}
 \end{quote}
 It is also possible to remove a scope from the interpretation scope
 stack by using the command
 \begin{quote}
-{\tt Close Scope} {\scope}.
+{\vernacdef{Close Scope {\scope}.}}
 \end{quote}
 Notice that this command does not only cancel the last {\tt Open Scope
 {\scope}} but all the invocation of it.
@@ -733,16 +733,16 @@ exported to the modules that import the module where they occur.
 
 \begin{Variants}
 
-\item {\tt Local Open Scope} {\scope}.
+\item {\vernacdef{Local Open Scope {\scope}.}}
 
-\item {\tt Local Close Scope} {\scope}.
+\item {\vernacdef{Local Close Scope {\scope}.}}
 
 These variants are not exported to the modules that import the module
 where they occur, even if outside a section.
 
-\item {\tt Global Open Scope} {\scope}.
+\item {\vernacdef{Global Open Scope {\scope}.}}
 
-\item {\tt Global Close Scope} {\scope}.
+\item {\vernacdef{Global Close Scope {\scope}.}}
 
 These variants survive sections. They behave as if {\tt Global} were
 absent when not inside a section.
@@ -787,7 +787,7 @@ To remove a delimiting key of a scope, use the command
 It is possible to set in advance that some arguments of a given
 constant have to be interpreted in a given scope. The command is
 \begin{quote}
-{\tt Arguments} {\qualid} \nelist{\name {\tt \%}\scope}{}
+{\vernacdef{Arguments {\qualid} \nelist{{\name} {\tt \%}\scope}{}}}
 \end{quote}
 where the list is the list of the arguments of {\qualid} eventually
 annotated with their {\scope}. Grouping round parentheses can
@@ -821,18 +821,18 @@ interpreted accordingly to the arguments scopes bound to this reference.
 Arguments scopes can be cleared with the following command:
 
 \begin{quote}
-{\tt Arguments {\qualid} : clear scopes}
+{\vernacdef{Arguments {\qualid} : clear scopes}}
 \end{quote}
 
 \begin{Variants}
-\item {\tt Global Arguments} {\qualid} \nelist{\name {\tt \%}\scope}{}
+\item {\vernacdef{Global Arguments {\qualid} \nelist{{\name} {\tt \%}\scope}{}}}
 
 This behaves like {\tt Arguments} {\qualid} \nelist{\name {\tt \%}\scope}{}
 but survives when a section is closed instead
 of stopping working at section closing. Without the {\tt Global} modifier,
 the effect of the command stops when the section it belongs to ends.
 
-\item {\tt Local Arguments} {\qualid} \nelist{\name {\tt \%}\scope}{}
+\item {\vernacdef{Local Arguments {\qualid} \nelist{{\name} {\tt \%}\scope}{}}}
 
 This behaves like {\tt Arguments} {\qualid} \nelist{\name {\tt \%}\scope}{}
 but does not survive modules and files.
@@ -864,7 +864,7 @@ recognized as an argument to be interpreted in scope {\scope}.
 Any global reference can be bound by default to an
 interpretation scope. The command to do it is
 \begin{quote}
-{\tt Bind Scope} {\scope} \texttt{with} {\qualid}
+{\vernacdef{Bind Scope {\scope} \texttt{with} {\qualid}}}
 \end{quote}
 
 \Example
@@ -899,40 +899,40 @@ declared or defined constant.
 
 We give an overview of the scopes used in the standard library of
 {\Coq}. For a complete list of notations in each scope, use the
-commands {\tt Print Scopes} or {\tt Print Scope {\scope}}.
+commands {\vernacdef{Print Scopes.}} or {\vernacdef{Print Scope {\scope}.}}.
 
-\subsubsection{\tt type\_scope}
+\subsubsection{\scopedef{type\_scope}}
 
 This includes infix {\tt *} for product types and infix {\tt +} for
 sum types. It is delimited by key {\tt type}.
 
-\subsubsection{\tt nat\_scope}
+\subsubsection{\scopedef{nat\_scope}}
 
 This includes the standard arithmetical operators and relations on
 type {\tt nat}. Positive numerals in this scope are mapped to their
 canonical representent built from {\tt O} and {\tt S}. The scope is
 delimited by key {\tt nat}.
 
-\subsubsection{\tt N\_scope}
+\subsubsection{\scopedef{N\_scope}}
 
 This includes the standard arithmetical operators and relations on
 type {\tt N} (binary natural numbers). It is delimited by key {\tt N}
 and comes with an interpretation for numerals as closed term of type {\tt Z}.
 
-\subsubsection{\tt Z\_scope}
+\subsubsection{\scopedef{Z\_scope}}
 
 This includes the standard arithmetical operators and relations on
 type {\tt Z} (binary integer numbers). It is delimited by key {\tt Z} 
 and comes with an interpretation for numerals as closed term of type {\tt Z}.
 
-\subsubsection{\tt positive\_scope}
+\subsubsection{\scopedef{positive\_scope}}
 
 This includes the standard arithmetical operators and relations on
 type {\tt positive} (binary strictly positive numbers). It is
 delimited by key {\tt positive} and comes with an interpretation for
 numerals as closed term of type {\tt positive}.
 
-\subsubsection{\tt Q\_scope}
+\subsubsection{\scopedef{Q\_scope}}
 
 This includes the standard arithmetical operators and relations on
 type {\tt Q} (rational numbers defined as fractions of an integer and
@@ -941,13 +941,13 @@ numerator-denominator cross-product). As for numerals, only $0$ and
 $1$ have an interpretation in scope {\tt Q\_scope} (their
 interpretations are $\frac{0}{1}$ and $\frac{1}{1}$ respectively).
 
-\subsubsection{\tt Qc\_scope}
+\subsubsection{\scopedef{Qc\_scope}}
 
 This includes the standard arithmetical operators and relations on the
 type {\tt Qc} of rational numbers defined as the type of irreducible
 fractions of an integer and a strictly positive integer.
 
-\subsubsection{\tt real\_scope}
+\subsubsection{\scopedef{real\_scope}}
 
 This includes the standard arithmetical operators and relations on
 type {\tt R} (axiomatic real numbers). It is delimited by key {\tt R}
@@ -962,21 +962,21 @@ syntactic object {\tt -11} is interpreted as {\tt
 -(1+(1+1)*((1+1)*(1+(1+1))))} where the unit $1$ and all the operations are
 those of {\tt R}.
 
-\subsubsection{\tt bool\_scope}
+\subsubsection{\scopedef{bool\_scope}}
 
 This includes notations for the boolean operators. It is
 delimited by key {\tt bool}.
 
-\subsubsection{\tt list\_scope}
+\subsubsection{\scopedef{list\_scope}}
 
 This includes notations for the list operators. It is
 delimited by key {\tt list}.
 
-\subsubsection{\tt core\_scope}
+\subsubsection{\scopedef{core\_scope}}
 
 This includes the notation for pairs. It is delimited by key {\tt core}.
 
-\subsubsection{\tt string\_scope}
+\subsubsection{\scopedef{string\_scope}}
 
 This includes notation for strings as elements of the type {\tt
 string}.  Special characters and escaping follow {\Coq} conventions
@@ -985,7 +985,7 @@ convention to visualize non printable characters of a string.  The
 file {\tt String.v} shows an example that contains quotes, a newline
 and a beep (i.e. the ascii character of code 7).
 
-\subsubsection{\tt char\_scope}
+\subsubsection{\scopedef{char\_scope}}
 
 This includes interpretation for all strings of the form
 \verb!"!$c$\verb!"! where $c$ is an ascii character, or of the form
@@ -997,7 +997,7 @@ or the ascii code of the character \verb!"! (i.e. the ascii code
 
 \subsection{Displaying informations about scopes}
 
-\subsubsection{\tt Print Visibility\comindex{Print Visibility}}
+\subsubsection{\vernacdef{Print Visibility\comindex{Print Visibility}}}
 
 This displays the current stack of notations in scopes and lonely
 notations that is used to interpret a notation. The top of the stack
@@ -1007,20 +1007,20 @@ displayed. Hence each notation is displayed only once.
 
 \variant
 
-{\tt Print Visibility {\scope}}\\
+{\vernacdef{Print Visibility {\scope}}}\\
 
 This displays the current stack of notations in scopes and lonely
 notations assuming that {\scope} is pushed on top of the stack.  This
 is useful to know how a subterm locally occurring in the scope of
 {\scope} is interpreted.
 
-\subsubsection{\tt Print Scope {\scope}\comindex{Print Scope}}
+\subsubsection{\vernacdef{Print Scope {\scope}\comindex{Print Scope}}}
 
 This displays all the notations defined in interpretation scope
 {\scope}.  It also displays the delimiting key if any and the class to
 which the scope is bound, if any.
 
-\subsubsection{\tt Print Scopes\comindex{Print Scopes}}
+\subsubsection{\vernacdef{Print Scopes\comindex{Print Scopes}}}
 
 This displays all the notations, delimiting keys and corresponding
 class of all the existing interpretation scopes.
@@ -1060,8 +1060,8 @@ abbreviation but at the time it is used. Especially, abbreviations can
 be bound to terms with holes (i.e. with ``\_''). The general syntax
 for abbreviations is
 \begin{quote}
-\zeroone{{\tt Local}} \texttt{Notation} {\ident} \sequence{\ident} {\ident} \texttt{:=} {\term} 
- \zeroone{{\tt (only parsing)}}~\verb=.=
+{\vernacdef{\zeroone{{\tt Local}} \texttt{Notation} {\ident} \sequence{\ident} {\ident} \texttt{:=} {\term}
+ \zeroone{{\tt (only parsing)}}~.}}
 \end{quote}
 
 \Example
@@ -1125,8 +1125,8 @@ syntax
 \end{tabular}
 \medskip
 
-A tactic notation {\tt Tactic Notation {\taclevel}
-{\sequence{\proditem}{}} := {\tac}} extends the parser and
+A tactic notation {\vernacdef{Tactic Notation {\taclevel}
+\sequence{\proditem}{} := {\tac}}} extends the parser and
 pretty-printer of tactics with a new rule made of the list of
 production items. It then evaluates into the tactic expression
 {\tac}. For simple tactics, it is recommended to use a terminal
@@ -1135,7 +1135,7 @@ level indicates the parsing precedence of the tactic notation. This
 information is particularly relevant for notations of tacticals.
 Levels 0 to 5 are available (default is 0). 
 To know the parsing precedences of the
-existing tacticals, use the command {\tt Print Grammar tactic.}
+existing tacticals, use the command {\vernacdef{Print Grammar tactic.}}
 
 Each type of tactic argument has a specific semantic regarding how it
 is parsed and how it is interpreted. The semantic is described in the

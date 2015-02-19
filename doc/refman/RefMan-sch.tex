@@ -9,11 +9,11 @@ The {\tt Scheme} command is a high-level tool for generating
 automatically (possibly mutual) induction principles for given types
 and sorts.  Its syntax follows the schema:
 \begin{quote}
-{\tt Scheme {\ident$_1$} := Induction for \ident'$_1$ Sort {\sort$_1$} \\
+{\vernacdef{Scheme {\ident$_1$} := Induction for \ident'$_1$ Sort {\sort$_1$} \\
   with\\
   \mbox{}\hspace{0.1cm} \dots\\
         with {\ident$_m$} := Induction for {\ident'$_m$} Sort
-        {\sort$_m$}}
+        {\sort$_m$}}}
 \end{quote}
 where \ident'$_1$ \dots\ \ident'$_m$ are different inductive type
 identifiers belonging to the same package of mutual inductive
@@ -22,26 +22,26 @@ to be mutually recursive definitions. Each term {\ident$_i$} proves a
 general principle of mutual induction for objects in type {\term$_i$}.
 
 \begin{Variants}
-\item {\tt Scheme {\ident$_1$} := Minimality for \ident'$_1$ Sort {\sort$_1$} \\
+\item {\vernacdef{Scheme {\ident$_1$} := Minimality for \ident'$_1$ Sort {\sort$_1$} \\
     with\\
     \mbox{}\hspace{0.1cm} \dots\ \\
     with {\ident$_m$} := Minimality for {\ident'$_m$} Sort
-    {\sort$_m$}}
+    {\sort$_m$}}}
 
   Same as before but defines a non-dependent elimination principle more
   natural in case of inductively defined relations.
 
-\item {\tt Scheme Equality for \ident$_1$\comindex{Scheme Equality}}
+\item {\vernacdef{Scheme Equality for \ident$_1$\comindex{Scheme Equality}}}
 
   Tries to generate a Boolean equality and a proof of the
   decidability of the usual equality. If \ident$_i$ involves
   some other inductive types, their equality has to be defined first.
 
-\item {\tt Scheme Induction for \ident$_1$ Sort {\sort$_1$} \\
+\item {\vernacdef{Scheme Induction for \ident$_1$ Sort {\sort$_1$} \\
   with\\
   \mbox{}\hspace{0.1cm} \dots\\
         with Induction for {\ident$_m$} Sort
-        {\sort$_m$}}
+        {\sort$_m$}}}
 
   If you do not provide the name of the schemes, they will be automatically
   computed from the sorts involved (works also with Minimality).

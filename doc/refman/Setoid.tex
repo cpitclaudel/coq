@@ -525,23 +525,31 @@ the prefixed tactics it is possible to pass additional arguments such as
 \medskip
 
 \tacindex{setoid\_reflexivity}
-\texttt{setoid\_reflexivity}
+{\tacticdef{setoid\_reflexivity}}
 
 \tacindex{setoid\_symmetry}
-\texttt{setoid\_symmetry} \zeroone{\texttt{in} \textit{ident}}
+{\tacticdef{setoid\_symmetry \zeroone{\texttt{in} \textit{ident}}}}
 
 \tacindex{setoid\_transitivity}
-\texttt{setoid\_transitivity}
+{\tacticdef{setoid\_transitivity}}
 
 \tacindex{setoid\_rewrite}
-\texttt{setoid\_rewrite} \zeroone{\textit{orientation}} \textit{term}
-~\zeroone{\texttt{at} \textit{occs}} ~\zeroone{\texttt{in} \textit{ident}}
+{\tacticdef{setoid\_rewrite \textit{term} ~\zeroone{\texttt{in} \textit{ident}}}}
+
+{\tacticdef{setoid\_rewrite <- \textit{term} ~\zeroone{\texttt{in} \textit{ident}}}}
+
+{\tacticdef{setoid\_rewrite <- \textit{term} ~\zeroone{{\tt at} \textit{occs}} ~\zeroone{\texttt{in} \textit{ident}}}}
+
+{\tacticdef{setoid\_rewrite \zeroone{\textit{orientation}} \textit{term}
+~\zeroone{{\tt at} \textit{occs}} ~\zeroone{\texttt{in} \textit{ident}}}}
 
 \tacindex{setoid\_replace}
-\texttt{setoid\_replace} \textit{term} \texttt{with} \textit{term}
+{\tacticdef{setoid\_replace \textit{term} \texttt{with} \textit{term}}}
+
+{\tacticdef{setoid\_replace \textit{term} \texttt{with} \textit{term}
 ~\zeroone{\texttt{in} \textit{ident}}
 ~\zeroone{\texttt{using relation} \textit{term}}
-~\zeroone{\texttt{by} \textit{tactic}}
+~\zeroone{\texttt{by} \textit{tactic}}}}
 \medskip
 
 The \texttt{using relation}
@@ -563,7 +571,7 @@ not proof of Leibniz equalities. In particular it is possible to exploit
 up to user defined equalities.
 
 \subsection{Printing relations and morphisms}
-The \texttt{Print Instances} command can be used to show the list of
+The {\vernacdef{Print Instances \argchoice{Reflexive,Symmetric,Transitive,Equivalence,PreOrder,PER,Proper}}} command can be used to show the list of
 currently registered \texttt{Reflexive} (using \texttt{Print Instances Reflexive}),
 \texttt{Symmetric} or \texttt{Transitive} relations,
 \texttt{Equivalence}s, \texttt{PreOrder}s, \texttt{PER}s, and
@@ -813,7 +821,7 @@ it to $c$ on success, it is stronger than the tactic \texttt{fold}.
 \subsection{Usage}
 \tacindex{rewrite\_strat}
 
-\texttt{rewrite\_strat}~\textit{s}~\zeroone{\texttt{in} \textit{ident}}: 
+{\tacticdef{rewrite\_strat ~\textit{s}~\zeroone{\texttt{in} \textit{ident}}}}:
 
   Rewrite using the strategy \textit{s} in hypothesis \textit{ident}
   or the conclusion.

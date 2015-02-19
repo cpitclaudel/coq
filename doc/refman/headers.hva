@@ -28,9 +28,25 @@
 \index{#1@\texttt{#1}}\index[command]{#1@\texttt{#1}}}
 \newcommand{\optindex}[1]{%
 \index{#1@\texttt{#1}}\index[option]{#1@\texttt{#1}}}
-\newcommand{\errindex}[1]{\texttt{#1}\index[error]{#1}}
-\newcommand{\errindexbis}[2]{\texttt{#1}\index[error]{#2}}
+\newcommand{\errindex}[1]{\begin{rawhtml}<definition type="error">\end{rawhtml}\texttt{#1}\begin{rawhtml}</definition>\end{rawhtml}\index[error]{#1}}
+\newcommand{\errindexbis}[2]{\begin{rawhtml}<definition type="error">\end{rawhtml}\texttt{#1}\begin{rawhtml}</definition>\end{rawhtml}\index[error]{#2}}
 \newcommand{\ttindex}[1]{\index{#1@\texttt{#1}}}
+
+% \newindex{quickhelp}{quickhelpidx}{quickhelpind}{Quick Help Index}
+
+% \newcommand{\tacticdef}[1]{\begin{rawhtml}<definition type="tactic">\end{rawhtml}\index[quickhelp]{TACTIC}\texttt{#1}\begin{rawhtml}</definition>\end{rawhtml}}
+% \newcommand{\vernacdef}[1]{\begin{rawhtml}<definition type="vernac">\end{rawhtml}\index[quickhelp]{VERNAC}\texttt{#1}\begin{rawhtml}</definition>\end{rawhtml}}
+% \newcommand{\scopedef}[1]{\begin{rawhtml}<definition type="scope">\end{rawhtml}\index[quickhelp]{SCOPE}\texttt{#1}\begin{rawhtml}</definition>\end{rawhtml}}
+% \newcommand{\ltacdef}[1]{\begin{rawhtml}<definition type="ltac">\end{rawhtml}\index[quickhelp]{LTAC}\texttt{#1}\begin{rawhtml}</definition>\end{rawhtml}}
+
+\newcommand{\tacticdef}[1]{\begin{rawhtml}<definition type="tactic">\end{rawhtml}\texttt{#1}\begin{rawhtml}</definition>\end{rawhtml}}
+\newcommand{\vernacdef}[1]{\begin{rawhtml}<definition type="vernac">\end{rawhtml}\texttt{#1}\begin{rawhtml}</definition>\end{rawhtml}}
+\newcommand{\scopedef}[1]{\begin{rawhtml}<definition type="scope">\end{rawhtml}\texttt{#1}\begin{rawhtml}</definition>\end{rawhtml}}
+\newcommand{\ltacdef}[1]{\begin{rawhtml}<definition type="ltac">\end{rawhtml}\texttt{#1}\begin{rawhtml}</definition>\end{rawhtml}}
+
+\newcommand{\hyp}{\nterm{hyp}}
+\newcommand{\listofvars}{\nterm{list of vars}}
+\newcommand{\argchoice}[1]{\texttt{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % For the Addendum table of contents

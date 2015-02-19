@@ -30,10 +30,10 @@ The next two commands are meant to be used for rapid preview of
 extraction. They both display extracted term(s) inside \Coq.
 
 \begin{description}
-\item {\tt Extraction \qualid.} ~\par
+\item {\vernacdef{Extraction \qualid.}} ~\par
   Extraction of a constant or module in the \Coq\ toplevel.
 
-\item {\tt Recursive Extraction} \qualid$_1$ \dots\ \qualid$_n$. ~\par
+\item {\vernacdef{Recursive Extraction \qualid$_1$ \dots\ \qualid$_n$.}} ~\par
   Recursive extraction of all the globals (or modules) \qualid$_1$ \dots\
   \qualid$_n$ and all their dependencies in the \Coq\ toplevel.
 \end{description}
@@ -44,26 +44,26 @@ All the following commands produce real ML files. User can choose to produce
 one monolithic file or one file per \Coq\ library. 
 
 \begin{description}
-\item {\tt Extraction "{\em file}"}  
-      \qualid$_1$ \dots\ \qualid$_n$. ~\par
+\item {\vernacdef{Extraction "{\em file}"
+      \qualid$_1$ \dots\ \qualid$_n$.}} ~\par
   Recursive extraction of all the globals (or modules) \qualid$_1$ \dots\
   \qualid$_n$ and all their dependencies in one monolithic file {\em file}.
   Global and local identifiers are renamed according to the chosen ML
   language to fulfill its syntactic conventions, keeping original
   names as much as possible.
   
-\item {\tt Extraction Library} \ident. ~\par 
+\item {\vernacdef{Extraction Library \ident.}} ~\par
   Extraction of the whole \Coq\ library {\tt\ident.v} to an ML module
   {\tt\ident.ml}.  In case of name clash, identifiers are here renamed
   using prefixes \verb!coq_!  or \verb!Coq_! to ensure a
   session-independent renaming.
 
-\item {\tt Recursive Extraction Library} \ident. ~\par
+\item {\vernacdef{Recursive Extraction Library \ident.}} ~\par
   Extraction of the \Coq\ library {\tt\ident.v} and all other modules 
   {\tt\ident.v} depends on. 
 
-\item {\tt Separate Extraction}
-      \qualid$_1$ \dots\ \qualid$_n$. ~\par
+\item {\vernacdef{Separate Extraction
+      \qualid$_1$ \dots\ \qualid$_n$.}} ~\par
   Recursive extraction of all the globals (or modules) \qualid$_1$ \dots\
   \qualid$_n$ and all their dependencies, just as {\tt
     Extraction "{\em file}"}, but instead of producing one monolithic
@@ -88,9 +88,9 @@ environment.
 The ability to fix target language is the first and more important
 of the extraction options. Default is Ocaml.
 \begin{description}
-\item {\tt Extraction Language Ocaml}.
-\item {\tt Extraction Language Haskell}.
-\item {\tt Extraction Language Scheme}.
+\item {\vernacdef{Extraction Language Ocaml.}}
+\item {\vernacdef{Extraction Language Haskell.}}
+\item {\vernacdef{Extraction Language Scheme.}}
 \end{description}
 
 \asubsection{Inlining and optimizations}
@@ -117,7 +117,7 @@ The type-preserving optimizations are controlled by the following \Coq\ options:
 
 \begin{description}
 
-\item \optindex{Extraction Optimize} {\tt Unset Extraction Optimize.}
+\item \optindex{Extraction Optimize} {\vernacdef{Unset Extraction Optimize.}}
 
 Default is Set. This controls all type-preserving optimizations made on
 the ML terms (mostly reduction of dummy beta/iota redexes, but also
@@ -125,7 +125,7 @@ simplifications on Cases, etc). Put this option to Unset if you want a
 ML term as close as possible to the Coq term.
 
 \item \optindex{Extraction Conservative Types}
-{\tt Set Extraction Conservative Types.}
+{\vernacdef{Set Extraction Conservative Types.}}
 
 Default is Unset. This controls the non type-preserving optimizations
 made on ML terms (which try to avoid function abstraction of dummy
@@ -134,7 +134,7 @@ implies that {\tt e':t'} where {\tt e'} and {\tt t'} are the extracted
 code of {\tt e} and {\tt t} respectively.
 
 \item \optindex{Extraction KeepSingleton}
-{\tt Set Extraction KeepSingleton.}
+{\vernacdef{Set Extraction KeepSingleton.}}
 
 Default is Unset. Normally, when the extraction of an inductive type
 produces a singleton type (i.e. a type with only one constructor, and
@@ -143,7 +143,7 @@ removed and this type is seen as an alias to the inner type.
 The typical example is {\tt sig}. This option allows disabling this
 optimization when one wishes to preserve the inductive structure of types.
 
-\item \optindex{Extraction AutoInline} {\tt Unset Extraction AutoInline.}
+\item \optindex{Extraction AutoInline} {\vernacdef{Unset Extraction AutoInline.}}
 
 Default is Set. The extraction mechanism
 inlines the bodies of some defined constants, according to some heuristics
@@ -151,7 +151,7 @@ like size of bodies, uselessness of some arguments, etc. Those heuristics are
 not always perfect; if you want to disable this feature, do it by Unset.
 
 \item \comindex{Extraction Inline} \comindex{Extraction NoInline}
-{\tt Extraction [Inline|NoInline] \qualid$_1$ \dots\ \qualid$_n$}.
+{\vernacdef{Extraction [Inline|NoInline] \qualid$_1$ \dots\ \qualid$_n$.}}
 
 In addition to the automatic inline feature, you can tell to
 inline some more constants by the {\tt Extraction Inline} command. Conversely, 
@@ -160,13 +160,13 @@ the {\tt Extraction NoInline} command.
 Those two commands enable a precise control of what is inlined and what is not. 
 
 \item \comindex{Print Extraction Inline}
-{\tt Print Extraction Inline}. 
+{\vernacdef{Print Extraction Inline.}}
 
 Prints the current state of the table recording the custom inlinings 
 declared by the two previous commands. 
 
 \item \comindex{Reset Extraction Inline}
-{\tt Reset Extraction Inline}. 
+{\vernacdef{Reset Extraction Inline.}}
 
 Puts the table recording the custom inlinings back to empty. 
 
@@ -205,7 +205,7 @@ principles of extraction (logical parts and types).
 
 \begin{description}
 \item \comindex{Extraction Implicit}
- {\tt Extraction Implicit} \qualid\ [ \ident$_1$ \dots\ \ident$_n$ ].
+ {\vernacdef{Extraction Implicit \qualid\ [ \ident$_1$ \dots\ \ident$_n$ ].}}
 
 This experimental command allows declaring some arguments of
 \qualid\ as implicit, i.e. useless in extracted code and hence to
@@ -252,10 +252,10 @@ what ML term corresponds to a given axiom.
 
 \comindex{Extract Constant}
 \begin{description}
-\item{\tt Extract Constant \qualid\ => \str.} ~\par
+\item{\vernacdef{Extract Constant \qualid\ => \str.}} ~\par
   Give an ML extraction for the given constant.
   The \str\ may be an identifier or a quoted string.
-\item{\tt Extract Inlined Constant \qualid\ => \str.} ~\par
+\item{\vernacdef{Extract Inlined Constant \qualid\ => \str.}} ~\par
   Same as the previous one, except that the given ML terms will
   be inlined everywhere instead of being declared via a let.
 \end{description}
@@ -284,7 +284,7 @@ arity, that is a sequence of product finished by a sort), then some type
 variables have to be given. The syntax is then:
 
 \begin{description}
-\item{\tt Extract Constant \qualid\ \str$_1$ \dots\ \str$_n$ => \str.}
+\item{\vernacdef{Extract Constant \qualid\ \str$_1$ \dots\ \str$_n$ => \str.}}
 \end{description}
 
 The number of type variables is checked by the system. 
@@ -315,7 +315,7 @@ types and constructors.  For instance, the user may want to use the ML
 native boolean type instead of \Coq\ one.  The syntax is the following:
 
 \begin{description}
-\item{\tt Extract Inductive \qualid\ => \str\ [ \str\ \dots\ \str\ ] {\it optstring}.}\par
+\item{\vernacdef{Extract Inductive \qualid\ => \str\ [ \str\ \dots\ \str\ ] {\it optstring}.}}\par
   Give an ML extraction for the given inductive type. You must specify
   extractions for the type itself (first \str) and all its
   constructors (between square brackets). If given, the final optional
@@ -393,12 +393,12 @@ For instance the module {\tt List} exists both in \Coq\ and in Ocaml.
 It is possible to instruct the extraction not to use particular filenames.
 
 \begin{description}
-\item{\tt Extraction Blacklist} \ident\ \dots\ \ident. ~\par
+\item{\vernacdef{Extraction Blacklist \ident\ \dots\ \ident.}} ~\par
   Instruct the extraction to avoid using these names as filenames
   for extracted code. 
-\item{\tt Print Extraction Blacklist.} ~\par
+\item{\vernacdef{Print Extraction Blacklist.}} ~\par
   Show the current list of filenames the extraction should avoid.
-\item{\tt Reset Extraction Blacklist.} ~\par
+\item{\vernacdef{Reset Extraction Blacklist.}} ~\par
   Allow the extraction to use any filename.
 \end{description}
 

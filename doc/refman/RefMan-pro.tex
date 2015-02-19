@@ -51,7 +51,7 @@ typically is the assertion of a theorem:
 The list of assertion commands is given in
 Section~\ref{Assertions}. The command {\tt Goal} can also be used.
 
-\subsection[Goal {\form}.]{\tt Goal {\form}.\comindex{Goal}\label{Goal}}
+\subsection[Goal {\form}.]{\vernacdef{Goal {\form}.\comindex{Goal}\label{Goal}}}
 
 This is intended for quick assertion of statements, without knowing in
 advance which name to give to the assertion, typically for quick
@@ -60,7 +60,7 @@ statement is eventually completed and validated, the statement is then
 bound to the name {\tt Unnamed\_thm} (or a variant of this name not
 already used for another statement).
 
-\subsection[\tt Qed.]{\tt Qed.\comindex{Qed}\label{Qed}}
+\subsection[\tt Qed.]{\vernacdef{Qed.\comindex{Qed}\label{Qed}}}
 This command is available in interactive editing proof mode when the
 proof is completed.  Then {\tt Qed} extracts a proof term from the
 proof script, switches back to {\Coq} top-level and attaches the
@@ -84,44 +84,44 @@ memory overflow.
 
 \begin{Variants}
 
-\item {\tt Defined.}
+\item {\vernacdef{Defined.}}
 \comindex{Defined} 
 \label{Defined} 
 
   Defines the proved term as a transparent constant.
 
-\item {\tt Save.}
+\item {\vernacdef{Save.}}
 \comindex{Save}
 
   This is a deprecated equivalent to {\tt Qed}.
 
-\item {\tt Save {\ident}.}
+\item {\vernacdef{Save {\ident}.}}
   
   Forces the name of the original goal to be {\ident}.  This command
   (and the following ones) can only be used if the original goal has
   been opened using the {\tt Goal} command.
 
-\item {\tt Save Theorem {\ident}.} \\
- {\tt Save Lemma {\ident}.} \\
- {\tt Save Remark {\ident}.}\\
- {\tt Save Fact {\ident}.}
- {\tt Save Corollary {\ident}.}
- {\tt Save Proposition {\ident}.}
+\item {\vernacdef{Save Theorem {\ident}.}} \\
+ {\vernacdef{Save Lemma {\ident}.}} \\
+ {\vernacdef{Save Remark {\ident}.}}\\
+ {\vernacdef{Save Fact {\ident}.}}
+ {\vernacdef{Save Corollary {\ident}.}}
+ {\vernacdef{Save Proposition {\ident}.}}
 
   Are equivalent to {\tt Save {\ident}.} 
 \end{Variants}
 
-\subsection[\tt Admitted.]{\tt Admitted.\comindex{Admitted}\label{Admitted}}
+\subsection[\tt Admitted.]{\vernacdef{Admitted.\comindex{Admitted}\label{Admitted}}}
 This command is available in interactive editing proof mode to give up
 the current proof and declare the initial goal as an axiom.
 
-\subsection[\tt Proof {\term}.]{\tt Proof {\term}.\comindex{Proof}
-\label{BeginProof}}
+\subsection[\tt Proof {\term}.]{\vernacdef{Proof {\term}.\comindex{Proof}
+\label{BeginProof}}}
 This command applies in proof editing mode. It is equivalent to {\tt
   exact {\term}; Save.} That is, you have to give the full proof in
 one gulp, as a proof term (see Section~\ref{exact}).
 
-\variant {\tt Proof.}
+\variant {\vernacdef{Proof.}}
   
   Is a noop which is useful to delimit the sequence of tactic commands
   which start a proof, after a {\tt Theorem} command.  It is a good
@@ -131,8 +131,8 @@ one gulp, as a proof term (see Section~\ref{exact}).
 \SeeAlso {\tt Proof with {\tac}.} in Section~\ref{ProofWith}.
 
 \subsection[{\tt Proof using} {\ident$_1$} {\ldots} {\ident$_n$}{\tt .}]
-{{\tt Proof using} {\ident$_1$} {\ldots} {\ident$_n$}{\tt .}
-\comindex{Proof using} \label{ProofUsing}}
+{\vernacdef{{\tt Proof using} {\ident$_1$} {\ldots} {\ident$_n$}{\tt .}
+\comindex{Proof using} \label{ProofUsing}}}
 
 This command applies in proof editing mode. 
 It declares the set of section variables (see~\ref{Variable}) 
@@ -145,19 +145,19 @@ For example if {\tt T} is variable and {\tt a} is a variable of
 type {\tt T}, the commands {\tt Proof using a} and
 {\tt Proof using T a} are actually equivalent.
 
-\variant {\tt Proof using} {\ident$_1$} {\ldots} {\ident$_n$} {\tt with} {\tac}{\tt .} 
+\variant {\vernacdef{{\tt Proof using} {\ident$_1$} {\ldots} {\ident$_n$} {\tt with} {\tac}{\tt .}}}
 in Section~\ref{ProofWith}.
 
-\variant {\tt Proof using All.} 
+\variant {\vernacdef{Proof using All.}}
 
   Use all section variables.
 
-\variant {\tt Proof using Type.} 
-\variant {\tt Proof using.} 
+\variant {\vernacdef{Proof using Type.}}
+\variant {\vernacdef{Proof using.}}
   
   Use only section variables occurring in the statement.
 
-\variant {\tt Proof using Type*.} 
+\variant {\vernacdef{Proof using Type*.}}
   
   The {\tt *} operator computes the forward transitive closure.
   E.g. if the variable {\tt H} has type {\tt p < 5} then {\tt H} is
@@ -165,17 +165,17 @@ in Section~\ref{ProofWith}.
   {\tt Type* } is the forward transitive closure of the entire set of
   section variables occurring in the statement.
 
-\variant {\tt Proof using -( \ident$_1$} {\ldots} {\tt \ident$_n$  ).}
+\variant {\vernacdef{Proof using -( \ident$_1$} {\ldots} {\tt \ident$_n$  ).}}
   
   Use all section variables except {\ident$_1$} {\ldots} {\ident$_n$}.
 
-\variant {\tt Proof using \nterm{collection}$_1$ + \nterm{collection}$_2$ .}
+\variant {\vernacdef{Proof using \nterm{collection}$_1$ + \nterm{collection}$_2$ .}}
 
-\variant {\tt Proof using \nterm{collection}$_1$ - \nterm{collection}$_2$ .}
+\variant {\vernacdef{Proof using \nterm{collection}$_1$ - \nterm{collection}$_2$ .}}
 
-\variant {\tt Proof using \nterm{collection} - ( \ident$_1$} {\ldots} {\tt \ident$_n$ ).}
+\variant \vernacdef{Proof using \nterm{collection} - ( \ident$_1$} {\ldots} {\tt \ident$_n$ ).}
 
-\variant {\tt Proof using \nterm{collection} * .}
+\variant \vernacdef{Proof using \nterm{collection} * .}
 
   Use section variables being, respectively, in the set union, set difference,
   set complement, set forward transitive closure.
@@ -190,13 +190,13 @@ in Section~\ref{ProofWith}.
 
 The following options modify the behavior of {\tt Proof using}.
 
-\variant {\tt Set Default Proof Using "expression".} 
+\variant {\vernacdef{Set Default Proof Using "\nterm{expression}".}}
 
   Use {\tt expression} as the default {\tt Proof using} value.
   E.g. {\tt Set Default Proof Using "a b".} will complete all {\tt Proof }
   commands not followed by a {\tt using} part with {\tt using a b}.
 
-\variant {\tt Set Suggest Proof Using.}
+\variant {\vernacdef{Set Suggest Proof Using.}}
 
   When {\tt Qed} is performed, suggest a {\tt using} annotation if
   the user did not provide one.
@@ -210,7 +210,7 @@ The following options modify the behavior of {\tt Proof using}.
 \subsubsection[\tt Collection]{Name a set of section hypotheses for {\tt Proof using}}
 \comindex{Collection}\label{Collection}
 
-The command {\tt Collection} can be used to name a set of section hypotheses,
+The command \vernacdef{Collection \ident := \nelistnosep{\ident}} can be used to name a set of section hypotheses,
 with the purpose of making {\tt Proof using} annotations more compact.
 
 \variant {\tt Collection Some := x y z.}
@@ -232,7 +232,7 @@ with the purpose of making {\tt Proof using} annotations more compact.
   Define the collection named "Many" containing the set difference
   of "Fewer" and the unnamed collection {\tt x y}.
 
-\subsection[\tt Abort.]{\tt Abort.\comindex{Abort}}
+\subsection[\tt Abort.]{\vernacdef{Abort.\comindex{Abort}}}
 
 This command cancels the current proof development, switching back to
 the previous proof development, or to the \Coq\ toplevel if no other
@@ -244,19 +244,19 @@ proof was edited.
 
 \begin{Variants}
 
-\item {\tt Abort {\ident}.}
+\item {\vernacdef{Abort {\ident}.}}
 
   Aborts the editing of the proof named {\ident}.
 
-\item {\tt Abort All.}
+\item {\vernacdef{Abort All.}}
 
   Aborts all current goals, switching back to the \Coq\ toplevel.
 
 \end{Variants}
 
 %%%%
-\subsection[\tt Existential {\num} := {\term}.]{\tt Existential  {\num} := {\term}.\comindex{Existential}
-\label{Existential}}
+\subsection[\tt Existential {\num} := {\term}.]{\vernacdef{Existential  {\num} := {\term}.\comindex{Existential}
+\label{Existential}}}
 
 This command instantiates an existential variable. {\tt \num}
 is an index in the list of uninstantiated existential variables
@@ -270,8 +270,8 @@ during proof edition, you should use the tactic {\tt instantiate}.
 \SeeAlso {\tt instantiate (\num:= \term).} in Section~\ref{instantiate}.
 \SeeAlso {\tt Grab Existential Variables.} below.
 
-\subsection[\tt Grab Existential Variables.]{\tt Grab Existential Variables.\comindex{Grab Existential Variables}
-\label{GrabEvars}}
+\subsection[\tt Grab Existential Variables.]{\vernacdef{Grab Existential Variables.\comindex{Grab Existential Variables}
+\label{GrabEvars}}}
 
 This command can be run when a proof has no more goal to be solved but has remaining
 uninstantiated existential variables. It takes every uninstantiated existential variable
@@ -281,43 +281,43 @@ and turns it into a goal.
 \section{Navigation in the proof tree}
 %%%%%%%%
 
-\subsection[\tt Undo.]{\tt Undo.\comindex{Undo}}
+\subsection[\tt Undo.]{\vernacdef{Undo.\comindex{Undo}}}
 
 This command cancels the effect of the last command.  Thus, it
 backtracks one step.
 
 \begin{Variants}
 
-\item {\tt Undo {\num}.}
+\item {\vernacdef{Undo {\num}.}}
 
   Repeats {\tt Undo} {\num} times.
 
 \end{Variants}
 
-\subsection[\tt Restart.]{\tt Restart.\comindex{Restart}}
+\subsection[\tt Restart.]{\vernacdef{Restart.\comindex{Restart}}}
 This command restores the proof editing process to the original goal.
 
 \begin{ErrMsgs}
 \item \errindex{No focused proof to restart}
 \end{ErrMsgs}
 
-\subsection[\tt Focus.]{\tt Focus.\comindex{Focus}}
+\subsection[\tt Focus.]{\vernacdef{Focus.\comindex{Focus}}}
 This focuses the attention on the first subgoal to prove and the printing
 of the other subgoals is suspended until the focused subgoal is
 solved or unfocused. This is useful when there are many current
 subgoals which clutter your screen.
 
 \begin{Variant}
-\item {\tt Focus {\num}.}\\ 
+\item {\vernacdef{Focus {\num}.}}\\
 This focuses the attention on the $\num^{th}$ subgoal to prove.
 
 \end{Variant}
 
-\subsection[\tt Unfocus.]{\tt Unfocus.\comindex{Unfocus}}
+\subsection[\tt Unfocus.]{\vernacdef{Unfocus.\comindex{Unfocus}}}
 This command restores to focus the goal that were suspended by the
 last {\tt Focus} command.
 
-\subsection[\tt Unfocused.]{\tt Unfocused.\comindex{Unfocused}}
+\subsection[\tt Unfocused.]{\vernacdef{Unfocused.\comindex{Unfocused}}}
 Succeeds in the proof is fully unfocused, fails is there are some
 goals out of focus.
 
@@ -423,18 +423,18 @@ This makes bullets active (this is the default behavior).
 
 \section{Requesting information}
 
-\subsection[\tt Show.]{\tt Show.\comindex{Show}\label{Show}}
+\subsection[\tt Show.]{\vernacdef{Show.\comindex{Show}\label{Show}}}
 This command displays the current goals.
 
 \begin{Variants}
-\item {\tt Show {\num}.}\\ 
+\item {\vernacdef{Show {\num}.}}\\
   Displays only the {\num}-th subgoal.\\ 
 \begin{ErrMsgs}
 \item \errindex{No such goal}
 \item \errindex{No focused proof}
 \end{ErrMsgs}
 
-\item {\tt Show Script.}\comindex{Show Script}\\
+\item {\vernacdef{Show Script.}}\comindex{Show Script}\\
   Displays the whole list of tactics applied from the beginning
   of the current proof. 
   This tactics script may contain some holes (subgoals not yet proved).
@@ -456,7 +456,7 @@ This command displays the current goals.
 %\item {\tt Show Node}\comindex{Show Node}\\
 %        Not yet documented
 
-\item {\tt Show Proof.}\comindex{Show Proof}\\
+\item {\vernacdef{Show Proof.}}\comindex{Show Proof}\\
 It displays the proof term generated by the 
 tactics that have been applied. 
 If the proof is not completed, this term contain holes,
@@ -467,14 +467,14 @@ the context, since it may depend on them.
 The types obtained by abstracting away the context from the
 type of each hole-placer are also printed.
 
-\item {\tt Show Conjectures.}\comindex{Show Conjectures}\\
+\item {\vernacdef{Show Conjectures.}}\comindex{Show Conjectures}\\
 It prints the list of the names of all the theorems that 
 are currently being proved.
 As it is possible to start proving a previous lemma during
 the proof of a theorem, this list may contain several 
 names. 
 
-\item{\tt Show Intro.}\comindex{Show Intro}\\
+\item{\vernacdef{Show Intro.}}\comindex{Show Intro}\\
 If the current goal begins by at least one product, this command
 prints the name of the first product, as it would be generated by 
 an anonymous {\tt Intro}. The aim of this command is to ease the
@@ -483,11 +483,11 @@ writing of more robust scripts. For example, with an appropriate
   Intro} into a qualified one such as {\tt Intro y13}.
 In the case of a non-product goal, it prints nothing. 
 
-\item{\tt Show Intros.}\comindex{Show Intros}\\
+\item{\vernacdef{Show Intros.}}\comindex{Show Intros}\\
 This command is similar to the previous one, it simulates the naming 
 process of an {\tt Intros}.
 
-\item{\tt Show Existentials.\label{ShowExistentials}}\comindex{Show Existentials}
+\item{\vernacdef{Show Existentials.\label{ShowExistentials}}}\comindex{Show Existentials}
 \\ It displays
 the set of all uninstantiated existential variables in the current proof tree, 
 along with the type and the context of each variable.
@@ -500,7 +500,7 @@ debugging universe inconsistencies.
 \end{Variants}
 
 
-\subsection[\tt Guarded.]{\tt Guarded.\comindex{Guarded}\label{Guarded}}
+\subsection[\tt Guarded.]{\vernacdef{Guarded.\comindex{Guarded}\label{Guarded}}}
 
 Some tactics (e.g. refine \ref{refine}) allow to build proofs using
 fixpoint or co-fixpoint constructions. Due to the incremental nature
@@ -515,18 +515,18 @@ of the proof without having to wait the completion of the proof."
 
 \section{Controlling the effect of proof editing commands}
 
-\subsection[\tt Set Hyps Limit {\num}.]{\tt Set Hyps Limit {\num}.\optindex{Hyps Limit}}
+\subsection[\tt Set Hyps Limit {\num}.]{\vernacdef{Set Hyps Limit {\num}.\optindex{Hyps Limit}}}
 This command sets the maximum number of hypotheses displayed in
 goals after the application of a tactic. 
 All the hypotheses remains usable in the proof development.
 
 
-\subsection[\tt Unset Hyps Limit.]{\tt Unset Hyps Limit.\optindex{Hyps Limit}}
+\subsection[\tt Unset Hyps Limit.]{\vernacdef{Unset Hyps Limit.\optindex{Hyps Limit}}}
 This command goes back to the default mode which is to print all
 available hypotheses.
 
 
-\subsection[\tt Set Automatic Introduction.]{\tt Set Automatic Introduction.\optindex{Automatic Introduction}\label{Set Automatic Introduction}}
+\subsection[\tt Set Automatic Introduction.]{\vernacdef{Set Automatic Introduction.\optindex{Automatic Introduction}\label{Set Automatic Introduction}}}
 
 The option {\tt Automatic Introduction} controls the way binders are
 handled in assertion commands such as {\tt Theorem {\ident}
@@ -534,7 +534,7 @@ handled in assertion commands such as {\tt Theorem {\ident}
 default, {\binders} are automatically put in the local context of the
 goal to prove.
 
-The option can be unset by issuing {\tt Unset Automatic Introduction}.
+The option can be unset by issuing {\vernacdef{Unset Automatic Introduction}}.
 When the option is unset, {\binders} are discharged on the statement
 to be proved and a tactic such as {\tt intro} (see
 Section~\ref{intro}) has to be used to move the assumptions to the
@@ -545,12 +545,12 @@ local context.
 When experiencing high memory usage the following commands can be
 used to force Coq to optimize some of its internal data structures.
 
-\subsection[\tt Optimize Proof.]{\tt Optimize Proof.}
+\subsection[\tt Optimize Proof.]{\vernacdef{Optimize Proof.}}
 
 This command forces Coq to shrink the data structure used to represent
 the ongoing proof.
 
-\subsection[\tt Optimize Heap.]{\tt Optimize Heap.}
+\subsection[\tt Optimize Heap.]{\vernacdef{Optimize Heap.}}
 
 This command forces the OCaml runtime to perform a heap compaction.
 This is in general an expensive operation.  See:

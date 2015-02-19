@@ -365,7 +365,7 @@ for $=1,...,n$. It fails if the number of focused goals is not exactly $n$.
 
 There is a for loop that repeats a tactic {\num} times:
 \begin{quote}
-{\tt do} {\num} {\tacexpr}
+{\ltacdef{{\tt do} {\num} {\tacexpr}}}
 \end{quote}
 {\tacexpr} is evaluated to $v$ which must be a tactic value.
 This tactic value $v$ is
@@ -379,7 +379,7 @@ the {\num} applications have been completed.
 
 We have a repeat loop with:
 \begin{quote}
-{\tt repeat} {\tacexpr}
+{\ltacdef{{\tt repeat} {\tacexpr}}}
 \end{quote}
 {\tacexpr} is evaluated to $v$. If $v$ denotes a tactic, this tactic
 is applied to each focused goal independently. If the application
@@ -393,7 +393,7 @@ tactic has failed \emph{to make progress}.  The tactic {\tt repeat
 
 We can catch the tactic errors with:
 \begin{quote}
-{\tt try} {\tacexpr}
+{\ltacdef{{\tt try} {\tacexpr}}}
 \end{quote}
 {\tacexpr} is evaluated to $v$ which must be a tactic value.
 The tactic value $v$ is
@@ -406,7 +406,7 @@ exception is re-raised with its level decremented.
 
 We can check if a tactic made progress with:
 \begin{quote}
-{\tt progress} {\tacexpr}
+{\ltacdef{{\tt progress} {\tacexpr}}}
 \end{quote}
 {\tacexpr} is evaluated to $v$ which must be a tactic value.
 The tactic value $v$ is
@@ -477,7 +477,7 @@ $v_2$). Branching is left-associative.
 
 The tactic
 \begin{quote}
-{\tt tryif {\tacexpr}$_1$ then {\tacexpr}$_2$ else {\tacexpr}$_3$}
+{\ltacdef{tryif {\tacexpr}$_1$ then {\tacexpr}$_2$ else {\tacexpr}$_3$}}
 \end{quote}
 is a generalization of the biased-branching tactics above. The
 expression {\tacexpr}$_1$ is evaluated to $v_1$, which is then applied
@@ -495,7 +495,7 @@ is then applied to the goal.
 Another way of restricting backtracking is to restrict a tactic to a
 single success \emph{a posteriori}:
 \begin{quote}
-{\tt once} {\tacexpr}
+{\ltacdef{{\tt once} {\tacexpr}}}
 \end{quote}
 {\tacexpr} is evaluated to $v$ which must be a tactic value.
 The tactic value $v$ is
@@ -507,7 +507,7 @@ applied but only its first success is used. If $v$ fails, {\tt once}
 
 Coq provides an experimental way to check that a tactic has \emph{exactly one} success:
 \begin{quote}
-{\tt exactly\_once} {\tacexpr}
+{\ltacdef{{\tt exactly\_once} {\tacexpr}}}
 \end{quote}
 {\tacexpr} is evaluated to $v$ which must be a tactic value.
 The tactic value $v$ is
@@ -526,7 +526,7 @@ The experimental status of this tactic pertains to the fact if $v$ performs side
 We may consider the first to solve (i.e. which generates no subgoal) among a
 panel of tactics:
 \begin{quote}
-{\tt solve [} {\tacexpr}$_1$ {\tt |} $...$ {\tt |} {\tacexpr}$_n$ {\tt ]}
+{\ltacdef{{\tt solve [} {\tacexpr}$_1$ {\tt |} $...$ {\tt |} {\tacexpr}$_n$ {\tt ]}}}
 \end{quote}
 {\tacexpr}$_i$ are evaluated to $v_i$ and $v_i$ must be tactic values,
 for $i=1,...,n$. Supposing $n>1$, it applies $v_1$ to each goal
@@ -538,10 +538,10 @@ $v_2$ and so on. It fails if there is no solving tactic.
 \subsubsection[Identity]{Identity\label{ltac:idtac}\tacindex{idtac}
 \index{Tacticals!idtac@{\tt idtac}}}
 
-The constant {\tt idtac} is the identity tactic: it leaves any goal
+The constant {\tacticdef{idtac}} is the identity tactic: it leaves any goal
 unchanged but it appears in the proof script.
 
-\variant {\tt idtac \nelist{\messagetoken}{}}
+\variant {\tacticdef{idtac \nelist{\messagetoken}{}}}
 
 This prints the given tokens. Strings and integers are printed
 literally. If a (term) variable is given, its contents are printed.
@@ -551,14 +551,14 @@ literally. If a (term) variable is given, its contents are printed.
 \index{Tacticals!fail@{\tt fail}}
 \tacindex{gfail}\index{Tacticals!gfail@{\tt gfail}}}
 
-The tactic {\tt fail} is the always-failing tactic: it does not solve
+The tactic {\tacticdef{fail}} is the always-failing tactic: it does not solve
 any goal. It is useful for defining other tacticals since it can be
 caught by {\tt try}, {\tt repeat}, {\tt match goal}, or the branching
 tacticals. The {\tt fail} tactic will, however, succeed if all the
 goals have already been solved.
 
 \begin{Variants}
-\item {\tt fail $n$}\\ The number $n$ is the failure level. If no
+\item {\tacticdef{fail $n$}}\\ The number $n$ is the failure level. If no
   level is specified, it defaults to $0$.  The level is used by {\tt
     try}, {\tt repeat}, {\tt match goal} and the branching tacticals.
   If $0$, it makes {\tt match goal} considering the next clause
@@ -568,17 +568,17 @@ goals have already been solved.
   the first backtrack point, even if the call to {\tt fail $n$} is not
   enclosed in a {\tt +} command, respecting the algebraic identity.
 
-\item {\tt fail \nelist{\messagetoken}{}}\\
+\item {\tacticdef{fail \nelist{\messagetoken}{}}}\\
 The given tokens are used for printing the failure message.
 
-\item {\tt fail $n$ \nelist{\messagetoken}{}}\\
+\item {\tacticdef{fail $n$ \nelist{\messagetoken}{}}}\\
 This is a combination of the previous variants.
 
-\item {\tt gfail}\\
+\item {\tacticdef{gfail}}\\
 This variant fails even if there are no goals left.
 
-\item {\tt gfail \nelist{\messagetoken}{}}\\
-{\tt gfail $n$ \nelist{\messagetoken}{}}\\
+\item {\tacticdef{gfail \nelist{\messagetoken}{}}}\\
+{\tacticdef{gfail $n$ \nelist{\messagetoken}{}}}\\
 These variants fail with an error message or an error level even if
 there are no goals left. Be careful however if Coq terms have to be
 printed as part of the failure: term construction always forces the
@@ -595,7 +595,7 @@ evaluated, a tactic call like {\tt let x:=H in fail 0 x} will succeed.
 We can force a tactic to stop if it has not finished after a certain
 amount of time:
 \begin{quote}
-{\tt timeout} {\num} {\tacexpr}
+{\ltacdef{{\tt timeout} {\num} {\tacexpr}}}
 \end{quote}
 {\tacexpr} is evaluated to $v$ which must be a tactic value.
 The tactic value $v$ is
@@ -617,7 +617,7 @@ the native Windows port of Coq.
 
 A tactic execution can be timed:
 \begin{quote}
- {\tt time} {\qstring} {\tacexpr}
+{\ltacdef{ {\tt time} {\qstring} {\tacexpr}}}
 \end{quote}
 evaluates {\tacexpr}
 and displays the time the tactic expression ran, whether it fails or
@@ -653,7 +653,7 @@ so as to avoid the eager evaluation of local definitions.
 
 An application is an expression of the following form:
 \begin{quote}
-{\qualid} {\tacarg}$_1$ ... {\tacarg}$_n$
+{\ltacdef{{\qualid} {\tacarg}$_1$ ... {\tacarg}$_n$}}
 \end{quote}
 The reference {\qualid} must be bound to some defined tactic
 definition expecting at least $n$ arguments.  The expressions
@@ -671,7 +671,7 @@ definition expecting at least $n$ arguments.  The expressions
 A parameterized tactic can be built anonymously (without resorting to
 local definitions) with:
 \begin{quote}
-{\tt fun} {\ident${}_1$} ... {\ident${}_n$} {\tt =>} {\tacexpr}
+{\ltacdef{{\tt fun} {\ident${}_1$} ... {\ident${}_n$} {\tt =>} {\tacexpr}}}
 \end{quote}
 Indeed, local definitions of functions are a syntactic sugar for
 binding a {\tt fun} tactic to an identifier.
@@ -766,7 +766,7 @@ backtrack.
 There is a special form of patterns to match a subterm against the
 pattern:
 \begin{quote}
-{\tt context} {\ident} {\tt [} {\cpattern} {\tt ]}
+{\ltacdef{{\tt context} {\ident} {\tt [} {\cpattern} {\tt ]}}}
 \end{quote}
 It matches any term with a subterm matching {\cpattern}. If there is
 a match, the optional {\ident} is assigned the ``matched context'', i.e.
@@ -801,7 +801,7 @@ application, the matched subterms would have necessarily been
 applications with exactly the same number of arguments.
 As a workaround, one could use the following variant of {\tt context}:
 \begin{quote}
-{\tt appcontext} {\ident} {\tt [} {\cpattern} {\tt ]}
+{\ltacdef{{\tt appcontext} {\ident} {\tt [} {\cpattern} {\tt ]}}}
 \end{quote}
 This syntax is now deprecated, as {\tt context} behaves as intended. The former
 behavior can be retrieved with the {\tt Tactic Compat Context} flag.
@@ -897,7 +897,7 @@ The following expression is not a tactic in the sense that it does not
 produce subgoals but generates a term to be used in tactic
 expressions:
 \begin{quote}
-{\tt context} {\ident} {\tt [} {\tacexpr} {\tt ]}
+{\ltacdef{{\tt context} {\ident} {\tt [} {\tacexpr} {\tt ]}}}
 \end{quote}
 {\ident} must denote a context variable bound by a {\tt context}
 pattern of a {\tt match} expression. This expression evaluates
@@ -915,7 +915,7 @@ the system decide a name with the {\tt intro} tactic is not so good
 since it is very awkward to retrieve the name the system gave.
 The following expression returns an identifier:
 \begin{quote}
-{\tt fresh} \nelist{\textrm{\textsl{component}}}{}
+{\ltacdef{{\tt fresh} \nelist{\textrm{\textsl{component}}}{}}}
 \end{quote}
 It evaluates to an identifier unbound in the goal. This fresh
 identifier is obtained by concatenating the value of the
@@ -930,7 +930,7 @@ given, the name is a fresh derivative of the name {\tt H}.
 
 Evaluation of a term can be performed with:
 \begin{quote}
-{\tt eval} {\nterm{redexpr}} {\tt in} {\term}
+{\ltacdef{{\tt eval} {\nterm{redexpr}} {\tt in} {\term}}}
 \end{quote}
 where \nterm{redexpr} is a reduction tactic among {\tt red}, {\tt
 hnf}, {\tt compute}, {\tt simpl}, {\tt cbv}, {\tt lazy}, {\tt unfold},
@@ -944,7 +944,7 @@ hnf}, {\tt compute}, {\tt simpl}, {\tt cbv}, {\tt lazy}, {\tt unfold},
 The following returns the type of {\term}:
 
 \begin{quote}
-{\tt type of} {\term}
+{\ltacdef{{\tt type of} {\term}}}
 \end{quote}
 
 \subsubsection[Manipulating untyped terms]{Manipulating untyped terms\index{Ltac!uconstr@\texttt{uconstr}}
@@ -959,7 +959,7 @@ potentially very slow behavior. It is possible to build untyped terms
 using Ltac with the syntax
 
 \begin{quote}
-{\tt uconstr :} {\term}
+{\ltacdef{{\tt uconstr :} {\term}}}
 \end{quote}
 
 An untyped term, in Ltac, can contain references to hypotheses or to
@@ -969,7 +969,7 @@ parsed as an untyped term and returns a well-typed term which can be
 used in tactics.
 
 \begin{quote}
-{\tt type\_term} {\term}
+{\ltacdef{{\tt type\_term} {\term}}}
 \end{quote}
 
 Untyped terms built using {\tt uconstr :} can also be used as
@@ -980,9 +980,9 @@ new subgoals.
 
 \subsubsection[Counting the goals]{Counting the goals\index{Ltac!numgoals@\texttt{numgoals}}\index{numgoals@\texttt{numgoals}!in Ltac}}
 
-The number of goals under focus can be recovered using the {\tt
-  numgoals} function. Combined with the {\tt guard} command below, it
-can be used to branch over the number of goals produced by previous tactics.
+The number of goals under focus can be recovered using the {\ltacdef{numgoals}}
+function. Combined with the {\tt guard} command below, it can be used to branch
+over the number of goals produced by previous tactics.
 
 \begin{coq_example*}
 Ltac pr_numgoals := let n := numgoals in idtac "There are" n "goals".
@@ -999,7 +999,7 @@ all:pr_numgoals.
 The {\tt guard} tactic tests a boolean expression, and fails if the expression evaluates to false. If the expression evaluates to true, it succeeds without affecting the proof.
 
 \begin{quote}
-{\tt guard} {\it test}
+{\ltacdef{{\tt guard} {\it test}}}
 \end{quote}
 
 The accepted tests are simple integer comparisons.
@@ -1025,14 +1025,14 @@ Reset Initial.
 \subsubsection[Proving a subgoal as a separate lemma]{Proving a subgoal as a separate lemma\tacindex{abstract}\comindex{Qed exporting}
 \index{Tacticals!abstract@{\tt abstract}}}
 
-From the outside ``\texttt{abstract \tacexpr}'' is the same as
+From the outside ``{\ltacdef{abstract \tacexpr}}'' is the same as
 {\tt solve \tacexpr}. Internally it saves an auxiliary lemma called 
 {\ident}\texttt{\_subproof}\textit{n} where {\ident} is the name of the
 current goal and \textit{n} is chosen so that this is a fresh name.
 Such auxiliary lemma is inlined in the final proof term
-unless the proof is ended with ``\texttt{Qed exporting}''.  In such
+unless the proof is ended with ``{\vernacdef{Qed exporting}}''.  In such
 case the lemma is preserved.  The syntax
-``\texttt{Qed exporting }\ident$_1$\texttt{, ..., }\ident$_n$''
+``{\vernacdef{Qed exporting \ident$_1$, \ldots, \ident$_n$}}''
 is also supported.  In such case the system checks that the names given by the
 user actually exist when the proof is ended.
 
@@ -1054,7 +1054,7 @@ quantified only over the variables that appear in the term constructed by
 \texttt{\tacexpr}.
 
 \begin{Variants}
-\item \texttt{abstract {\tacexpr} using {\ident}}.\\
+\item {\ltacdef{abstract {\tacexpr} using {\ident}}}.\\
   Give explicitly the name of the auxiliary lemma.
 \end{Variants}
 
@@ -1113,7 +1113,7 @@ be exported outside the current module.
 Defined {\ltac} functions can be displayed using the command
 
 \begin{quote}
-{\tt Print Ltac {\qualid}.}
+{\ltacdef{Print Ltac {\qualid}.}}
 \end{quote}
 
 \section{Debugging {\ltac} tactics}
@@ -1123,7 +1123,7 @@ Defined {\ltac} functions can be displayed using the command
 It is possible to print the trace of the path eventually taken by an {\ltac} script. That is, the list of executed tactics, discarding all the branches which have failed. To that end the {\tt Info} command can be used with the following syntax.
 
 \begin{quote}
-{\tt Info} {\num} {\tacexpr}.
+{\ltacdef{{\tt Info} {\num} {\tacexpr}.}}
 \end{quote}
 
 The number {\num} is the unfolding level of tactics in the trace. At level $0$, the trace contains a sequence of tactics in the actual script, at level $1$, the trace will be the concatenation of the traces of these tactics, etc\ldots
@@ -1153,13 +1153,13 @@ As an additional help for debugging, the trace produced by {\tt Info} contains (
 An alternative to the {\tt Info} command is to use the {\tt Info Level} option as follows:
 
 \begin{quote}
-{\tt Set Info Level} \num.
+{\vernacdef{Set Info Level \num.}}
 \end{quote}
 
 This will automatically print the same trace as {\tt Info \num} at each tactic call. The unfolding level can be overridden by a call to the {\tt Info} command. And this option can be turned off with:
 
 \begin{quote}
-{\tt Unset Info Level} \num.
+{\vernacdef{Unset Info Level \num.}}
 \end{quote}
 
 The current value for the {\tt Info Level} option can be checked using the {\tt Test Info Level} command.
@@ -1170,13 +1170,13 @@ The {\ltac} interpreter comes with a step-by-step debugger. The
 debugger can be activated using the command
 
 \begin{quote}
-{\tt Set Ltac Debug.}
+{\vernacdef{Set Ltac Debug.}}
 \end{quote}
 
 \noindent and deactivated using the command
 
 \begin{quote}
-{\tt Unset Ltac Debug.}
+{\vernacdef{Unset Ltac Debug.}}
 \end{quote}
 
 To know if the debugger is on, use the command \texttt{Test Ltac Debug}.

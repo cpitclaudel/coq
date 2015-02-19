@@ -194,18 +194,18 @@ between themselves.
 The syntax has been extended to allow users to explicitly bind names to
 universes and explicitly instantiate polymorphic definitions.
 
-\subsection{\tt Universe {\ident}.
+\subsection{\vernacdef{Universe {\ident}.
   \comindex{Universe}
-  \label{UniverseCmd}}
+  \label{UniverseCmd}}}
 
 In the monorphic case, this command declares a new global universe named
 {\ident}. It supports the polymorphic flag only in sections, meaning the
 universe quantification will be discharged on each section definition
 independently.
 
-\subsection{\tt Constraint {\ident} {\textit{ord}} {\ident}.
+\subsection{\vernacdef{Constraint {\ident} {\textit{ord}} {\ident}.
   \comindex{Constraint}
-  \label{ConstraintCmd}}
+  \label{ConstraintCmd}}}
 
 This command declares a new constraint between named universes.
 The order relation can be one of $<$, $\le$ or $=$. If consistent, 
@@ -248,9 +248,9 @@ Check (le@{k l}).
 User-named universes are considered rigid for unification and are never
 minimized.
 
-\subsection{\tt Unset Strict Universe Declaration.
+\subsection{\vernacdef{Unset Strict Universe Declaration.
   \optindex{Strict Universe Declaration}
-  \label{StrictUniverseDeclaration}}
+  \label{StrictUniverseDeclaration}}}
 
 The command \texttt{Unset Strict Universe Declaration} allows one to
 freely use identifiers for universes without declaring them first, with
