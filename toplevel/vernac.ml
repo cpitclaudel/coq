@@ -205,6 +205,8 @@ let pr_new_syntax loc ocom =
   States.unfreeze fs;
   Format.set_formatter_out_channel stdout
 
+open Pp_control
+
 let rec vernac_com interpfun checknav (loc,com) =
   let rec interp = function
     | VernacLoad (verbosely, fname) ->
@@ -260,6 +262,20 @@ let rec vernac_com interpfun checknav (loc,com) =
 		(str "The command has indeed failed with message:" ++
 		 fnl () ++ str "=> " ++ hov 0 msg)
 	end
+
+    | VernacRedirect (fname, v) -> begin
+        let real_std = !std_ft in
+        let channel = open_out (String.concat "." [fname; "out"]) in
+        std_ft := Format.formatter_of_out_channel channel;
+        try
+          interp v;
+          std_ft := real_std;
+          close_out channel;
+        with reraise ->
+          std_ft := real_std;
+          close_out channel;
+          raise reraise
+      end
 
     | VernacTime v ->
 	  let tstart = System.get_time() in

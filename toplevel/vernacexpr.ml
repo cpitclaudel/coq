@@ -216,6 +216,7 @@ type vernac_expr =
   | VernacList of located_vernac_expr list
   | VernacLoad of verbose_flag * string
   | VernacTime of vernac_expr
+  | VernacRedirect of string * vernac_expr
   | VernacTimeout of int * vernac_expr
   | VernacFail of vernac_expr
 
@@ -371,7 +372,7 @@ and located_vernac_expr = loc * vernac_expr
 (** Categories of [vernac_expr] *)
 
 let rec strip_vernac = function
-  | VernacTime c | VernacTimeout(_,c) | VernacFail c -> strip_vernac c
+  | VernacTime c | VernacRedirect (_, c) | VernacTimeout(_,c) | VernacFail c -> strip_vernac c
   | c -> c (* TODO: what about VernacList ? *)
 
 let rec is_navigation_vernac = function
@@ -380,7 +381,7 @@ let rec is_navigation_vernac = function
   | VernacBacktrack _
   | VernacBackTo _
   | VernacBack _ -> true
-  | VernacTime c -> is_navigation_vernac c (* Time Back* is harmless *)
+  | VernacTime c | VernacRedirect (_, c) -> is_navigation_vernac c (* Time Back* is harmless *)
   | c -> is_deep_navigation_vernac c
 
 and is_deep_navigation_vernac = function

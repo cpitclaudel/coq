@@ -488,6 +488,7 @@ let rec pr_vernac = function
   | VernacLoad (f,s) -> str"Load" ++ if f then (spc() ++ str"Verbose"
   ++ spc()) else spc()  ++ qs s
   | VernacTime v -> str"Time" ++ spc() ++ pr_vernac v
+  | VernacRedirect (s, v) -> str"Redirect" ++ str s ++ spc() ++ pr_vernac v
   | VernacTimeout(n,v) -> str"Timeout " ++ int n ++ spc() ++ pr_vernac v
   | VernacFail v -> str"Fail" ++ spc() ++ pr_vernac v
 
