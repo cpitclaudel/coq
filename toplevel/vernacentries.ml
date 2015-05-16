@@ -1300,6 +1300,7 @@ let vernac_print = function
   | PrintTypeClasses -> ppnl (Prettyp.print_typeclasses())
   | PrintInstances c -> ppnl (Prettyp.print_instances (smart_global c))
   | PrintLtac qid -> ppnl (Tacinterp.print_ltac (snd (qualid_of_reference qid)))
+  | PrintLtacSignatures -> ppnl (Tacinterp.print_ltac_signatures ())
   | PrintCoercions -> ppnl (Prettyp.print_coercions())
   | PrintCoercionPaths (cls,clt) ->
       ppnl (Prettyp.print_path_between (cl_of_qualid cls) (cl_of_qualid clt))

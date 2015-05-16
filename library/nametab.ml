@@ -69,6 +69,7 @@ module type NAMETREE = sig
   val push : visibility -> user_name -> 'a -> 'a t -> 'a t
   val locate : qualid -> 'a t -> 'a
   val find : user_name -> 'a t -> 'a
+  val elements : 'a t -> 'a list
   val exists : user_name -> 'a t -> bool
   val user_name : qualid -> 'a t -> user_name
   val shortest_qualid : Idset.t -> user_name -> 'a t -> qualid
@@ -183,6 +184,13 @@ let rec search (current,modidtab) = function
 let find_node qid tab =
   let (dir,id) = repr_qualid qid in
     search (Idmap.find id tab) (repr_dirpath dir)
+
+let elements tab =
+  let f k v acc =
+    match fst v with
+    | Absolute (_, o) | Relative (_, o) -> o :: acc
+    | Nothing                           -> acc
+  in Idmap.fold f tab []
 
 let locate qid tab =
   let o = match find_node qid tab with
@@ -375,6 +383,8 @@ let locate_modtype qid = SpTab.locate qid !the_modtypetab
 let full_name_modtype qid = SpTab.user_name qid !the_modtypetab
 
 let locate_tactic qid = SpTab.locate qid !the_tactictab
+
+let all_tactics () = SpTab.elements !the_tactictab
 
 let locate_dir qid = DirTab.locate qid !the_dirtab
 

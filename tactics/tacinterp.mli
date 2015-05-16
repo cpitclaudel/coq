@@ -160,6 +160,7 @@ val declare_xml_printer :
 
 (** printing *)
 val print_ltac : Libnames.qualid -> std_ppcmds
+val print_ltac_signatures : unit -> std_ppcmds
 
 (** Internals that can be useful for syntax extensions. *)
 

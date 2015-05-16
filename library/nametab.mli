@@ -100,6 +100,7 @@ val locate_dir : qualid -> global_dir_reference
 val locate_module : qualid -> module_path
 val locate_section : qualid -> dir_path
 val locate_tactic : qualid -> ltac_constant
+val all_tactics : unit -> ltac_constant list
 
 (** These functions globalize user-level references into global
    references, like [locate] and co, but raise a nice error message
