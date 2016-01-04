@@ -3161,7 +3161,7 @@ The \texttt{cbn} tactic accepts the same flags as \texttt{cbv} and
 can be tuned using the \texttt{Arguments} vernacular command as
 follows: \comindex{Arguments}
 \begin{itemize}
-\item
+\item \vernacdef{Arguments {\ident} \nelistnosep{\possiblybracketedident} : simpl never}\\
 A constant can be marked to be never unfolded by \texttt{cbn} or
 \texttt{simpl}:
 \begin{coq_example*}
@@ -3169,7 +3169,7 @@ Arguments minus n m : simpl never.
 \end{coq_example*}
 After that command an expression like \texttt{(minus (S x) y)} is left
 untouched by the tactics \texttt{cbn} and \texttt{simpl}.
-\item
+\item \vernacdef{Arguments {\ident} \nelistnosep{\possiblybracketedident} / \nelistnosep{\possiblybracketedident}}\\
 A constant can be marked to be unfolded only if applied to enough arguments.
 The number of arguments required can be specified using
 the {\tt /} symbol in the arguments list of the {\tt Arguments} vernacular
@@ -3187,7 +3187,7 @@ unfolded.
 Definition volatile := fun x : nat => x.
 Arguments volatile / x.
 \end{coq_example*}
-\item
+\item \vernacdef{Arguments {\ident} \nelistnosep{!\termarg}}\\
 A constant can be marked to be unfolded only if an entire set of arguments
 evaluates to a constructor. The {\tt !} symbol can be used to mark such
 arguments.
@@ -3196,7 +3196,7 @@ Arguments minus !n !m.
 \end{coq_example*}
 After that command, the expression {\tt (minus (S x) y)} is left untouched by
 {\tt simpl}, while {\tt (minus (S x) (S y))} is reduced to {\tt (minus x y)}.
-\item
+\item \vernacdef{Arguments {\ident} \nelistnosep{\possiblybracketedident} : simpl nomatch}\\
 A special heuristic to determine if a constant has to be unfolded can be
 activated with the following command:
 \begin{coq_example*}
@@ -4061,19 +4061,19 @@ non-imported hints.
 
 \begin{Variants}
 
-\item {\tt Set Loose Hint Behavior "Lax"}
+\item {\vernacdef{Set Loose Hint Behavior "Lax"}}
 
   This is the default, and corresponds to the historical behavior, that is,
   hints defined outside of a section have a global scope.
 
-\item {\tt Set Loose Hint Behavior "Warn"}
+\item {\vernacdef{Set Loose Hint Behavior "Warn"}}
 
   When set, it outputs a warning when a non-imported hint is used. Note that
   this is an over-approximation, because a hint may be triggered by a run that
   will eventually fail and backtrack, resulting in the hint not being actually
   useful for the proof.
 
-\item {\tt Set Loose Hint Behavior "Strict"}
+\item {\vernacdef{Set Loose Hint Behavior "Strict"}}
 
   When set, it changes the behavior of an unloaded hint to a immediate fail
   tactic, allowing to emulate an import-scoped hint mechanism.
@@ -4301,9 +4301,9 @@ instead may reason about any first-order class inductive definition.
 
 The default tactic used by \texttt{firstorder} when no rule applies is {\tt
   auto with *}, it can be reset locally or globally using the {\nobreak
-  {\tt Set Firstorder Solver {\tac}}} \optindex{Firstorder Solver}
-vernacular command and printed using {\nobreak {\tt Print Firstorder
-    Solver}}.
+  {\vernacdef{Set Firstorder Solver {\tac}}}} \optindex{Firstorder Solver}
+vernacular command and printed using {\nobreak {\vernacdef{Print Firstorder
+    Solver}}}.
 
 \begin{Variants}
  \item {\tacticdef{firstorder {\tac}}}
@@ -4331,7 +4331,7 @@ vernacular command and printed using {\nobreak {\tt Print Firstorder
 \end{Variants}
 
 Proof-search is bounded by a depth parameter which can be set by typing the
-{\nobreak \tt Set Firstorder Depth $n$} \optindex{Firstorder Depth}
+{\vernacdef{Set Firstorder Depth $n$}} \optindex{Firstorder Depth}
 vernacular command.
 
 
@@ -4900,7 +4900,7 @@ and both hand sides are normalized.
 
 See Chapter~\ref{ring} for more information on the tactic and how to
 declare new ring structures.  All declared field structures can be
-printed with the {\tt Print Rings} command.
+printed with the {\vernacdef{Print Rings}} command.
 
 \subsection{{\tacticdef{field}}, {\tacticdef{field\_simplify \term$_1$ \mbox{\dots}
   \term$_n$}}, and {\tacticdef{field\_simplify\_eq}}}
@@ -4928,7 +4928,7 @@ denominators are different from zero.
 
 See Chapter~\ref{ring} for more information on the tactic and how to
 declare new field structures.  All declared field structures can be
-printed with the {\tt Print Fields} command.
+printed with the {\vernacdef{Print Fields}} command.
 
 \Example
 \begin{coq_example*}

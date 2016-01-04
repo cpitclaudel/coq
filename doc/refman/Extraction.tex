@@ -151,7 +151,7 @@ like size of bodies, uselessness of some arguments, etc. Those heuristics are
 not always perfect; if you want to disable this feature, do it by Unset.
 
 \item \comindex{Extraction Inline} \comindex{Extraction NoInline}
-{\vernacdef{Extraction [Inline|NoInline] \qualid$_1$ \dots\ \qualid$_n$.}}
+{\vernacdef{Extraction \argchoice{Inline,NoInline} \qualid$_1$ \dots\ \qualid$_n$.}}
 
 In addition to the automatic inline feature, you can tell to
 inline some more constants by the {\tt Extraction Inline} command. Conversely, 
@@ -222,7 +222,7 @@ variables still occurs in the final code. This behavior can be relaxed
 via the following option:
 
 \begin{description}
-\item \optindex{Extraction SafeImplicits} {\tt Unset Extraction SafeImplicits.}
+\item \optindex{Extraction SafeImplicits} {\vernacdef{Unset Extraction SafeImplicits.}}
 
 Default is Set. When this option is Unset, a warning is emitted
 instead of an error if some implicited variables still occur in the

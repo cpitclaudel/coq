@@ -146,7 +146,7 @@ term consists of the successive application of its coercions.
 
 % END "Class" is useless
 
-\asubsection{\tt Coercion {\qualid} : {\class$_1$} >-> {\class$_2$}.}
+\asubsection{\vernacdef{Coercion {\qualid} : {\class$_1$} >-> {\class$_2$}.}}
 \comindex{Coercion}
 
 Declares the construction denoted by {\qualid} as a coercion between
@@ -181,22 +181,22 @@ valid coercion paths are ignored; they are signaled by a warning.
 \end{enumerate}
 
 \begin{Variants}
-\item {\tt Local Coercion {\qualid} : {\class$_1$} >-> {\class$_2$}.}
+\item {\vernacdef{Local Coercion {\qualid} : {\class$_1$} >-> {\class$_2$}.}}
 \comindex{Local Coercion}\\
   Declares the construction denoted by {\qualid} as a coercion local to
   the current section.
 
-\item {\tt Coercion {\ident} := {\term}}\comindex{Coercion}\\
+\item {\vernacdef{Coercion {\ident} := {\term}}}\comindex{Coercion}\\
   This defines {\ident} just like \texttt{Definition {\ident} :=
     {\term}}, and then declares {\ident} as a coercion between it
   source and its target.
 
-\item {\tt Coercion {\ident} := {\term} : {\type}}\\
+\item {\vernacdef{Coercion {\ident} := {\term} : {\type}}}\\
   This defines {\ident} just like 
   \texttt{Definition {\ident} : {\type} := {\term}}, and then
   declares {\ident} as a coercion between it source and its target. 
 
-\item {\tt Local Coercion {\ident} := {\term}}\comindex{Local Coercion}\\
+\item {\vernacdef{Local Coercion {\ident} := {\term}}}\comindex{Local Coercion}\\
   This defines {\ident} just like \texttt{Let {\ident} :=
     {\term}}, and then declares {\ident} as a coercion between it
   source and its target.
@@ -247,7 +247,7 @@ Especially, if the extra {\tt >} is present in a constructor
 declaration, this constructor is declared as a coercion.
 \end{Variants}
 
-\asubsection{\tt Identity Coercion {\ident}:{\class$_1$} >-> {\class$_2$}.} 
+\asubsection{\vernacdef{Identity Coercion {\ident}:{\class$_1$} >-> {\class$_2$}.}}
 \comindex{Identity Coercion}
 
 We check that {\class$_1$} is a constant with a value of the form
@@ -263,10 +263,10 @@ coercion between {\class$_1$} and {\class$_2$}.
 \end{ErrMsgs}
 
 \begin{Variants}
-\item {\tt Local Identity Coercion {\ident}:{\ident$_1$} >-> {\ident$_2$}.} \\
+\item {\vernacdef{Local Identity Coercion {\ident}:{\ident$_1$} >-> {\ident$_2$}.}} \\
 Idem but locally to the current section.
 
-\item {\tt SubClass {\ident} := {\type}.} \\
+\item {\vernacdef{SubClass {\ident} := {\type}.}} \\
 \comindex{SubClass}
  If {\type} is a class
 {\ident'} applied to some arguments then {\ident} is defined and an
@@ -279,40 +279,40 @@ declared. Otherwise said, this is an abbreviation for
 
 {\tt Identity Coercion Id\_{\ident}\_{\ident'}:{\ident} >-> {\ident'}}.
 
-\item {\tt Local SubClass {\ident} := {\type}.} \\
+\item {\vernacdef{Local SubClass {\ident} := {\type}.}} \\
 Same as before but locally to the current section.
 
 \end{Variants}
 
 \asection{Displaying Available Coercions}
 
-\asubsection{\tt Print Classes.} 
+\asubsection{\vernacdef{Print Classes.}}
 \comindex{Print Classes}
 Print the list of declared classes in the current context.
 
-\asubsection{\tt Print Coercions.}
+\asubsection{\vernacdef{Print Coercions.}}
 \comindex{Print Coercions}
 Print the list of declared coercions in the current context.
 
-\asubsection{\tt Print Graph.} 
+\asubsection{\vernacdef{Print Graph.}}
 \comindex{Print Graph}
 Print the list of valid coercion paths in the current context.
 
-\asubsection{\tt Print Coercion Paths {\class$_1$} {\class$_2$}.} 
+\asubsection{\vernacdef{Print Coercion Paths {\class$_1$} {\class$_2$}.}}
 \comindex{Print Coercion Paths}
 Print the list of valid coercion paths from {\class$_1$} to {\class$_2$}.
 
 \asection{Activating the Printing of Coercions}
 
-\asubsection{\tt Set Printing Coercions.}
+\asubsection{\vernacdef{Set Printing Coercions.}}
 \optindex{Printing Coercions}
 
 This command forces all the coercions to be printed.
 Conversely, to skip the printing of coercions, use
- {\tt Unset Printing Coercions}.
+ {\vernacdef{Unset Printing Coercions}}.
 By default, coercions are not printed.
 
-\asubsection{\tt Add Printing Coercion {\qualid}.}
+\asubsection{\vernacdef{Add Printing Coercion {\qualid}.}}
 \comindex{Add Printing Coercion}
 \comindex{Remove Printing Coercion}
 

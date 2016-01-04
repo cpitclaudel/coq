@@ -760,7 +760,7 @@ a correct type in the environment preexisting the declaration and if
 is considered to be the type (or specification, or statement) assumed
 by {\ident} and we say that {\ident} has type {\type}.
 
-\subsubsection{\vernacdef{Axiom {\ident} :{\term} .}
+\subsubsection{\vernacdef{Axiom {\ident} : {\term} .}
 \comindex{Axiom}
 \label{Axiom}}
 
@@ -774,10 +774,10 @@ a postulate.
 
 \begin{Variants} 
 \item \comindex{Parameter}\comindex{Parameters}
-  {\vernacdef{Parameter {\ident} :{\term}.}} \\
+  {\vernacdef{Parameter {\ident} : {\term}.}} \\
   Is equivalent to {\tt Axiom {\ident} : {\term}}
 
-\item {\vernacdef{Parameter {\ident$_1$} {\ldots} {\ident$_n$} {\tt :}{\term}.}}\\
+\item {\vernacdef{Parameter {\ident$_1$} {\ldots} {\ident$_n$} {\tt :} {\term}.}}\\
   Adds $n$ parameters with specification {\term}
 
 \item
@@ -794,7 +794,7 @@ a postulate.
   give their fully qualified name to refer to them.
 
 \item \comindex{Conjecture}
-  {\vernacdef{Conjecture {\ident} :{\term}.}}\\
+  {\vernacdef{Conjecture {\ident} : {\term}.}}\\
   Is equivalent to {\tt Axiom {\ident} : {\term}}.
 \end{Variants}
 
@@ -802,7 +802,7 @@ a postulate.
 {\tt Parameters}.
 
 
-\subsubsection{\vernacdef{Variable {\ident} :{\term}}.
+\subsubsection{\vernacdef{Variable {\ident} : {\term}}.
 \comindex{Variable}
 \comindex{Variables}
 \label{Variable}}
@@ -820,7 +820,7 @@ Local Parameter}.
 \end{ErrMsgs}
 
 \begin{Variants}
-\item {\vernacdef{Variable {\ident$_1$} {\ldots} {\ident$_n$} {\tt :}{\term}.}}\\
+\item {\vernacdef{Variable {\ident$_1$} {\ldots} {\ident$_n$} {\tt :} {\term}.}}\\
   Links {\term} to names {\ident$_1$} {\ldots} {\ident$_n$}.
 \item
  {\tt Variable\,%
@@ -830,7 +830,7 @@ Local Parameter}.
   Adds $n$ blocks of variables with different specifications.
 \item \comindex{Hypothesis}
       \comindex{Hypotheses}
- {\tt Hypothesis {\ident} {\tt :}{\term}.} \\
+ {\tt Hypothesis {\ident} {\tt :} {\term}.} \\
   \texttt{Hypothesis} is a synonymous of \texttt{Variable}
 \end{Variants}
 
@@ -891,12 +891,12 @@ environment, provided that {\term} is well-typed.
        {\tt fun}\,{\binder$_1$} {\ldots} {\binder$_n$}\,{\tt =>}\,{\term$_2$}\,%
        {\tt .}
 
-\item {\tt Local Definition {\ident} := {\term}.}\\
+\item {\vernacdef{Local Definition {\ident} := {\term}.}}\\
 \comindex{Local Definition}
   Such definitions are never made accessible through their unqualified name by
   {\tt Import} and its variants (see \ref{Import}). You have to explicitly
   give their fully qualified name to refer to them.
-\item {\tt Example {\ident} := {\term}.}\\
+\item {\vernacdef{Example {\ident} := {\term}.}}\\
 {\tt Example} {\ident} {\tt :} {\term$_1$} {\tt :=} {\term$_2$}{\tt .}\\
 {\tt Example} {\ident} {\binder$_1$} {\ldots} {\binder$_n$}
        {\tt :} {\term$_1$} {\tt :=} {\term$_2$}{\tt .}\\
@@ -1349,7 +1349,7 @@ This section describes the primitive form of definition by recursion
 over inductive objects. See Section~\ref{Function} for more advanced
 constructions. The command:
 \begin{center}
-  \texttt{Fixpoint {\ident} {\params} {\tt \{struct}
+  \vernacdef{Fixpoint {\ident} {\params} {\tt \{struct}
   \ident$_0$ {\tt \}} : type$_0$ := \term$_0$ 
   \comindex{Fixpoint}\label{Fixpoint}}
 \end{center}

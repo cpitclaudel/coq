@@ -167,7 +167,7 @@ defined with the {\tt Record} keyword can be activated with the
 (see~\ref{set-nonrecursive-elimination-schemes}).
 
 \begin{Warnings}
-\item {\tt {\ident$_i$} cannot be defined.}
+\item \errindex{{\ident$_i$} cannot be defined.}
 
   It can happen that the definition of a projection is impossible.
   This message is followed by an explanation of this impossibility.
@@ -282,7 +282,7 @@ is the object projected and the other arguments are the parameters of
 the inductive type.
 
 To deactivate the printing of projections, use 
-{\tt Unset Printing Projections}.
+{\vernacdef{Unset Printing Projections}}.
 
 \subsection{Primitive Projections}
 \optindex{Primitive Projections}
@@ -291,7 +291,7 @@ To deactivate the printing of projections, use
 \index{Primitive projections}
 \label{prim-proj}
 
-The option {\tt Set Primitive Projections} turns on the use of primitive
+The option {\vernacdef{Set Primitive Projections}} turns on the use of primitive
 projections when defining subsequent records. Primitive projections
 extended the Calculus of Inductive Constructions with a new binary term
 constructor {\tt r.(p)} representing a primitive projection p applied to
@@ -320,9 +320,9 @@ for the usual defined ones.
 
 For compatibility, the parameters still appear to the user when printing terms
 even though they are absent in the actual AST manipulated by the kernel. This
-can be changed by unsetting the {\tt Printing Primitive Projection Parameters}
-flag. Further compatibility printing can be deactivated thanks to the
-{\tt Printing Primitive Projection Compatibility} option which governs the
+can be changed using the {\vernacdef{Unset Printing Primitive Projection Parameters}}
+command. Further compatibility printing can be deactivated thanks to the
+{\vernacdef{Unset Printing Primitive Projection Compatibility}} command which governs the
 printing of pattern-matching over primitive records.
 
 \section{Variants and extensions of {\mbox{\tt match}}
@@ -1402,14 +1402,14 @@ Sections~\ref{SetStrictImplicit},~\ref{SetContextualImplicit},~\ref{SetReversibl
 and also~\ref{SetMaximalImplicitInsertion}).
 
 \begin{Variants}
-\item {\tt Global Arguments {\qualid} : default implicits
-\comindex{Global Arguments}}
+\item {\vernacdef{Global Arguments {\qualid} : default implicits
+\comindex{Global Arguments}}}
 
 Tell to recompute the implicit arguments of {\qualid} after ending of
 the current section if any.
 
-\item {\tt Local Arguments {\qualid} : default implicits
-\comindex{Local Arguments}}
+\item {\vernacdef{Local Arguments {\qualid} : default implicits
+\comindex{Local Arguments}}}
 
 When in a module, tell not to activate the implicit arguments of
 {\qualid} computed by this declaration to contexts that requires the
@@ -1471,8 +1471,8 @@ implicit arguments mode by using the command
 \begin{quote}
 {\vernacdef{Set Implicit Arguments.}}
 \end{quote}
-Conversely, one may unset the mode by using {\tt Unset Implicit
-Arguments}.  The mode is off by default. Auto-detection of implicit
+Conversely, one may unset the mode by using {\vernacdef{Unset Implicit
+Arguments}}.  The mode is off by default. Auto-detection of implicit
 arguments is governed by options controlling whether strict and
 contextual implicit arguments have to be considered or not.
 
@@ -1488,7 +1488,7 @@ set implicit all non strict implicit arguments by default, use the command
 \begin{quote}
 {\vernacdef{Unset Strict Implicit.}}
 \end{quote}
-Conversely, use the command {\tt Set Strict Implicit} to
+Conversely, use the command {\vernacdef{Set Strict Implicit}} to
 restore the original mode that declares implicit only the strict implicit arguments plus a small subset of the non strict implicit arguments.
 
 In the other way round, to capture exactly the strict implicit arguments and no more than the strict implicit arguments, use the command:
@@ -1496,7 +1496,7 @@ In the other way round, to capture exactly the strict implicit arguments and no 
 \begin{quote}
 {\vernacdef{Set Strongly Strict Implicit.}}
 \end{quote}
-Conversely, use the command {\tt Unset Strongly Strict Implicit} to
+Conversely, use the command {\vernacdef{Unset Strongly Strict Implicit}} to
 let the option ``{\tt Strict Implicit}'' decide what to do.
 
 \Rem In versions of {\Coq} prior to version 8.0, the default was to
@@ -1512,7 +1512,7 @@ argument, use command
 \begin{quote}
 {\vernacdef{Set Contextual Implicit.}}
 \end{quote}
-Conversely, use command {\tt Unset Contextual Implicit} to
+Conversely, use command {\vernacdef{Unset Contextual Implicit}} to
 unset the contextual implicit mode.
 
 \subsection{Controlling reversible-pattern implicit arguments
@@ -1525,7 +1525,7 @@ argument, use command
 \begin{quote}
 {\vernacdef{Set Reversible Pattern Implicit.}}
 \end{quote}
-Conversely, use command {\tt Unset Reversible Pattern Implicit} to
+Conversely, use command {\vernacdef{Unset Reversible Pattern Implicit}} to
 unset the reversible-pattern implicit mode.
 
 \subsection{Controlling the insertion of implicit arguments not followed by explicit arguments
@@ -1542,8 +1542,8 @@ declared (with the command {\tt Set Implicit Arguments}), the command
 is used to tell to declare the implicit arguments with a maximal
 insertion status. By default, automatically declared implicit
 arguments are not declared to be insertable maximally.  To restore the
-default mode for maximal insertion, use command {\tt Unset Maximal
-Implicit Insertion}.
+default mode for maximal insertion, use command {\vernacdef{Unset Maximal
+Implicit Insertion}}.
 
 \subsection{Explicit applications
 \index{Explicitly given implicit arguments}
@@ -1722,14 +1722,14 @@ Lemma is_law_S : is_law S.
 only the structure declared first as canonical is considered.
 
 \begin{Variants}
-\item {\tt Canonical Structure {\ident} := {\term} : {\type}.}\\
- {\tt Canonical Structure {\ident} := {\term}.}\\
- {\tt Canonical Structure {\ident} : {\type} := {\term}.}
+\item {\vernacdef{Canonical Structure {\ident} := {\term} : {\type}.}}\\
+ {\vernacdef{Canonical Structure {\ident} := {\term}.}}\\
+ {\vernacdef{Canonical Structure {\ident} : {\type} := {\term}.}}
 
 These are equivalent to a regular definition of {\ident} followed by
 the declaration 
 
-{\tt Canonical Structure {\ident}}.
+{\vernacdef{Canonical Structure {\ident}}}.
 \end{Variants}
 
 \SeeAlso more examples in user contribution \texttt{category}
@@ -1773,7 +1773,7 @@ Lemma cons_inj_bool : forall (m n:bool) l, n :: l = m :: l -> n = m.
 \end{coq_example}
 
 \begin{Variants}
-\item {\tt Implicit Type {\ident} : {\type}}\\
+\item {\vernacdef{Implicit Type {\ident} : {\type}}}\\
 This is useful for declaring the implicit type of a single variable.
 \item
  {\tt Implicit Types\,%
@@ -1813,7 +1813,7 @@ generalizations when mistyping identifiers. There are three variants of
 the command:
 
 \begin{quote}
-{\tt Generalizable (All|No) Variable(s)? ({\ident$_1$ \ident$_n$})?.}
+{\tt Generalizable \argchoice{All,No} Variable(s)? ({\ident$_1$ \ident$_n$})?.}
 \end{quote}
 
 \begin{Variants}
