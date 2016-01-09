@@ -359,33 +359,33 @@ Check tree_size_ind2.
 The syntax of {\tt Derive Inversion} follows the schema:
 \begin{quote}
 {\vernacdef{Derive Inversion {\ident} with forall
-  $(\vec{x} : \vec{T})$, $I~\vec{t}$ Sort \sort}}
+  \ident$_1$: \type$_1$ \dots\ \ident$_n$: \type$_n$, \nterm{I} \termarg$_1$ \dots\ \termarg$_n$ Sort \sort}}
 \end{quote}
 
 This command generates an inversion principle for the
 \texttt{inversion \dots\ using} tactic.
 \tacindex{inversion \dots\ using}
-Let $I$ be an inductive predicate and $\vec{x}$ the variables
-occurring in $\vec{t}$. This command generates and stocks the
+Let $I$ be an inductive predicate and \ident$_1$ \dots\ \ident$_n$ the variables
+occurring in \termarg$_1$ \dots\ \termarg$_n$. This command generates and stocks the
 inversion lemma for the sort \sort~ corresponding to the instance
-$\forall (\vec{x}:\vec{T}), I~\vec{t}$ with the name {\ident} in the {\bf
+$\forall$ \ident$_1$: \type$_1$ \dots\ \ident$_n$: \type$_n$, \nterm{I} \termarg$_1$ \dots\ \termarg$_n$ with the name {\ident} in the {\bf
 global} environment. When applied, it is equivalent to having inverted
 the instance with the tactic {\tt inversion}.
 
 \begin{Variants}
-\item \texttt{Derive Inversion\_clear {\ident} with forall
-  $(\vec{x}:\vec{T})$, $I~\vec{t}$ Sort \sort}\\
+\item \vernacdef{Derive Inversion\_clear {\ident} with forall
+  \ident$_1$: \type$_1$ \dots\ \ident$_n$: \type$_n$, \nterm{I} \termarg$_1$ \dots\ \termarg$_n$ Sort \sort}\\
   \comindex{Derive Inversion\_clear}
   When applied, it is equivalent to having
   inverted the instance with the tactic \texttt{inversion}
   replaced by the tactic \texttt{inversion\_clear}.
-\item \texttt{Derive Dependent Inversion {\ident} with forall
-  $(\vec{x}:\vec{T})$, $I~\vec{t}$ Sort \sort}\\
+\item \vernacdef{Derive Dependent Inversion {\ident} with forall
+  \ident$_1$: \type$_1$ \dots\ \ident$_n$: \type$_n$, \nterm{I} \termarg$_1$ \dots\ \termarg$_n$ Sort \sort}\\
   \comindex{Derive Dependent Inversion}
   When applied, it is equivalent to having
   inverted the instance with the tactic \texttt{dependent inversion}.
-\item \texttt{Derive Dependent Inversion\_clear {\ident} with forall
-  $(\vec{x}:\vec{T})$, $I~\vec{t}$ Sort \sort}\\
+\item \vernacdef{Derive Dependent Inversion\_clear {\ident} with forall
+  \ident$_1$: \type$_1$ \dots\ \ident$_n$: \type$_n$, \nterm{I} \termarg$_1$ \dots\ \termarg$_n$ Sort \sort}\\
   \comindex{Derive Dependent Inversion\_clear}
   When applied, it is equivalent to having
   inverted the instance with the tactic \texttt{dependent inversion\_clear}.

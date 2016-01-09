@@ -52,8 +52,8 @@ selector (see Section \ref{default-selector}) is used.
 {\commandtac} & ::= & {\selector} {\tt :} {\tac} {\tt .}\\
  & $|$ & {\tac} {\tt .}
 \end{tabular}
-\subsection[\tt Set Default Goal Selector ``\selector''.]
-           {\vernacdef{Set Default Goal Selector ``\selector''.
+\subsection[\tt Set Default Goal Selector ``{\selector}''.]
+           {\vernacdef{Set Default Goal Selector ``{\selector}''.
             \optindex{Default Goal Selector}
             \label{default-selector}}}
 After using this command, the default selector -- used when no selector
@@ -624,8 +624,11 @@ equivalent to {\tt intros; apply ci}.
   context where {\tt apply} is executed (the introductions are not
   taken into account).
 
-% To document?
-% \item {\tt constructor {\tactic}}
+\item {\tacticdef{constructor {\tac}}}
+
+  Like {\tt constructor}, but instead of selecting the first matching
+  constructor this tactic selects the first one such that {\tac} succeeds
+  after applying the constructor.
 
 \item {\tacticdef{split}}\tacindex{split}
 
