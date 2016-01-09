@@ -509,13 +509,13 @@ is undecidable in general case, don't expect miracles from it!
 
 \begin{Variants}
 
-\item {\vernacdef{quote {\ident} in {\term} using {\tac}}}
+\item {\tacticdef{quote {\ident} in {\term} using {\tac}}}
 
   \tac\ must be a functional tactic (starting with {\tt fun x =>})
   and will be called with the quoted version of \term\ according to
   \ident.
 
-\item {\vernacdef{quote {\ident} [ \ident$_1$ \dots\ \ident$_n$ ] in {\term} using {\tac}}}
+\item {\tacticdef{quote {\ident} [ \ident$_1$ \dots\ \ident$_n$ ] in {\term} using {\tac}}}
 
   Same as above, but will use \ident$_1$, \dots, \ident$_n$ to
   chose which subterms are constants (see above).
