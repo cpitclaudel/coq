@@ -59,7 +59,7 @@ selector (see Section \ref{default-selector}) is used.
 After using this command, the default selector -- used when no selector
 is specified when applying a tactic -- is set to the chosen value. The
 initial value is $1$, hence the tactics are, by default, applied to
-the first goal. Using {\tt Set Default Goal Selector ``all''} will
+the first goal. Using {\vernacdef{Set Default Goal Selector ``all''}} will
 make is so that tactics are, by default, applied to every goal
 simultaneously. Then, to apply a tactic {\tt tac} to the first goal
 only, you can write {\tt 1:tac}.
@@ -3818,7 +3818,7 @@ Info 1 auto with eqdec.
 Abort.
 \end{coq_eval}
 
-\item \texttt{Cut} {\textit{regexp}}
+\item \cchintdef{\texttt{Cut} {\textit{regexp}}}
 \label{HintCut}
 \comindex{Hint Cut}
 
@@ -4238,7 +4238,7 @@ incompatibilities.
 
   Is equivalent to {\tt intuition auto with *}.
 
-\item {\tt dintuition}
+\item {\tacticdef{dintuition}}
 
   While {\tt intuition} recognizes inductively defined connectives
   isomorphic to the standard connective {\tt and}, {\tt prod}, {\tt
@@ -4256,28 +4256,28 @@ controlled using options. To avoid that inner negations which do not
 need to be unfolded are unfolded, use:
 
 \begin{quote}
-{\tt Unset Intuition Negation Unfolding}
+{\vernacdef{Unset Intuition Negation Unfolding}}
 \end{quote}
 
 To do that all negations of the goal are unfolded even inner ones
 (this is the default), use:
 
 \begin{quote}
-{\tt Set Intuition Negation Unfolding}
+{\vernacdef{Set Intuition Negation Unfolding}}
 \end{quote}
 
 To avoid that inner occurrence of {\tt iff} which do not need to be
 unfolded are unfolded (this is the default), use:
 
 \begin{quote}
-{\tt Unset Intuition Iff Unfolding}
+{\vernacdef{Unset Intuition Iff Unfolding}}
 \end{quote}
 
 To do that all negations of the goal are unfolded even inner ones
 (this is the default), use:
 
 \begin{quote}
-{\tt Set Intuition Iff Unfolding}
+{\vernacdef{Set Intuition Iff Unfolding}}
 \end{quote}
 
 % En attente d'un moyen de valoriser les fichiers de demos
