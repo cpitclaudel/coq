@@ -1085,9 +1085,9 @@ constructors of the definition.
 
 The general scheme is:
 \begin{center}
-{\tt Inductive} {\ident} {\binder$_1$}\ldots{\binder$_k$} : {\term} :=
+\vernacdef{{\tt Inductive} {\ident} {\binder$_1$}\ldots{\binder$_k$} : {\term} :=
     {\ident$_1$}: {\term$_1$} | {\ldots} | {\ident$_n$}: \term$_n$
-{\tt .}
+{\tt .}}
 \end{center}
 Parameters differ from inductive type annotations in the fact that the
 conclusion of each type of constructor {\term$_i$} invoke the inductive
@@ -1127,7 +1127,8 @@ arguments of the constructors rather than their full type.
 \begin{coq_example*}
 Variant sum (A B:Set) : Set := left : A -> sum A B | right : B -> sum A B.
 \end{coq_example*}
-The {\tt Variant} keyword is identical to the {\tt Inductive} keyword,
+The \vernacdef{{\tt Variant} {\ident} {\binder$_1$}\ldots{\binder$_k$} : {\term} :=}
+form is identical to the {\tt Inductive} keyword,
 except that it disallows recursive definition of types (in particular
 lists cannot be defined with the {\tt Variant} keyword). No induction
 scheme is generated for this variant, unless the option
