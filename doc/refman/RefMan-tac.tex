@@ -1457,7 +1457,7 @@ a hypothesis or in the body or the type of a local definition.
 
 \end{Variants}
 
-\subsection{\vernacdef{admit}}
+\subsection{\tacticdef{admit}}
 \tacindex{admit}
 \tacindex{give\_up}
 \label{admit}
@@ -1469,7 +1469,7 @@ admitted goals cannot be closed with {\tt Qed} but only with
 
 \begin{Variants}
 
-  \item {\tacticdef{give\_up}}
+  \item {give\_up}
 
     Synonym of {\tt admit}.
 
@@ -5071,7 +5071,7 @@ shelf into focus, by appending them to the end of the current list of focused go
 
 \subsection[\tt give\_up]{\tacticdef{give\_up\tacindex{give\_up}}}
 
-This tactic removes the focused goals from the proof. They are not solved, and cannot
+This tactic is a synonym of {\tt admit}. It removes the focused goals from the proof. They are not solved, and cannot
 be solved later in the proof. As the goals are not solved, the proof cannot be closed.
 
 The {\tt give\_up} tactic can be used while editing a proof, to choose to write the

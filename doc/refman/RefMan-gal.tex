@@ -879,11 +879,11 @@ environment, provided that {\term} is well-typed.
 \end{ErrMsgs}
 
 \begin{Variants}
-\item {\vernacdef {\tt Definition} {\ident} {\tt :} {\term$_1$} {\tt :=} {\term$_2$}{\tt .}}\\
+\item {\vernacdef{{\tt Definition} {\ident} {\tt :} {\term$_1$} {\tt :=} {\term$_2$}{\tt .}}}\\
   It checks that the type of {\term$_2$} is definitionally equal to
   {\term$_1$}, and registers {\ident} as being of type {\term$_1$},
   and bound to value {\term$_2$}.
-\item {\vernacdef {\tt Definition} {\ident} {\binder$_1$} {\ldots} {\binder$_n$}}
+\item {\vernacdef{{\tt Definition} {\ident} {\binder$_1$} {\ldots} {\binder$_n$}}}
        {\tt :} \term$_1$ {\tt :=} {\term$_2$}{\tt .}\\
   This is equivalent to \\
    {\tt Definition} {\ident} {\tt : forall}%
