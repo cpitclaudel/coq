@@ -40,11 +40,11 @@ construction allows defining ``signatures''.
 \noindent In the expression
 
 \smallskip
-{\tt Record} {\ident} {\params} \texttt{:} 
-   {\sort} := {\ident$_0$} \verb+{+
+\vernacdef{{\tt Record} {\ident} {\params} \texttt{:} {\sort}
+  := {\ident$_0$} \verb+{+
  {\ident$_1$} \binders$_1$ \texttt{:} {\term$_1$}; 
               \dots
-  {\ident$_n$} \binders$_n$ \texttt{:} {\term$_n$} \verb+}+.
+  {\ident$_n$} \binders$_n$ \texttt{:} {\term$_n$} \verb+}+.}
 \smallskip
  
 \noindent the identifier {\ident} is the name of the defined record
@@ -704,7 +704,7 @@ Reset Initial.
 
 The \emph{experimental} command 
 \begin{center}
-   \texttt{Function {\ident} {\binder$_1$}\ldots{\binder$_n$}
+   \vernacdef{Function {\ident} {\binder$_1$}\ldots{\binder$_n$}
      \{decrease\_annot\} : type$_0$ := \term$_0$}
    \comindex{Function}
    \label{Function}
@@ -1859,7 +1859,7 @@ which they reside into another one. A {\em class} is either a sort
 (denoted by the keyword {\tt Sortclass}), a product type (denoted by the
 keyword {\tt Funclass}), or a type constructor (denoted by its name),
 e.g. an inductive type or any constant with a type of the form
-\texttt{forall} $(x_1:A_1) .. (x_n:A_n),~s$ where $s$ is a sort.
+\texttt{forall} $(x_1:A_1) \ldots (x_n:A_n),~s$ where $s$ is a sort.
 
 Then the user is able to apply an
 object that is not a function, but can be coerced to a function, and

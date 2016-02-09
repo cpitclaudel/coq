@@ -647,7 +647,7 @@ This command displays the list of library files loaded in the current
 {\Coq} session. For each of these libraries, it also tells if it is
 imported.
 
-\subsection[\tt Declare ML Module {\str$_1$} .. {\str$_n$}.]{\vernacdef{Declare ML Module {\str$_1$} .. {\str$_n$}.\comindex{Declare ML Module}}}
+\subsection[\tt Declare ML Module {\str$_1$} \ldots {\str$_n$}.]{\vernacdef{Declare ML Module {\str$_1$} .. {\str$_n$}.\comindex{Declare ML Module}}}
 This commands loads the {\ocaml} compiled files {\str$_1$} {\ldots}
 {\str$_n$} (dynamic link). It is mainly used to load tactics
 dynamically.
@@ -661,7 +661,7 @@ files is only possible under the bytecode version of {\tt coqtop}
 {\ocaml} that supports native {\tt Dynlink} ($\ge$ 3.11).
 
 \begin{Variants}
-\item {\vernacdef{Local Declare ML Module {\str$_1$} .. {\str$_n$}.}}\\
+\item {\vernacdef{Local Declare ML Module {\str$_1$} \ldots {\str$_n$}.}}\\
   This variant is not exported to the modules that import the module
   where they occur, even if outside a section.
 \end{Variants}
@@ -1085,7 +1085,7 @@ perform a {\tt Ltac \ident\ := {\rm\sl convtactic}}.
 
 \section{Controlling the locality of commands}
 
-\subsection{{\vernacdef{Local}}, {\vernacdef{Global}}
+\subsection{{\vernacdef{Local \nterm{command}}}, {\vernacdef{Global \nterm{command}}}
 \comindex{Local}
 \comindex{Global}
 }
