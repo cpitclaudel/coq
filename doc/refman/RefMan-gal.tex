@@ -1127,7 +1127,7 @@ arguments of the constructors rather than their full type.
 \begin{coq_example*}
 Variant sum (A B:Set) : Set := left : A -> sum A B | right : B -> sum A B.
 \end{coq_example*}
-The \vernacdef{{\tt Variant} {\ident} {\binder$_1$}\ldots{\binder$_k$} : {\term} :=}
+The \vernacdef{{\tt Variant} {\ident} {\binder$_1$}\ldots{\binder$_k$} : {\term} := \nelistnosep{\nterm{constructors}}}
 form is identical to the {\tt Inductive} keyword,
 except that it disallows recursive definition of types (in particular
 lists cannot be defined with the {\tt Variant} keyword). No induction
