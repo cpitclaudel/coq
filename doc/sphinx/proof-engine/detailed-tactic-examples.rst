@@ -36,12 +36,8 @@ example, revisiting the first example of the inversion documentation:
    Parameter P : nat -> nat -> Prop.
 
    Goal forall n m:nat, Le (S n) m -> P n m.
-
-   intros n m H.
-
-.. coqtop:: all
-
-   generalize_eqs H.
+     intros n m H.
+     generalize_eqs H. (*. unfold *)
 
 The index ``S n`` gets abstracted by a variable here, but a corresponding
 equality is added under the abstract instance so that no information
@@ -55,8 +51,8 @@ what the ``generalize_eqs_vars`` variant does:
 
 .. coqtop:: all abort
 
-   generalize_eqs_vars H.
-   induction H.
+     generalize_eqs_vars H.
+     induction H.
 
 As the hypothesis itself did not appear in the goal, we did not need
 to use an heterogeneous equality to relate the new hypothesis to the
@@ -71,11 +67,8 @@ as well in this case, e.g.:
 
    Parameter Q : forall (n m : nat), Le n m -> Prop.
    Goal forall n m (p : Le (S n) m), Q (S n) m p.
-
-.. coqtop:: all
-
-   intros n m p.
-   generalize_eqs_vars p.
+     intros n m p. (* .unfold *)
+     generalize_eqs_vars p. (* .unfold *)
 
 One drawback of this approach is that in the branches one will have to
 substitute the equalities back into the instance to get the right
@@ -90,7 +83,7 @@ does. For example, we might simplify the previous goals considerably:
 
 .. coqtop:: all abort
 
-   induction p ; simplify_dep_elim.
+     induction p ; simplify_dep_elim.
 
 The higher-order tactic ``do_depind`` defined in ``Coq.Program.Equality``
 takes a tactic and combines the building blocks we have seen with it:
@@ -101,17 +94,11 @@ are ``dependent induction`` and ``dependent destruction`` that do induction or
 simply case analysis on the generalized hypothesis. For example we can
 redo what we’ve done manually with dependent destruction:
 
-.. coqtop:: in
+.. coqtop:: in abort
 
    Lemma ex : forall n m:nat, Le (S n) m -> P n m.
-
-.. coqtop:: in
-
-   intros n m H.
-
-.. coqtop:: all abort
-
-   dependent destruction H.
+     intros n m H.
+     dependent destruction H. (* .unfold *)
 
 This gives essentially the same result as inversion. Now if the
 destructed hypothesis actually appeared in the goal, the tactic would
@@ -121,9 +108,6 @@ the following example on vectors:
 .. coqtop:: in
 
    Set Implicit Arguments.
-
-.. coqtop:: in
-
    Parameter A : Set.
 
 .. coqtop:: in
@@ -136,14 +120,8 @@ the following example on vectors:
 
    Goal forall n, forall v : vector (S n),
             exists v' : vector n, exists a : A, v = vcons a v'.
-
-.. coqtop:: in
-
-   intros n v.
-
-.. coqtop:: all
-
-   dependent destruction v.
+     intros n v.
+     dependent destruction v. (* .unfold *)
 
 In this case, the ``v`` variable can be replaced in the goal by the
 generalized hypothesis only when it has a type of the form ``vector (S n)``,
@@ -246,18 +224,11 @@ back automatically. Indeed we can simply write:
    Require Import Coq.Program.Tactics.
    Require Import Coq.Program.Equality.
 
-.. coqtop:: in
-
    Lemma weakening : forall G D tau, term (G ; D) tau ->
                      forall tau', term (G , tau' ; D) tau.
-
-.. coqtop:: in
-
-   Proof with simpl in * ; simpl_depind ; auto.
-
-.. coqtop:: in
-
-   intros G D tau H. dependent induction H generalizing G D ; intros.
+   Proof with simpl in *; simpl_depind; auto.
+     intros G D tau H.
+     dependent induction H generalizing G D; intros. (* .unfold *)
 
 This call to dependent induction has an additional arguments which is
 a list of variables appearing in the instance that should be
@@ -266,10 +237,6 @@ hypotheses. By default, all variables appearing inside constructors
 (except in a parameter position) of the instantiated hypothesis will
 be generalized automatically but one can always give the list
 explicitly.
-
-.. coqtop:: all
-
-   Show.
 
 The ``simpl_depind`` tactic includes an automatic tactic that tries to
 simplify equalities appearing at the beginning of induction
@@ -280,32 +247,22 @@ must help the automation by giving some arguments, using the
 
 .. coqtop:: in
 
-   destruct D... apply weak; apply ax. apply ax.
-
-.. coqtop:: in
-
-   destruct D...
-
-.. coqtop:: all
-
-   Show.
-
-.. coqtop:: all
-
-   specialize (IHterm G0 empty eq_refl).
+     destruct D... apply weak; apply ax. apply ax.
+     destruct D... (* .unfold *)
+     specialize (IHterm G0 empty eq_refl). (* .unfold *)
 
 Once the induction hypothesis has been narrowed to the right equality,
 it can be used directly.
 
 .. coqtop:: all
 
-   apply weak, IHterm.
+     apply weak, IHterm.
 
 Now concluding this subgoal is easy.
 
 .. coqtop:: in
 
-   constructor; apply IHterm; reflexivity.
+     constructor; apply IHterm; reflexivity.
 
 .. seealso::
    The :tacn:`induction`, :tacn:`case`, and :tacn:`inversion` tactics.
@@ -323,76 +280,38 @@ the optional tactic of the ``Hint Rewrite`` command.
 
 .. example:: Ackermann function
 
-   .. coqtop:: in reset
+   .. coqtop:: all reset
 
       Require Import Arith.
-
-   .. coqtop:: in
-
       Parameter Ack : nat -> nat -> nat.
-
-   .. coqtop:: in
 
       Axiom Ack0 : forall m:nat, Ack 0 m = S m.
       Axiom Ack1 : forall n:nat, Ack (S n) 0 = Ack n 1.
       Axiom Ack2 : forall n m:nat, Ack (S n) (S m) = Ack n (Ack (S n) m).
 
-   .. coqtop:: in
-
       Hint Rewrite Ack0 Ack1 Ack2 : base0.
 
-   .. coqtop:: all
-
       Lemma ResAck0 : Ack 3 2 = 29.
-
-   .. coqtop:: all
-
-      autorewrite with base0 using try reflexivity.
+         autorewrite with base0 using try reflexivity.
+      Qed.
 
 .. example:: MacCarthy function
 
-   .. coqtop:: in reset
+   .. coqtop:: all reset
 
       Require Import Omega.
-
-   .. coqtop:: in
-
       Parameter g : nat -> nat -> nat.
-
-   .. coqtop:: in
 
       Axiom g0 : forall m:nat, g 0 m = m.
       Axiom g1 : forall n m:nat, (n > 0) -> (m > 100) -> g n m = g (pred n) (m - 10).
       Axiom g2 : forall n m:nat, (n > 0) -> (m <= 100) -> g n m = g (S n) (m + 11).
 
-   .. coqtop:: in
-
       Hint Rewrite g0 g1 g2 using omega : base1.
 
-   .. coqtop:: in
-
       Lemma Resg0 : g 1 110 = 100.
-
-   .. coqtop:: out
-
-      Show.
-
-   .. coqtop:: all
-
-      autorewrite with base1 using reflexivity || simpl.
-
-   .. coqtop:: none
-
+        autorewrite with base1 using reflexivity || simpl.
       Qed.
 
-   .. coqtop:: all
-
       Lemma Resg1 : g 1 95 = 91.
-
-   .. coqtop:: all
-
-      autorewrite with base1 using reflexivity || simpl.
-
-   .. coqtop:: none
-
+        autorewrite with base1 using reflexivity || simpl.
       Qed.

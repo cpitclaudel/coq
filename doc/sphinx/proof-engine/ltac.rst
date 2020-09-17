@@ -622,28 +622,28 @@ Failing
       .. coqtop:: all fail
 
          Goal True.
-         Proof. fail. Abort.
+         Proof. Fail fail. Abort.
 
          Goal True.
          Proof. trivial; fail. Qed.
 
          Goal True.
-         Proof. trivial. fail. Abort.
+         Proof. trivial. Fail fail. Abort.
 
          Goal True.
          Proof. trivial. all: fail. Qed.
 
          Goal True.
-         Proof. gfail. Abort.
+         Proof. Fail gfail. Abort.
 
          Goal True.
-         Proof. trivial; gfail. Abort.
+         Proof. Fail trivial; gfail. Abort.
 
          Goal True.
-         Proof. trivial. gfail. Abort.
+         Proof. trivial. Fail gfail. Abort.
 
          Goal True.
-         Proof. trivial. all: gfail. Abort.
+         Proof. trivial. Fail all: gfail. Abort.
 
 Timeout
 ~~~~~~~

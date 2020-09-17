@@ -7,6 +7,8 @@
 /*         *     GNU Lesser General Public License Version 2.1          */
 /*         *     (see LICENSE file for the text of the license)         */
 /************************************************************************/
+@import "iosevka-slab/webfont.css";
+
 .notation {
     /* font-family: "Ubuntu Mono", "Consolas", monospace; */
     white-space: pre-wrap;
@@ -155,10 +157,27 @@
 
 /* FIXME: Specific to the RTD theme */
 .coqdoc, .coqtop dt, .coqtop dd, pre { /* pre added because of production lists */
-    font-family: Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace !important; /* Copied from RTD theme */
-    font-size: 12px !important; /* Copied from RTD theme */
-    line-height: 1.5 !important; /* Copied from RTD theme */
+    font-family: 'Iosevka Slab Web', 'Iosevka Web', 'Iosevka Slab', 'Iosevka', 'Fira Code', monospace !important;
+    font-size: 14px !important; /* Copied from RTD theme */
+    line-height: initial !important;
     white-space: pre;
+}
+
+.alectryon-io blockquote {
+    line-height: initial;
+}
+
+.highlight {
+    background: none !important;
+}
+
+.alectryon-io label {
+    font-size: inherit;
+    display: inline;
+}
+
+pre.alectryon-io {
+    margin: 0;
 }
 
 /*************/

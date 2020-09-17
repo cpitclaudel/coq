@@ -3121,7 +3121,7 @@ An :token:`r_item` can be:
 
      .. coqtop:: all fail
 
-        rewrite -[f y]/(y + _).
+        Fail rewrite -[f y]/(y + _).
 
      but the following script succeeds
 
@@ -3561,7 +3561,7 @@ cases:
 
     .. coqtop:: all restart fail
 
-       rewrite H.
+       Fail rewrite H.
 
     Rewriting with ``H`` first requires unfolding the occurrences of
     ``f``
@@ -3676,7 +3676,7 @@ complete terms, as shown by the simple example below.
 
    .. coqtop:: all fail
 
-      rewrite eq_map.
+      Fail rewrite eq_map.
 
    as we need to explicitly provide the non-inferable argument ``F2``,
    which corresponds here to the term we want to obtain *after* the

@@ -751,7 +751,7 @@ Applying theorems
 
    .. coqtop:: all fail
 
-      apply Rtrans.
+      Fail apply Rtrans.
 
    A solution is to ``apply (Rtrans n m p)`` or ``(Rtrans n m)``.
 
@@ -3285,7 +3285,7 @@ the conversion in hypotheses :n:`{+ @ident}`.
          .. coqtop:: abort all fail
 
             Goal 0 <= 1.
-            unfold le.
+            Fail unfold le.
 
       This error can also be raised if you are trying to unfold
       something that has been marked as opaque.
@@ -3296,7 +3296,7 @@ the conversion in hypotheses :n:`{+ @ident}`.
 
             Opaque Nat.add.
             Goal 1 + 0 = 1.
-            unfold Nat.add.
+            Fail unfold Nat.add.
 
    .. tacv:: unfold @qualid in @goal_occurrences
 

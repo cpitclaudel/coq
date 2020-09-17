@@ -23,7 +23,7 @@ from collections import defaultdict
 from docutils import nodes, utils
 from docutils.transforms import Transform
 from docutils.parsers.rst import Directive, directives
-from docutils.parsers.rst.roles import code_role #, set_classes
+from docutils.parsers.rst.roles import code_role, set_classes
 from docutils.parsers.rst.directives.admonitions import BaseAdmonition
 
 from sphinx import addnodes
@@ -31,17 +31,16 @@ from sphinx.roles import XRefRole
 from sphinx.errors import ExtensionError
 from sphinx.util.nodes import set_source_info, set_role_source_info, make_refnode
 from sphinx.util.logging import getLogger, get_node_location
-from sphinx.directives import ObjectDescription
+from sphinx.directives import ObjectDescription, CodeBlock
 from sphinx.domains import Domain, ObjType, Index
-from sphinx.domains.std import token_xrefs
-from sphinx.ext import mathbase
 
-from . import coqdoc
-from .repl import ansicolors
-from .repl.coqtop import CoqTop, CoqTopError
 from .notations.parsing import ParseError
 from .notations.sphinx import sphinxify
 from .notations.plain import stringify_with_ellipses
+
+import alectryon.pygments
+import alectryon.docutils
+import alectryon.sphinx
 
 PARSE_ERROR = """Parse error in notation!
 Offending notation: {}
@@ -74,8 +73,7 @@ def make_target(objtype, targetid):
     return "coq:{}.{}".format(objtype, targetid)
 
 def make_math_node(latex, docname, nowrap):
-    node = mathbase.displaymath()
-    node['latex'] = latex
+    node = nodes.math_block(latex, latex)
     node['label'] = None # Otherwise equations are numbered
     node['nowrap'] = nowrap
     node['docname'] = docname
@@ -550,17 +548,11 @@ def coq_code_role(role, rawtext, text, lineno, inliner, options={}, content=[]):
        :g:`Set Printing All.`
        :g:`forall (x: t), P(x)`
     """
-    options['language'] = 'Coq'
+    options = options.copy()
+    set_classes(options)
+    options["language"] = "coq"
+    options.setdefault("classes", []).append("highlight")
     return code_role(role, rawtext, text, lineno, inliner, options, content)
-    ## Too heavy:
-    ## Forked from code_role to use our custom tokenizer; this doesn't work for
-    ## snippets though: for example CoqDoc swallows the parentheses around this:
-    ## “(a: A) (b: B)”
-    # set_classes(options)
-    # classes = ['code', 'coq']
-    # code = utils.unescape(text, 1)
-    # node = nodes.literal(rawtext, '', *highlight_using_coqdoc(code), classes=classes)
-    # return [node], []
 
 CoqCodeRole = coq_code_role
 
@@ -616,12 +608,19 @@ class CoqtopDirective(Directive):
         # Pygments-based post-processing (we could also set rawsource to '')
         content = '\n'.join(self.content)
         args = self.arguments[0].split()
-        node = nodes.container(content, coqtop_options = set(args),
-                               classes=['coqtop', 'literal-block'])
+
+        stm = self.state_machine
+        pos = stm.get_source_and_line(self.lineno)
+        content_pos = stm.get_source_and_line(self.content_offset)
+
+        node = nodes.container(
+            content, coqtop_options=set(args),
+            classes=['coqtop', 'literal-block'],
+            pos=pos, content_pos=content_pos)
         self.add_name(node)
         return [node]
 
-class CoqdocDirective(Directive):
+class CoqdocDirective(CodeBlock):
     """A reST directive to display Coqtop-formatted source code.
 
     Usage::
@@ -636,22 +635,11 @@ class CoqdocDirective(Directive):
 
           Definition test := 1.
     """
-    # TODO implement this as a Pygments highlighter?
-    has_content = True
-    required_arguments = 0
-    optional_arguments = 0
-    final_argument_whitespace = True
-    option_spec = { 'name': directives.unchanged }
     directive_name = "coqdoc"
 
     def run(self):
-        # Uses a ‘container’ instead of a ‘literal_block’ to disable
-        # Pygments-based post-processing (we could also set rawsource to '')
-        content = '\n'.join(self.content)
-        node = nodes.inline(content, '', *highlight_using_coqdoc(content))
-        wrapper = nodes.container(content, node, classes=['coqdoc', 'literal-block'])
-        self.add_name(wrapper)
-        return [wrapper]
+        self.arguments = self.arguments or ["coq"]
+        return super().run()
 
 class ExampleDirective(BaseAdmonition):
     """A reST directive for examples.
@@ -689,7 +677,7 @@ class ExampleDirective(BaseAdmonition):
 class PreambleDirective(Directive):
     r"""A reST directive to include a TeX file.
 
-    Mostly useful to let MathJax know about `\def`s and `\newcommand`s.  The
+    Mostly useful to let MathJax know about `\def`\s and `\newcommand`\s.  The
     contents of the TeX file are wrapped in a math environment, as MathJax
     doesn't process LaTeX definitions otherwise.
 
@@ -785,46 +773,6 @@ class InferenceDirective(Directive):
         set_source_info(self, dl)
         return [dl]
 
-class AnsiColorsParser():
-    """Parse ANSI-colored output from Coqtop into Sphinx nodes."""
-
-    # Coqtop's output crashes ansi.py, because it contains a bunch of extended codes
-    # This class is a fork of the original ansi.py, released under a BSD license in sphinx-contribs
-
-    COLOR_PATTERN = re.compile('\x1b\\[([^m]+)m')
-
-    def __init__(self):
-        self.new_nodes, self.pending_nodes = [], []
-
-    def _finalize_pending_nodes(self):
-        self.new_nodes.extend(self.pending_nodes)
-        self.pending_nodes = []
-
-    def _add_text(self, raw, beg, end):
-        if beg < end:
-            text = raw[beg:end]
-            if self.pending_nodes:
-                self.pending_nodes[-1].append(nodes.Text(text))
-            else:
-                self.new_nodes.append(nodes.inline('', text))
-
-    def colorize_str(self, raw):
-        """Parse raw (an ANSI-colored output string from Coqtop) into Sphinx nodes."""
-        last_end = 0
-        for match in AnsiColorsParser.COLOR_PATTERN.finditer(raw):
-            self._add_text(raw, last_end, match.start())
-            last_end = match.end()
-            classes = ansicolors.parse_ansi(match.group(1))
-            if 'ansi-reset' in classes:
-                self._finalize_pending_nodes()
-            else:
-                node = nodes.inline()
-                self.pending_nodes.append(node)
-                node['classes'].extend(classes)
-        self._add_text(raw, last_end, len(raw))
-        self._finalize_pending_nodes()
-        return self.new_nodes
-
 class CoqtopBlocksTransform(Transform):
     """Filter handling the actual work for the coqtop directive
 
@@ -837,14 +785,15 @@ class CoqtopBlocksTransform(Transform):
     def is_coqtop_block(node):
         return isinstance(node, nodes.Element) and 'coqtop_options' in node
 
-    @staticmethod
-    def split_sentences(source):
-        """Split Coq sentences in source. Could be improved."""
-        return re.split(r"(?<=(?<!\.)\.)\s+", source)
+    INITIAL_OPTIONS = [
+        # 'Set Coqtop Exit On Error.',
+        'Set Warnings "+default".'
+    ]
 
-    @staticmethod
-    def parse_options(node):
-        """Parse options according to the description in CoqtopDirective."""
+    @classmethod
+    def prepare_alectryon_node(cls, node):
+        """Parse options according to the description in CoqtopDirective and return an
+        Alectryon node."""
 
         options = node['coqtop_options']
 
@@ -867,131 +816,95 @@ class CoqtopBlocksTransform(Transform):
             raise ExtensionError("{}: Exactly one display option must be passed to .. coqtop::".format(loc))
 
         opt_all = 'all' in options
-        opt_none = 'none' in options
         opt_input = 'in' in options
         opt_output = 'out' in options
+        opt_none = 'none' in options
 
-        return {
-            'reset': opt_reset,
-            'fail': opt_fail,
-            # if errors are allowed, then warnings too
-            # and they should be displayed as warnings, not errors
-            'warn': opt_warn or opt_fail,
-            'restart': opt_restart,
-            'abort': opt_abort,
-            'input': opt_input or opt_all,
-            'output': opt_output or opt_all
-        }
+        # if errors are allowed, then warnings too
+        # and they should be displayed as warnings, not errors
+        opt_warn = opt_warn or opt_fail
 
-    @staticmethod
-    def block_classes(should_show, contents=None):
-        """Compute classes to add to a node containing contents.
+        prelude, coda = [], []
 
-        :param should_show: Whether this node should be displayed"""
-        is_empty = contents is not None and re.match(r"^\s*$", contents)
-        if is_empty or not should_show:
-            return ['coqtop-hidden']
-        else:
-            return []
+        if opt_restart:
+            prelude.append('Restart.')
+        if opt_reset:
+            prelude.append('Reset Initial.')
+            prelude.extend(cls.INITIAL_OPTIONS)
+        # if opt_fail:
+        #     prelude.append('Unset Coqtop Exit On Error.')
+        if opt_warn:
+            prelude.append('Set Warnings "default".')
 
-    @staticmethod
-    def make_rawsource(pairs, opt_input, opt_output):
-        blocks = []
-        for sentence, output in pairs:
-            output = AnsiColorsParser.COLOR_PATTERN.sub("", output).strip()
-            if opt_input:
-                blocks.append(sentence)
-            if output and opt_output:
-                blocks.append(re.sub("^", "    ", output, flags=re.MULTILINE) + "\n")
-        return '\n'.join(blocks)
+        if opt_abort:
+            coda.append('Abort All.')
+        # if opt_fail:
+        #     coda.append('Set Coqtop Exit On Error.')
+        if opt_warn:
+            coda.append('Set Warnings "+default".')
 
-    def add_coq_output_1(self, repl, node):
-        options = self.parse_options(node)
+        alectryon_options = []
 
-        pairs = []
+        opt_input = opt_input or opt_all
+        opt_output = opt_output or opt_all
 
-        if options['restart']:
-            repl.sendone('Restart.')
-        if options['reset']:
-            repl.sendone('Reset Initial.')
-            repl.send_initial_options()
-        if options['fail']:
-            repl.sendone('Unset Coqtop Exit On Error.')
-        if options['warn']:
-            repl.sendone('Set Warnings "default".')
-        for sentence in self.split_sentences(node.rawsource):
-            pairs.append((sentence, repl.sendone(sentence)))
-        if options['abort']:
-            repl.sendone('Abort All.')
-        if options['fail']:
-            repl.sendone('Set Coqtop Exit On Error.')
-        if options['warn']:
-            repl.sendone('Set Warnings "+default".')
+        if opt_none:
+            alectryon_options.append("none")
+        elif opt_input and not opt_output:
+            alectryon_options.append("all")
+            alectryon_options.append("fold")
+        elif opt_input and opt_output:
+            alectryon_options.append("all")
+            alectryon_options.append("unfold")
+        elif opt_output and not opt_input:
+            alectryon_options.append("out")
+            alectryon_options.append("unfold")
+        elif not opt_output and not opt_input:
+            alectryon_options.append("none")
 
-        dli = nodes.definition_list_item()
-        for sentence, output in pairs:
-            # Use Coqdoc to highlight input
-            in_chunks = highlight_using_coqdoc(sentence)
-            dli += nodes.term(sentence, '', *in_chunks, classes=self.block_classes(options['input']))
-            # Parse ANSI sequences to highlight output
-            out_chunks = AnsiColorsParser().colorize_str(output)
-            dli += nodes.definition(output, *out_chunks, classes=self.block_classes(options['output'], output))
-        node.clear()
-        node.rawsource = self.make_rawsource(pairs, options['input'], options['output'])
-        node['classes'].extend(self.block_classes(options['input'] or options['output']))
-        node += nodes.inline('', '', classes=['coqtop-reset'] * options['reset'])
-        node += nodes.definition_list(node.rawsource, dli)
+        if opt_fail:
+            alectryon_options.append("fails")
 
-    def add_coqtop_output(self):
+        return alectryon.docutils.alectryon_pending(
+            content=node.rawsource,
+            pos=node['pos'], content_pos=node['content_pos'],
+            options=alectryon_options, prelude=prelude, coda=coda)
+
+    def apply(self):
         """Add coqtop's responses to a Sphinx AST
 
         Finds nodes to process using is_coqtop_block."""
-        with CoqTop(color=True) as repl:
-            repl.send_initial_options()
-            for node in self.document.traverse(CoqtopBlocksTransform.is_coqtop_block):
-                try:
-                    self.add_coq_output_1(repl, node)
-                except CoqTopError as err:
-                    import textwrap
-                    MSG = ("{}: Error while sending the following to coqtop:\n{}" +
-                           "\n  coqtop output:\n{}" +
-                           "\n  Full error text:\n{}")
-                    indent = "    "
-                    loc = get_node_location(node)
-                    le = textwrap.indent(str(err.last_sentence), indent)
-                    bef = textwrap.indent(str(err.before), indent)
-                    fe = textwrap.indent(str(err.err), indent)
-                    raise ExtensionError(MSG.format(loc, le, bef, fe))
+        for idx, node in enumerate(self.document.traverse(CoqtopBlocksTransform.is_coqtop_block)):
+            alectryon_node = self.prepare_alectryon_node(node)
+            if idx == 0:
+                alectryon_node['prelude'][0:0] = self.INITIAL_OPTIONS
+            node.replace_self(alectryon_node)
+            # try:
+            #     self.add_coq_output_1(repl, node)
+            # except Exception as err:
+            #     import textwrap
+            #     MSG = ("{}: Error while sending the following to coqtop:\n{}" +
+            #            "\n  coqtop output:\n{}" +
+            #            "\n  Full error text:\n{}")
+            #     indent = "    "
+            #     loc = get_node_location(node)
+            #     le = textwrap.indent(str(err.last_sentence), indent)
+            #     bef = textwrap.indent(str(err.before), indent)
+            #     fe = textwrap.indent(str(err.err), indent)
+            #     raise ExtensionError(MSG.format(loc, le, bef, fe))
 
+# Overridden to add preludes and codas
+class AlectryonTransform(alectryon.docutils.AlectryonTransform):
     @staticmethod
-    def merge_coqtop_classes(kept_node, discarded_node):
-        discarded_classes = discarded_node['classes']
-        if not 'coqtop-hidden' in discarded_classes:
-            kept_node['classes'] = [c for c in kept_node['classes']
-                                    if c != 'coqtop-hidden']
+    def get_chunks(pending):
+        prelude = "\n".join(pending['prelude'])
+        coda = "\n".join(pending['coda'])
+        return (prelude, pending['content'], coda)
 
-    @staticmethod
-    def merge_consecutive_coqtop_blocks(app, doctree, _):
-        """Merge consecutive divs wrapping lists of Coq sentences; keep ‘dl’s separate."""
-        for node in doctree.traverse(CoqtopBlocksTransform.is_coqtop_block):
-            if node.parent:
-                rawsources, names = [node.rawsource], set(node['names'])
-                for sibling in node.traverse(include_self=False, descend=False,
-                                             siblings=True, ascend=False):
-                    if CoqtopBlocksTransform.is_coqtop_block(sibling):
-                        CoqtopBlocksTransform.merge_coqtop_classes(node, sibling)
-                        rawsources.append(sibling.rawsource)
-                        names.update(sibling['names'])
-                        node.extend(sibling.children)
-                        node.parent.remove(sibling)
-                        sibling.parent = None
-                    else:
-                        break
-                node.rawsource = "\n\n".join(rawsources)
-                node['names'] = list(names)
-
-    def apply(self):
-        self.add_coqtop_output()
+    def annotate(self, pending, sertop_args):
+        sertop_args = (*self.SERTOP_ARGS, *sertop_args)
+        chunks = [c for n in pending for c in self.get_chunks(n)]
+        return self.annotate_cached(chunks, sertop_args)[1::3] # 3 chunks per real node
 
 class CoqSubdomainsIndex(Index):
     """Index subclass to provide subdomain-specific indices.
@@ -1207,22 +1120,22 @@ def is_coqtop_or_coqdoc_block(node):
     return (isinstance(node, nodes.Element) and
        ('coqtop' in node['classes'] or 'coqdoc' in node['classes']))
 
-def simplify_source_code_blocks_for_latex(app, doctree, fromdocname): # pylint: disable=unused-argument
-    """Simplify coqdoc and coqtop blocks.
+# def simplify_source_code_blocks_for_latex(app, doctree, fromdocname): # pylint: disable=unused-argument
+#     """Simplify coqdoc and coqtop blocks.
 
-    In HTML mode, this does nothing; in other formats, such as LaTeX, it
-    replaces coqdoc and coqtop blocks by plain text sources, which will use
-    pygments if available.  This prevents the LaTeX builder from getting
-    confused.
-    """
-    is_html = app.builder.tags.has("html")
-    for node in doctree.traverse(is_coqtop_or_coqdoc_block):
-        if is_html:
-            node.rawsource = '' # Prevent pygments from kicking in
-        elif 'coqtop-hidden' in node['classes']:
-            node.parent.remove(node)
-        else:
-            node.replace_self(nodes.literal_block(node.rawsource, node.rawsource, language="Coq"))
+#     In HTML mode, this does nothing; in other formats, such as LaTeX, it
+#     replaces coqdoc and coqtop blocks by plain text sources, which will use
+#     pygments if available.  This prevents the LaTeX builder from getting
+#     confused.
+#     """
+#     is_html = app.builder.tags.has("html")
+#     for node in doctree.traverse(is_coqtop_or_coqdoc_block):
+#         if is_html:
+#             node.rawsource = '' # Prevent pygments from kicking in
+#         elif 'coqtop-hidden' in node['classes']:
+#             node.parent.remove(node)
+#         else:
+#             node.replace_self(nodes.literal_block(node.rawsource, node.rawsource, language="Coq"))
 
 COQ_ADDITIONAL_DIRECTIVES = [CoqtopDirective,
                              CoqdocDirective,
@@ -1250,8 +1163,9 @@ def setup(app):
         app.add_directive(directive.directive_name, directive)
 
     app.add_transform(CoqtopBlocksTransform)
-    app.connect('doctree-resolved', simplify_source_code_blocks_for_latex)
-    app.connect('doctree-resolved', CoqtopBlocksTransform.merge_consecutive_coqtop_blocks)
+    app.add_transform(AlectryonTransform)
+    # app.connect('doctree-resolved', simplify_source_code_blocks_for_latex)
+    # app.connect('doctree-resolved', CoqtopBlocksTransform.merge_consecutive_coqtop_blocks)
 
     # Add extra styles
     app.add_stylesheet("ansi.css")
@@ -1262,6 +1176,9 @@ def setup(app):
 
     # Tell Sphinx about extra settings
     app.add_config_value("report_undocumented_coq_objects", None, 'env')
+
+    app.connect('builder-inited', alectryon.sphinx.add_html_assets)
+    alectryon.pygments.replace_builtin_coq_lexer()
 
     # ``env_version`` is used by Sphinx to know when to invalidate
     # coqdomain-specific bits in its caches.  It should be incremented when the

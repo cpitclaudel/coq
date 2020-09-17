@@ -71,7 +71,7 @@ To build an object of type :token:`ident`, one should provide the constructor
 
    Let us define the rational :math:`1/2`:
 
-    .. coqtop:: in
+    .. coqtop:: all
 
        Theorem one_two_irred : forall x y z:nat, x * y = 1 /\ x * z = 2 -> x = 1.
        Admitted.
@@ -667,7 +667,7 @@ presence of partial application of :g:`wrong` in the body of :g:`wrong`:
 
 .. coqtop:: all fail
 
-   Function wrong (C:nat) : nat :=
+   Fail Function wrong (C:nat) : nat :=
      List.hd 0 (List.map wrong (C::nil)).
 
 For now, dependent cases are not treated for non structurally

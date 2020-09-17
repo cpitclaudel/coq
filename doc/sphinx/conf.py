@@ -36,7 +36,7 @@ sys.setrecursionlimit(3000)
 sys.path.append(os.path.abspath('../tools/'))
 sys.path.append(os.path.abspath('../../config/'))
 
-import coq_config
+from coq_config import coq_config
 
 # -- Prolog ---------------------------------------------------------------
 
